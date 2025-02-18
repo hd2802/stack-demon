@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=3 format=3 uid="uid://dipmb0ce8ps10"]
 
-[ext_resource type="PackedScene" uid="uid://bpm3yfaakmupi" path="res://_Scenes/player_hand.tscn" id="1_7cxrx"]
+[ext_resource type="Script" path="res://_Scripts/PlayerHand/player_hand.gd" id="1_2yitt"]
+[ext_resource type="PackedScene" uid="uid://m1cief7boe3f" path="res://_Scenes/card.tscn" id="1_5pjcu"]
 
 [node name="Level" type="Node2D"]
 
@@ -15,8 +16,21 @@ offset_right = 259.0
 offset_bottom = 720.0
 color = Color(0.121569, 0.121569, 0.121569, 1)
 
-[node name="PlayerHand" parent="." instance=ExtResource("1_7cxrx")]
-offset_left = 337.0
-offset_top = 547.0
-offset_right = 337.0
-offset_bottom = 547.0
+[node name="PlayerHand" type="HBoxContainer" parent="."]
+offset_left = 366.0
+offset_top = 527.0
+offset_right = 882.0
+offset_bottom = 677.0
+script = ExtResource("1_2yitt")
+
+[node name="Card" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
+layout_mode = 2
+
+[node name="Card2" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
+layout_mode = 2
+
+[node name="Card3" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
+layout_mode = 2
+
+[node name="Card4" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
+layout_mode = 2
