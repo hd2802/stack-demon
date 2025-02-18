@@ -19,6 +19,12 @@ func _on_card_clicked(card: Card):
 	if selected_card != card:
 		selected_card = card
 		selected_card.position.y -= 20 
-		
 	else:
 		selected_card = null
+
+func _on_play_card_button_pressed() -> void:
+	if !selected_card:
+		pass
+	else:
+		print("played selected_card")
+		selected_card.free()
