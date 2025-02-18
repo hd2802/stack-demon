@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://m1cief7boe3f"]
+
+[ext_resource type="Texture2D" uid="uid://djqhdffattcnl" path="res://Sprites/card_sprite.png" id="1_02skm"]
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchor_right = 0.078125
+anchor_bottom = 0.208333
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(50, 75)
+texture = ExtResource("1_02skm")
