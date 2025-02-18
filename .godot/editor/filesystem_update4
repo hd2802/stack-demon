@@ -1,0 +1,4 @@
+res://_Scenes/level.tscn
+res://_Scripts/Card/card.gd
+res://_Scripts/PlayerHand/player_hand.gd
+res://_Scripts/Stack/stack.gd

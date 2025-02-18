@@ -1,0 +1,12 @@
+Label
+ColorRect
+VBoxContainer
+Sprite2D
+Button
+CollisionShape2D
+Area2D
+Node2D
+Control
+HBoxContainer
+Node
+CanvasLayer
