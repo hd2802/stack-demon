@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=4 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/PlayerHand/player_hand.gd" id="1_2yitt"]
 [ext_resource type="PackedScene" uid="uid://m1cief7boe3f" path="res://_Scenes/card.tscn" id="1_5pjcu"]
+[ext_resource type="Texture2D" uid="uid://cvyyq7gn65onv" path="res://Sprites/upload_button.png" id="3_tu5d2"]
 
 [node name="Level" type="Node2D"]
 
@@ -17,11 +18,19 @@ offset_right = 259.0
 offset_bottom = 720.0
 color = Color(0.121569, 0.121569, 0.121569, 1)
 
+[node name="HandAccentBackground" type="ColorRect" parent="."]
+offset_left = 325.0
+offset_top = 540.0
+offset_right = 1123.0
+offset_bottom = 645.0
+mouse_filter = 2
+color = Color(0.360784, 0.360784, 0.360784, 1)
+
 [node name="PlayerHand" type="HBoxContainer" parent="."]
-offset_left = 366.0
-offset_top = 527.0
-offset_right = 882.0
-offset_bottom = 677.0
+offset_left = 360.0
+offset_top = 520.0
+offset_right = 860.0
+offset_bottom = 670.0
 mouse_filter = 2
 script = ExtResource("1_2yitt")
 
@@ -36,3 +45,16 @@ layout_mode = 2
 
 [node name="Card4" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
 layout_mode = 2
+
+[node name="PlayCardButton" type="Button" parent="."]
+offset_left = 938.0
+offset_top = 560.0
+offset_right = 1066.0
+offset_bottom = 624.0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayCardButton"]
+position = Vector2(64, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_tu5d2")
+
+[connection signal="pressed" from="PlayCardButton" to="PlayerHand" method="_on_play_card_button_pressed"]
