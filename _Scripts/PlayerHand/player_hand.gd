@@ -5,6 +5,8 @@ var cards : Array[String]
 
 var selected_card : Card = null
 
+signal card_played(card: Card)
+
 func _ready():
 	var card : Card = load("res://_Scenes/card.tscn").instantiate()
 	card.createCard("one")
@@ -12,7 +14,6 @@ func _ready():
 	self.add_child(card)
 
 func _on_card_clicked(card: Card):
-	print("card clicked")
 	if selected_card :
 		selected_card.position.y += 20
 		
@@ -26,5 +27,6 @@ func _on_play_card_button_pressed() -> void:
 	if !selected_card:
 		pass
 	else:
-		print("played selected_card")
-		selected_card.free()
+		card_played.emit(selected_card)
+		selected_card.queue_free()
+		selected_card = null
