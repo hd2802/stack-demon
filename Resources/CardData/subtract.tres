@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CardDataResource" load_steps=2 format=3 uid="uid://b7syh5nng4yk"]
 
-[ext_resource type="Script" path="res://CustomResources/card_data.gd" id="1_vle4t"]
+[ext_resource type="Script" path="res://CustomResources/NumericalCustomResources/card_data.gd" id="1_vle4t"]
 
 [resource]
 script = ExtResource("1_vle4t")
