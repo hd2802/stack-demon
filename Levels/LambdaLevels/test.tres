@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LambdaLevelDataResource" load_steps=2 format=3 uid="uid://cha2k0put4rm5"]
+
+[ext_resource type="Script" path="res://CustomResources/LambdaCustomResources/lambda_level_data.gd" id="1_ykh3v"]
+
+[resource]
+script = ExtResource("1_ykh3v")
+hand_ids = Array[String](["test"])
+start_stack_id = Array[String](["test"])
+target_state = Array[String]([])

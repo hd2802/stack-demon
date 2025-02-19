@@ -8,8 +8,8 @@ var stack_second : String = ""
 var stack_third : String = ""
 
 func _ready():
-	var player_hand = get_parent().get_node("PlayerHand")
-	player_hand.card_played.connect(_on_card_played)
+	var hand = get_parent().get_node("Hand")
+	hand.card_played.connect(_on_card_played)
 
 #----------------------------------------------------------------
 

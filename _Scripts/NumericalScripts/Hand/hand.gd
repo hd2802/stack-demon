@@ -1,5 +1,5 @@
 extends Node
-class_name PlayerHand
+class_name Hand
 
 var cards : Array[String]
 
@@ -9,12 +9,12 @@ signal card_played(card: Card)
 
 func _ready():
 	# Placeholder code for loading a card
-	var card : Card = load("res://_Scenes/card.tscn").instantiate()
+	var card : Card = load("res://_Scenes/NumericalScenes/card.tscn").instantiate()
 	card.createCard("one")
 	card.clicked.connect(_on_card_clicked)
 	self.add_child(card)
 	
-	var card_2 : Card = load("res://_Scenes/card.tscn").instantiate()
+	var card_2 : Card = load("res://_Scenes/NumericalScenes/card.tscn").instantiate()
 	card_2.createCard("add")
 	card_2.clicked.connect(_on_card_clicked)
 	self.add_child(card_2)
