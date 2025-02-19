@@ -3,6 +3,10 @@ class_name Stack
 
 var stack : Array[String]
 
+var stack_top : String = ""
+var stack_second : String = ""
+var stack_third : String = ""
+
 func _ready():
 	var player_hand = get_parent().get_node("PlayerHand")
 	player_hand.card_played.connect(_on_card_played)
@@ -17,11 +21,15 @@ func push(value_to_push : String):
 	self.add_child(label)
 	self.move_child(label, 0)
 	
-	var sep_label : Label = Label.new()
-	sep_label.text = "----------"
-	sep_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-	self.add_child(sep_label)
-	self.move_child(sep_label, 0)
+	stack_third = stack_second
+	stack_second = stack_top
+	stack_top = value_to_push
+
+	#var sep_label : Label = Label.new()
+	#sep_label.text = "----------"
+	#sep_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+	#self.add_child(sep_label)
+	#self.move_child(sep_label, 0)
 
 func initialise_stack(array : Array[String]):
 	for a in array:
@@ -29,5 +37,40 @@ func initialise_stack(array : Array[String]):
 
 func _on_card_played(card: Card):
 	push(card.card_data.text)
-
+	
 #----------------------------------------------------------------
+
+func is_operation(v : String) -> bool:
+	if int(v) == 0 and v != "0":
+		return true
+	else:
+		return false
+
+func calculator(operation : String, operand_1 : String, operand_2 : String) -> int:
+	match operation:
+		"+":
+			return int(operand_1) + int(operand_2)
+		"-":
+			return int(operand_1) - int(operand_2)
+		"/":
+			return int(operand_1) / int(operand_2)
+		"*":
+			return int(operand_1) / int(operand_2)
+	
+	return 0
+			
+
+func _on_stack_calculation_button_pressed() -> void:
+	if is_operation(stack_top) and !is_operation(stack_third) and !is_operation(stack_second):
+		var result = calculator(stack_top, stack_third, stack_second)
+		
+		self.remove_child(self.get_children()[len(stack) - 1])
+		self.remove_child(self.get_children()[len(stack) - 2])
+		self.remove_child(self.get_children()[len(stack) - 3])
+		stack.pop_back()
+		stack.pop_back()
+		stack.pop_back()
+		
+		self.push(str(result))
+	else:
+		pass

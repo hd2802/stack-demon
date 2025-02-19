@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=8 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/PlayerHand/player_hand.gd" id="1_2yitt"]
 [ext_resource type="PackedScene" uid="uid://m1cief7boe3f" path="res://_Scenes/card.tscn" id="1_5pjcu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvyyq7gn65onv" path="res://Sprites/upload_button.png" id="3_tu5d2"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Themes/stack.tres" id="4_3r1yx"]
 [ext_resource type="Script" path="res://_Scripts/Stack/stack.gd" id="4_vvucj"]
+[ext_resource type="Texture2D" uid="uid://brkxbrggtrgk1" path="res://Sprites/enter_button.png" id="7_nmu1w"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_n2aon")
@@ -54,9 +55,6 @@ layout_mode = 2
 [node name="Card3" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
 layout_mode = 2
 
-[node name="Card4" parent="PlayerHand" instance=ExtResource("1_5pjcu")]
-layout_mode = 2
-
 [node name="PlayCardButton" type="Button" parent="."]
 offset_left = 938.0
 offset_top = 560.0
@@ -86,4 +84,16 @@ alignment = 2
 script = ExtResource("4_vvucj")
 metadata/_edit_use_anchors_ = true
 
+[node name="StackCalculationButton" type="Button" parent="."]
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1028.0
+offset_bottom = 328.0
+
+[node name="Sprite2D" type="Sprite2D" parent="StackCalculationButton"]
+position = Vector2(64, 64)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_nmu1w")
+
 [connection signal="pressed" from="PlayCardButton" to="PlayerHand" method="_on_play_card_button_pressed"]
+[connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
