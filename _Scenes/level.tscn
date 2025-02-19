@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=6 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/PlayerHand/player_hand.gd" id="1_2yitt"]
 [ext_resource type="PackedScene" uid="uid://m1cief7boe3f" path="res://_Scenes/card.tscn" id="1_5pjcu"]
 [ext_resource type="Texture2D" uid="uid://cvyyq7gn65onv" path="res://Sprites/upload_button.png" id="3_tu5d2"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Themes/stack.tres" id="4_3r1yx"]
 [ext_resource type="Script" path="res://_Scripts/Stack/stack.gd" id="4_vvucj"]
 
 [node name="Level" type="Node2D"]
@@ -66,12 +67,26 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_tu5d2")
 
 [node name="Stack" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = 430.0
 offset_top = 45.0
 offset_right = 686.0
 offset_bottom = 470.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_vertical = 8
+theme = ExtResource("4_3r1yx")
+alignment = 2
 script = ExtResource("4_vvucj")
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Stack"]
+layout_mode = 2
+text = "test"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="PlayCardButton" to="PlayerHand" method="_on_play_card_button_pressed"]
