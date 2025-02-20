@@ -4,7 +4,7 @@ class_name LambdaParser
 var tokens: PackedStringArray
 var index: int = 0
 
-const LambdaAST = preload("res://_Scripts/LambdaCalculus/lambda_term.gd")
+const LambdaAST = preload("res://_Scripts/LambdaCalculus/lambda_ast.gd")
 
 func parse(input: String) -> LambdaAST.LambdaTerm:
 	tokens = tokenize(input)

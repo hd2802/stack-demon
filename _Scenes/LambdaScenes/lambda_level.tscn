@@ -86,4 +86,4 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_dgdj3")
 
 [connection signal="pressed" from="PlayLambdaCardButton" to="LambdaHand" method="_on_play_card_button_pressed"]
-[connection signal="pressed" from="LambdaCalculateButton" to="LambdaStack" method="_on_stack_calculation_button_pressed"]
+[connection signal="pressed" from="LambdaCalculateButton" to="LambdaStack" method="_on_lambda_calculate_button_pressed"]

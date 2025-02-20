@@ -1,43 +1,49 @@
 extends Node
 class_name LambdaStack
 
-var stack : Array[LambdaCard]
+var stack : Array[LambdaAST.LambdaTerm]
+var parser = LambdaParser.new()
+var evaluator = LambdaEvaluator.new()
 
 func _ready():
 	var hand = get_parent().get_node("LambdaHand")
 	hand.card_played.connect(_on_card_played)
-	var parser = LambdaParser.new()
-	var evaluator = LambdaEvaluator.new()
 
-	var ast = parser.parse("(λx. x) y")
-	print(ast)  # Before reduction: Application(Abstraction("x", Variable("x")), Variable("y"))
+func push(expr_string: String):
+	var ast = parser.parse(expr_string)
+	stack.push_back(ast) 
 
-	var reduced_ast = evaluator.evaluate(ast)
-	print(reduced_ast)  # After reduction: Variable("y")
-
-
-#----------------------------------------------------------------
-
-func push(card : LambdaCard):
-	stack.push_back(card)
-	var label : Label = Label.new()
-	label.text = card.lambda_card_data.icon
+	var label := Label.new()
+	label.text = expr_string
 	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+	label.modulate = Color(1, 1, 1, 0) 
 	self.add_child(label)
 	self.move_child(label, 0)
-	
-	#var sep_label : Label = Label.new()
-	#sep_label.text = "----------"
-	#sep_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-	#self.add_child(sep_label)
-	#self.move_child(sep_label, 0)
+	var tween := get_tree().create_tween()
+	tween.tween_property(label, "modulate", Color(1, 1, 1, 1), 0.3)
 
-func initialise_stack(stack_of_ids : Array[String]):
-	for id in stack_of_ids:
-		var temp_card = LambdaCard.new()
-		var a = load("res://Resources/LambdaCardData/" + id + ".tres")
-		temp_card.lambda_card_data = a
-		push(temp_card)
+func initialise_stack(stack_expressions: Array[String]):
+	for expr in stack_expressions:
+		push(expr)
+
+func _on_lambda_calculate_button_pressed():
+	evaluate_stack()
+
+func evaluate_stack():
+	if stack.size() >= 2:
+		var arg = stack.pop_back()
+		var function = stack.pop_back()
+
+		var applied = LambdaAST.Application.new(function, arg)
+		var result = evaluator.evaluate(applied)
+
+		stack.push_back(result)
+
+		var result_label := Label.new()
+		result_label.text = result._to_string()
+		result_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
+		self.add_child(result_label)
+		self.move_child(result_label, 0)
 
 func _on_card_played(card: LambdaCard):
-	push(card)
+	push(card.lambda_card_data.expression)
