@@ -10,9 +10,14 @@ signal card_played(card: LambdaCard)
 func _ready():
 	# Placeholder code for loading a card
 	var l_card : LambdaCard = load("res://_Scenes/LambdaScenes/lambda_card.tscn").instantiate()
-	l_card.createCard("test")
+	l_card.createCard("var_y")
 	l_card.clicked.connect(_on_card_clicked)
 	self.add_child(l_card)
+	
+	var n_card : LambdaCard = load("res://_Scenes/LambdaScenes/lambda_card.tscn").instantiate()
+	n_card.createCard("identity")
+	n_card.clicked.connect(_on_card_clicked)
+	self.add_child(n_card)
 
 func _on_card_clicked(card: LambdaCard):
 	if selected_card :
