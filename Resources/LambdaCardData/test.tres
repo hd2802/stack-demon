@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LambdaCardDataResource" load_steps=2 format=3 uid="uid://bthdy6f2qisop"]
+
+[ext_resource type="Script" path="res://CustomResources/LambdaCustomResources/lambda_card_data.gd" id="1_1ytwk"]
+
+[resource]
+script = ExtResource("1_1ytwk")
+id = "test"
+type = 0
+expression = "x"
+icon = "x"

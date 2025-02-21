@@ -1,7 +1,7 @@
 extends RefCounted
 class_name LambdaEvaluator
 
-const LambdaAST = preload("res://_Scripts/LambdaCalculus/lambda_ast.gd")
+const LambdaAST = preload("res://_Scripts/LambdaCalculus/lambda_term.gd")
 
 func evaluate(term: LambdaAST.LambdaTerm) -> LambdaAST.LambdaTerm:
 	var reduced = beta_reduce(term)
@@ -38,7 +38,7 @@ func substitute(body: LambdaAST.LambdaTerm, param: String, replacement: LambdaAS
 		return LambdaAST.Abstraction.new(body.param, new_body)
 
 	elif body is LambdaAST.Application:
-		var new_func = substitute(body.function, param, replacement)
+		var new_func = substitute(body.func, param, replacement)
 		var new_arg = substitute(body.arg, param, replacement)
 		return LambdaAST.Application.new(new_func, new_arg)
 

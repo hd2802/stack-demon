@@ -18,13 +18,8 @@ func push(value_to_push : String):
 	var label : Label = Label.new()
 	label.text = value_to_push
 	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-	label.modulate = Color(1, 1, 1, 0)
 	self.add_child(label)
 	self.move_child(label, 0)
-
-	var tween := get_tree().create_tween()
-	tween.tween_property(label, "modulate", Color(1, 1, 1, 1), 0.3)
-	
 	
 	stack_third = stack_second
 	stack_second = stack_top
