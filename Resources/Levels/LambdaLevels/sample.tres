@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_eym1n")
 hand_ids = Array[String](["identity", "var_y"])
-start_stack = Array[String](["(λx. x) y", "(λx. (λy. x y))"])
+start_stack = Array[String](["(λx. x) y", "(λx. (λy. x y))z\""])
 target_state = Array[String](["y"])
