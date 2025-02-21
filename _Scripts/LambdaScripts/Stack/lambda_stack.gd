@@ -6,15 +6,6 @@ var stack : Array[LambdaCard]
 func _ready():
 	var hand = get_parent().get_node("LambdaHand")
 	hand.card_played.connect(_on_card_played)
-	var parser = LambdaParser.new()
-	var evaluator = LambdaEvaluator.new()
-
-	var ast = parser.parse("(λx. x) y")
-	print(ast)  # Before reduction: Application(Abstraction("x", Variable("x")), Variable("y"))
-
-	var reduced_ast = evaluator.evaluate(ast)
-	print(reduced_ast)  # After reduction: Variable("y")
-
 
 #----------------------------------------------------------------
 
