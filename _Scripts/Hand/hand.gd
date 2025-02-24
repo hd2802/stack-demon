@@ -5,6 +5,14 @@ var cards : Array[String]
 
 var selected_card : Card = null
 
+const POSSIBLE_CARDS = [
+	"add", "divide", "multiply", "subtract",
+	"zero", "one", "two", "three", "four",
+	"five", "six", "seven", "eight", "nine"
+]
+
+const HAND_SIZE = 5
+
 signal card_played(card: Card)
 
 func _ready():
@@ -18,6 +26,19 @@ func _ready():
 	card_2.createCard("add")
 	card_2.clicked.connect(_on_card_clicked)
 	self.add_child(card_2)
+	
+	# Placeholder code
+	fill_hand(2)
+	
+func fill_hand(num_cards : int) -> void:
+	var rng = RandomNumberGenerator.new()
+	
+	while num_cards < HAND_SIZE:
+		var new_card : Card = load("res://_Scenes/card.tscn").instantiate()
+		new_card.createCard(POSSIBLE_CARDS[rng.randi_range(0, len(POSSIBLE_CARDS) - 1)])
+		new_card.clicked.connect(_on_card_clicked)
+		self.add_child(new_card)
+		num_cards+=1
 
 func _on_card_clicked(card: Card):
 	if selected_card :
