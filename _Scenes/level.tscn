@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=7 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
 [ext_resource type="Script" path="res://_Scripts/Hand/hand.gd" id="2_f4ts2"]
-[ext_resource type="PackedScene" uid="uid://m1cief7boe3f" path="res://_Scenes/card.tscn" id="3_td00e"]
 [ext_resource type="Texture2D" uid="uid://cvyyq7gn65onv" path="res://Sprites/upload_button.png" id="4_q03lm"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Themes/stack.tres" id="5_bsc3n"]
 [ext_resource type="Script" path="res://_Scripts/Stack/stack.gd" id="6_icv8i"]
@@ -45,15 +44,6 @@ offset_right = 860.0
 offset_bottom = 670.0
 mouse_filter = 2
 script = ExtResource("2_f4ts2")
-
-[node name="Card" parent="Hand" instance=ExtResource("3_td00e")]
-layout_mode = 2
-
-[node name="Card2" parent="Hand" instance=ExtResource("3_td00e")]
-layout_mode = 2
-
-[node name="Card3" parent="Hand" instance=ExtResource("3_td00e")]
-layout_mode = 2
 
 [node name="PlayCardButton" type="Button" parent="."]
 offset_left = 938.0
