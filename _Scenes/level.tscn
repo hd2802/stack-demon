@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=10 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
 [ext_resource type="Script" path="res://_Scripts/Hand/hand.gd" id="2_f4ts2"]
 [ext_resource type="Texture2D" uid="uid://cvyyq7gn65onv" path="res://Sprites/upload_button.png" id="4_q03lm"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Themes/stack.tres" id="5_bsc3n"]
 [ext_resource type="Script" path="res://_Scripts/Stack/stack.gd" id="6_icv8i"]
+[ext_resource type="Texture2D" uid="uid://btgxkwu2h4225" path="res://Sprites/information container.png" id="7_4dfoi"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Themes/label.tres" id="7_5tmqg"]
 [ext_resource type="Texture2D" uid="uid://brkxbrggtrgk1" path="res://Sprites/enter_button.png" id="7_t4ijt"]
+[ext_resource type="Script" path="res://_Scripts/Target/target.gd" id="8_a82j4"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nxa5s")
@@ -84,6 +87,37 @@ offset_bottom = 328.0
 position = Vector2(64, 64)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_t4ijt")
+
+[node name="TargetPanelLabel" type="Label" parent="."]
+offset_left = 52.0
+offset_top = 140.0
+offset_right = 210.0
+offset_bottom = 194.0
+theme = ExtResource("7_5tmqg")
+text = "TARGET"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Target" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 200.0
+offset_right = 64.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("5_bsc3n")
+script = ExtResource("8_a82j4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Target"]
+position = Vector2(64, 64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_4dfoi")
 
 [connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
