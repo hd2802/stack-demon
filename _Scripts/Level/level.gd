@@ -7,7 +7,7 @@ var stack_node : Stack
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
-	level_data = load("res://Levels/NumericalLevels/test_level.tres")
+	level_data = load("res://Levels/test_level.tres")
 	
 	# Stack initialisation
 	stack_node = self.get_node("Stack")
