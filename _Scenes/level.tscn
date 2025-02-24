@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=11 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
+[ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Themes/level_title.tres" id="2_53fie"]
 [ext_resource type="Script" path="res://_Scripts/Hand/hand.gd" id="2_f4ts2"]
 [ext_resource type="Texture2D" uid="uid://cvyyq7gn65onv" path="res://Sprites/upload_button.png" id="4_q03lm"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Themes/stack.tres" id="5_bsc3n"]
@@ -39,6 +40,14 @@ offset_top = 45.0
 offset_right = 686.0
 offset_bottom = 470.0
 color = Color(0.360784, 0.360784, 0.360784, 1)
+
+[node name="LevelTitleLabel" type="Label" parent="."]
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 96.0
+theme = ExtResource("2_53fie")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Hand" type="HBoxContainer" parent="."]
 offset_left = 360.0
