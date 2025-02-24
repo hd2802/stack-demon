@@ -16,28 +16,26 @@ const HAND_SIZE = 5
 signal card_played(card: Card)
 
 func _ready():
-	# Placeholder code for loading a card
-	var card : Card = load("res://_Scenes/card.tscn").instantiate()
-	card.createCard("one")
-	card.clicked.connect(_on_card_clicked)
-	self.add_child(card)
+	pass
+
+func initialise_hand(start_cards : Array[String]):
+	for card in start_cards:
+		add_card(card)
 	
-	var card_2 : Card = load("res://_Scenes/card.tscn").instantiate()
-	card_2.createCard("add")
-	card_2.clicked.connect(_on_card_clicked)
-	self.add_child(card_2)
-	
-	# Placeholder code
-	fill_hand(2)
+	fill_hand(len(start_cards))
+
+func add_card(card_id : String):
+	var new_card : Card = load("res://_Scenes/card.tscn").instantiate()
+	new_card.createCard(card_id)
+	new_card.clicked.connect(_on_card_clicked)
+	self.add_child(new_card)
 	
 func fill_hand(num_cards : int) -> void:
 	var rng = RandomNumberGenerator.new()
 	
 	while num_cards < HAND_SIZE:
-		var new_card : Card = load("res://_Scenes/card.tscn").instantiate()
-		new_card.createCard(POSSIBLE_CARDS[rng.randi_range(0, len(POSSIBLE_CARDS) - 1)])
-		new_card.clicked.connect(_on_card_clicked)
-		self.add_child(new_card)
+		var card_id = POSSIBLE_CARDS[rng.randi_range(0, len(POSSIBLE_CARDS) - 1)]
+		add_card(card_id)
 		num_cards+=1
 
 func _on_card_clicked(card: Card):

@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource("1_37orj")
-value = 3
 operation = "int"
-text = "3"
+text = "2"
