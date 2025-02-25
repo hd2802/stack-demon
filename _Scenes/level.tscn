@@ -46,10 +46,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hand" type="HBoxContainer" parent="."]
-offset_left = 528.0
-offset_top = 524.0
-offset_right = 1028.0
-offset_bottom = 674.0
+offset_left = 500.0
+offset_top = 523.0
+offset_right = 1000.0
+offset_bottom = 673.0
 mouse_filter = 2
 script = ExtResource("2_f4ts2")
 
@@ -175,9 +175,16 @@ offset_right = 460.0
 offset_bottom = 670.0
 script = ExtResource("14_8gfyp")
 
+[node name="BackgroundDeckSprite" type="Sprite2D" parent="Deck"]
+modulate = Color(0.40642, 0.40642, 0.40642, 1)
+position = Vector2(7, 6)
+texture = ExtResource("14_p3q1b")
+centered = false
+
 [node name="DeckSprite" type="Sprite2D" parent="Deck"]
 position = Vector2(50, 75)
 texture = ExtResource("14_p3q1b")
 
 [connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
+[connection signal="pressed" from="DiscardButton" to="Hand" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
