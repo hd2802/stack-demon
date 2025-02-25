@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://m1cief7boe3f"]
 
-[ext_resource type="Texture2D" uid="uid://djqhdffattcnl" path="res://Sprites/card_sprite.png" id="1_02skm"]
-[ext_resource type="Theme" uid="uid://w4cehlc025w8" path="res://Themes/default.tres" id="1_da12g"]
+[ext_resource type="Texture2D" uid="uid://djqhdffattcnl" path="res://Assets/Sprites/card_sprite.png" id="1_02skm"]
+[ext_resource type="Theme" uid="uid://w4cehlc025w8" path="res://Assets/Themes/default.tres" id="1_da12g"]
 [ext_resource type="Script" path="res://_Scripts/Card/card.gd" id="1_hcfnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]

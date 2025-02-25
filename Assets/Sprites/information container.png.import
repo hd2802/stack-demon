@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brkxbrggtrgk1"
-path="res://.godot/imported/enter_button.png-77b96507d1678324a481b1915be77d34.ctex"
+uid="uid://btgxkwu2h4225"
+path="res://.godot/imported/information container.png-78e0721237f57d031636edc1af9d2e33.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/enter_button.png"
-dest_files=["res://.godot/imported/enter_button.png-77b96507d1678324a481b1915be77d34.ctex"]
+source_file="res://Assets/Sprites/information container.png"
+dest_files=["res://.godot/imported/information container.png-78e0721237f57d031636edc1af9d2e33.ctex"]
 
 [params]
 

@@ -10,7 +10,7 @@ var target_node : Target
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
-	level_data = load("res://Levels/zero.tres")
+	level_data = load("res://Resources/Levels/zero.tres")
 	
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
