@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=16 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Themes/level_title.tres" id="2_53fie"]
@@ -13,6 +13,8 @@
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Themes/label.tres" id="7_5tmqg"]
 [ext_resource type="Texture2D" uid="uid://brkxbrggtrgk1" path="res://Sprites/enter_button.png" id="7_t4ijt"]
 [ext_resource type="Script" path="res://_Scripts/Target/target.gd" id="8_a82j4"]
+[ext_resource type="Script" path="res://_Scripts/Deck/deck.gd" id="14_8gfyp"]
+[ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Sprites/deck.png" id="14_p3q1b"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nxa5s")
@@ -163,6 +165,19 @@ theme = ExtResource("7_5tmqg")
 text = "TO COMPLETE THE HACK"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Deck" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 360.0
+offset_top = 520.0
+offset_right = 460.0
+offset_bottom = 670.0
+script = ExtResource("14_8gfyp")
+
+[node name="DeckSprite" type="Sprite2D" parent="Deck"]
+position = Vector2(50, 75)
+texture = ExtResource("14_p3q1b")
 
 [connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
