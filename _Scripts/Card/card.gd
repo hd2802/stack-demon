@@ -11,6 +11,8 @@ func _ready() -> void:
 func createCard(card : String):
 	self.card_data = load("res://Resources/CardData/" + card + ".tres")
 	self.get_node("Label").text = card_data.text
+	self.get_node("MiniLabel1").text = card_data.text
+	self.get_node("MiniLabel2").text = card_data.text
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
