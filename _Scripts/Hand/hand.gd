@@ -29,14 +29,16 @@ func add_card(card_id : String):
 	new_card.createCard(card_id)
 	new_card.clicked.connect(_on_card_clicked)
 	self.add_child(new_card)
+
+func add_random_card():
+	var rng = RandomNumberGenerator.new()
+	var card_id = POSSIBLE_CARDS[rng.randi_range(0, len(POSSIBLE_CARDS) - 1)]
+	add_card(card_id)
 	
 func fill_hand(num_cards : int) -> void:
-	var rng = RandomNumberGenerator.new()
-	
 	while num_cards < HAND_SIZE:
-		var card_id = POSSIBLE_CARDS[rng.randi_range(0, len(POSSIBLE_CARDS) - 1)]
-		add_card(card_id)
-		num_cards+=1
+		add_random_card()
+		num_cards += 1
 
 func _on_card_clicked(card: Card):
 	if selected_card :
@@ -55,3 +57,11 @@ func _on_play_card_button_pressed() -> void:
 		card_played.emit(selected_card)
 		selected_card.queue_free()
 		selected_card = null
+
+func _on_discard_button_pressed() -> void:
+	if selected_card:
+		selected_card.queue_free()
+		selected_card = null
+		add_random_card()
+	else:
+		pass
