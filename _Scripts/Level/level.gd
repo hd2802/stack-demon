@@ -19,7 +19,6 @@ func _ready() -> void:
 	
 	# Stack initialisation
 	stack_node = self.get_node("Stack")
-	stack_node.initialise_stack(level_data.start_stack)
 	
 	# Hand initialisation
 	hand_node = self.get_node("Hand")
@@ -27,14 +26,22 @@ func _ready() -> void:
 	
 	# Target initialisation
 	target_node = self.get_node("Target")
-	target_node.initialise_target(level_data.target_state)
+	target_node.initialise_target(level_data.target_value)
 	
+	# Setting up the target label
+	var target_label = self.get_node("TargetLabelRich")
+	if level_data.exact_target:
+		target_label.text = "[center]SCORE [color=red]EXACTLY[/color][/center]"
+	else:
+		target_label.text = "[center]SCORE [color=red]AT LEAST[/color][/center]"
+		
+	# Setting up the Move Counter
 	move_node = self.get_node("Moves")
 	move_node.initialise_move_counter()
+	
 
 func _process(delta: float) -> void:
 	pass
-
 
 func _on_hand_move() -> void:
 	move_node.decrement_move_counter()

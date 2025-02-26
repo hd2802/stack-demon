@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="LevelDataResource" load_steps=2 format=3 uid="uid://bwq7yp22tewqv"]
-
-[ext_resource type="Script" path="res://CustomResources/level_data.gd" id="1_yhl43"]
-
-[resource]
-script = ExtResource("1_yhl43")
-hand = Array[String](["2", "+"])
-start_stack = Array[String](["3"])
-target_state = Array[String](["5"])
