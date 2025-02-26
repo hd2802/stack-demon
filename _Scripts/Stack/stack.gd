@@ -7,6 +7,8 @@ var stack_top : String = ""
 var stack_second : String = ""
 var stack_third : String = ""
 
+signal target_check(current_stack : Array[String])
+
 func _ready():
 	var hand = get_parent().get_node("Hand")
 	hand.card_played.connect(_on_card_played)
@@ -62,5 +64,10 @@ func _on_stack_calculation_button_pressed() -> void:
 		stack.pop_back()
 		
 		self.push(str(result))
+		
+		# Checking if the target is achieved after calculation
+		target_check.emit(stack)
+		
 	else:
-		pass
+		# Check if the target is achieved regardless of calculation
+		target_check.emit(stack)

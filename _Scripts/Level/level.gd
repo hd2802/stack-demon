@@ -9,6 +9,11 @@ var hand_node : Hand
 var target_node : Target
 var move_node : Moves
 
+var next_button
+var next_label
+
+signal game_over()
+
 func _ready() -> void:
 	# Placeholder for testing and debugging
 	level_data = load("res://Resources/Levels/zero.tres")
@@ -39,9 +44,31 @@ func _ready() -> void:
 	move_node = self.get_node("Moves")
 	move_node.initialise_move_counter()
 	
-
-func _process(delta: float) -> void:
-	pass
+	# Initialising the Next Button
+	next_button = self.get_node("NextButton")
+	next_button.visible = false
+	next_label = self.get_node("ContinueLabel")
+	next_label.visible = false
 
 func _on_hand_move() -> void:
 	move_node.decrement_move_counter()
+
+func _on_moves_game_over() -> void:
+	game_over.emit()
+
+func _on_stack_target_check(current_stack: Array[String]) -> void:
+	if len(current_stack) == 1:
+		if level_data.exact_target:
+			if int(current_stack[0]) == level_data.target_value:
+				# Level is complete
+				print("Level complete")
+				next_button.visible = true
+				next_label.visible = true
+		else:
+			if int(current_stack[0]) >= level_data.target_value:
+				# Level is complete
+				print("Level complete")
+				next_button.visible = true
+				next_label.visible = true
+	else:
+		pass	

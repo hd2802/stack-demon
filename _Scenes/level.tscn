@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=27 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="2_53fie"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Assets/Sprites/deck.png" id="14_p3q1b"]
 [ext_resource type="Script" path="res://_Scripts/Moves/moves.gd" id="16_do005"]
 [ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI_Hologram_Slot_Available_02a.png" id="16_mna31"]
+[ext_resource type="Texture2D" uid="uid://kh2r02sj7l02" path="res://Assets/Sprites/UI_Glass_Arrow_Large_01a.png" id="18_fx8gh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wyf"]
 
@@ -25,6 +26,14 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4lne"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bwroh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jqy0p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tby17"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkml8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfq0j"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_nxa5s")
@@ -136,10 +145,10 @@ script = ExtResource("6_icv8i")
 metadata/_edit_use_anchors_ = true
 
 [node name="StackCalculationButton" type="Button" parent="."]
-offset_left = 1087.0
-offset_top = 238.0
-offset_right = 1215.0
-offset_bottom = 366.0
+offset_left = 1084.0
+offset_top = 350.0
+offset_right = 1212.0
+offset_bottom = 478.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o3wyf")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_iaytm")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_c4lne")
@@ -251,7 +260,36 @@ theme = ExtResource("5_bsc3n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="NextButton" type="Button" parent="."]
+offset_left = 1048.0
+offset_top = 108.0
+offset_right = 1176.0
+offset_bottom = 236.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jqy0p")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tby17")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rkml8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yfq0j")
+
+[node name="ArrowSprite" type="Sprite2D" parent="NextButton"]
+position = Vector2(64, 64)
+rotation = 3.14159
+scale = Vector2(6, 6)
+texture = ExtResource("18_fx8gh")
+
+[node name="ContinueLabel" type="Label" parent="."]
+offset_left = 938.0
+offset_top = 253.0
+offset_right = 1272.0
+offset_bottom = 317.0
+theme = ExtResource("5_bsc3n")
+theme_override_font_sizes/font_size = 37
+text = "CONTINUE HACK"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="move" from="Hand" to="." method="_on_hand_move"]
 [connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="Hand" method="_on_discard_button_pressed"]
+[connection signal="target_check" from="Stack" to="." method="_on_stack_target_check"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
+[connection signal="game_over" from="Moves" to="." method="_on_moves_game_over"]
