@@ -15,6 +15,8 @@ const HAND_SIZE = 5
 
 signal card_played(card: Card)
 
+signal move()
+
 func _ready():
 	pass
 
@@ -56,12 +58,15 @@ func _on_play_card_button_pressed() -> void:
 	else:
 		card_played.emit(selected_card)
 		selected_card.queue_free()
+		move.emit()
 		selected_card = null
+		add_random_card()
 
 func _on_discard_button_pressed() -> void:
 	if selected_card:
 		selected_card.queue_free()
 		selected_card = null
+		move.emit()
 		add_random_card()
 	else:
 		pass
