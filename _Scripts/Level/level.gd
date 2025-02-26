@@ -7,6 +7,7 @@ var title_node : Label
 var stack_node : Stack
 var hand_node : Hand
 var target_node : Target
+var move_node : Moves
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
@@ -27,6 +28,13 @@ func _ready() -> void:
 	# Target initialisation
 	target_node = self.get_node("Target")
 	target_node.initialise_target(level_data.target_state)
+	
+	move_node = self.get_node("Moves")
+	move_node.initialise_move_counter()
 
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_hand_move() -> void:
+	move_node.decrement_move_counter()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=22 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="2_53fie"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://_Scripts/Target/target.gd" id="8_a82j4"]
 [ext_resource type="Script" path="res://_Scripts/Deck/deck.gd" id="14_8gfyp"]
 [ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Assets/Sprites/deck.png" id="14_p3q1b"]
+[ext_resource type="Script" path="res://_Scripts/Moves/moves.gd" id="16_do005"]
+[ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI_Hologram_Slot_Available_02a.png" id="16_mna31"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wyf"]
 
@@ -42,6 +44,12 @@ texture = ExtResource("2_y0c0w")
 [node name="TargetPanel" type="Sprite2D" parent="."]
 modulate = Color(0.552956, 0.552956, 0.552956, 1)
 position = Vector2(160, 256)
+scale = Vector2(3, 2)
+texture = ExtResource("3_hi0id")
+
+[node name="MovesPanel" type="Sprite2D" parent="."]
+modulate = Color(0.552956, 0.552956, 0.552956, 1)
+position = Vector2(160, 463)
 scale = Vector2(3, 2)
 texture = ExtResource("3_hi0id")
 
@@ -207,6 +215,45 @@ centered = false
 position = Vector2(50, 75)
 texture = ExtResource("14_p3q1b")
 
+[node name="MovesLabel" type="Label" parent="."]
+offset_left = 22.0
+offset_top = 377.0
+offset_right = 297.0
+offset_bottom = 431.0
+theme = ExtResource("7_5tmqg")
+theme_override_font_sizes/font_size = 46
+text = "MOVES UNTIL DETECTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Moves" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 450.0
+offset_right = 196.0
+offset_bottom = 514.0
+script = ExtResource("16_do005")
+
+[node name="MovesSprite" type="Sprite2D" parent="Moves"]
+position = Vector2(32, 30)
+scale = Vector2(3, 3)
+texture = ExtResource("16_mna31")
+
+[node name="TargetSprite" type="Sprite2D" parent="Moves"]
+position = Vector2(32, 30)
+scale = Vector2(3, 3)
+texture = ExtResource("16_mna31")
+
+[node name="Label" type="Label" parent="Moves"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme = ExtResource("5_bsc3n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="move" from="Hand" to="." method="_on_hand_move"]
 [connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="Hand" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
