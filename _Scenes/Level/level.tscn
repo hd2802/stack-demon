@@ -1,23 +1,23 @@
 [gd_scene load_steps=27 format=3 uid="uid://dipmb0ce8ps10"]
 
-[ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_nxa5s"]
-[ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="2_53fie"]
-[ext_resource type="Script" path="res://_Scripts/Hand/hand.gd" id="2_f4ts2"]
-[ext_resource type="Texture2D" uid="uid://c72cn840ks5bd" path="res://Assets/Sprites/UI_Hologram_Frame_Standard_01a.png" id="2_y0c0w"]
-[ext_resource type="Texture2D" uid="uid://c1orrqurc3q63" path="res://Assets/Sprites/UI_Glass_Frame_Standard_01a.png" id="3_hi0id"]
-[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="5_bsc3n"]
-[ext_resource type="Texture2D" uid="uid://bssh646yb7tjt" path="res://Assets/Sprites/playbutton.png" id="6_1off8"]
-[ext_resource type="Script" path="res://_Scripts/Stack/stack.gd" id="6_icv8i"]
-[ext_resource type="Texture2D" uid="uid://dnjnvwas2bx50" path="res://Assets/Sprites/UI_Hologram_Button_Medium_Press_01a4.png" id="6_nfyjk"]
-[ext_resource type="Texture2D" uid="uid://fj3qfmyyrfit" path="res://Assets/Sprites/UI_Hologram_Frame_Standard_02a.png" id="6_w5tji"]
-[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="7_5tmqg"]
-[ext_resource type="Texture2D" uid="uid://brkxbrggtrgk1" path="res://Assets/Sprites/enter_button.png" id="7_t4ijt"]
-[ext_resource type="Script" path="res://_Scripts/Target/target.gd" id="8_a82j4"]
-[ext_resource type="Script" path="res://_Scripts/Deck/deck.gd" id="14_8gfyp"]
-[ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Assets/Sprites/deck.png" id="14_p3q1b"]
-[ext_resource type="Script" path="res://_Scripts/Moves/moves.gd" id="16_do005"]
-[ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI_Hologram_Slot_Available_02a.png" id="16_mna31"]
-[ext_resource type="Texture2D" uid="uid://kh2r02sj7l02" path="res://Assets/Sprites/UI_Glass_Arrow_Large_01a.png" id="18_fx8gh"]
+[ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_er2o0"]
+[ext_resource type="Texture2D" uid="uid://c72cn840ks5bd" path="res://Assets/Sprites/UI_Hologram_Frame_Standard_01a.png" id="2_lw7vb"]
+[ext_resource type="Texture2D" uid="uid://c1orrqurc3q63" path="res://Assets/Sprites/UI_Glass_Frame_Standard_01a.png" id="3_nqvpy"]
+[ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="4_5phq7"]
+[ext_resource type="Script" path="res://_Scripts/Hand/hand.gd" id="5_fjvq6"]
+[ext_resource type="Texture2D" uid="uid://bssh646yb7tjt" path="res://Assets/Sprites/playbutton.png" id="6_jtbaf"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="7_ldegq"]
+[ext_resource type="Texture2D" uid="uid://dnjnvwas2bx50" path="res://Assets/Sprites/UI_Hologram_Button_Medium_Press_01a4.png" id="8_wtntn"]
+[ext_resource type="Texture2D" uid="uid://fj3qfmyyrfit" path="res://Assets/Sprites/UI_Hologram_Frame_Standard_02a.png" id="9_lwvlg"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="10_ydtrd"]
+[ext_resource type="Script" path="res://_Scripts/Stack/stack.gd" id="11_0c8oh"]
+[ext_resource type="Texture2D" uid="uid://brkxbrggtrgk1" path="res://Assets/Sprites/enter_button.png" id="12_6whj4"]
+[ext_resource type="Script" path="res://_Scripts/Target/target.gd" id="13_svkq8"]
+[ext_resource type="Script" path="res://_Scripts/Deck/deck.gd" id="14_lfu3u"]
+[ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Assets/Sprites/deck.png" id="15_ask3q"]
+[ext_resource type="Script" path="res://_Scripts/Moves/moves.gd" id="16_rdoxq"]
+[ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI_Hologram_Slot_Available_02a.png" id="17_3k8kb"]
+[ext_resource type="Texture2D" uid="uid://kh2r02sj7l02" path="res://Assets/Sprites/UI_Glass_Arrow_Large_01a.png" id="18_nakdl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wyf"]
 
@@ -36,37 +36,37 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfq0j"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_nxa5s")
+script = ExtResource("1_er2o0")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0.627635, 0.627635, 0.627635, 1)
 position = Vector2(795, 360)
 scale = Vector2(10, 7.5)
-texture = ExtResource("2_y0c0w")
+texture = ExtResource("2_lw7vb")
 
 [node name="Sidebar" type="Sprite2D" parent="."]
 modulate = Color(0.408329, 0.408329, 0.408329, 1)
 position = Vector2(160, 360)
 scale = Vector2(3.24, 7.4)
-texture = ExtResource("2_y0c0w")
+texture = ExtResource("2_lw7vb")
 
 [node name="TargetPanel" type="Sprite2D" parent="."]
 modulate = Color(0.552956, 0.552956, 0.552956, 1)
 position = Vector2(160, 256)
 scale = Vector2(3, 2)
-texture = ExtResource("3_hi0id")
+texture = ExtResource("3_nqvpy")
 
 [node name="MovesPanel" type="Sprite2D" parent="."]
 modulate = Color(0.552956, 0.552956, 0.552956, 1)
 position = Vector2(160, 463)
 scale = Vector2(3, 2)
-texture = ExtResource("3_hi0id")
+texture = ExtResource("3_nqvpy")
 
 [node name="LevelTitleLabel" type="Label" parent="."]
 offset_top = 42.0
 offset_right = 320.0
 offset_bottom = 106.0
-theme = ExtResource("2_53fie")
+theme = ExtResource("4_5phq7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,7 +76,7 @@ offset_top = 523.0
 offset_right = 1000.0
 offset_bottom = 673.0
 mouse_filter = 2
-script = ExtResource("2_f4ts2")
+script = ExtResource("5_fjvq6")
 
 [node name="PlayCardButton" type="Button" parent="."]
 offset_left = 1073.0
@@ -87,7 +87,7 @@ offset_bottom = 596.0
 [node name="Sprite2D" type="Sprite2D" parent="PlayCardButton"]
 position = Vector2(74, 32)
 scale = Vector2(2.8, 3)
-texture = ExtResource("6_1off8")
+texture = ExtResource("6_jtbaf")
 
 [node name="Label" type="Label" parent="PlayCardButton"]
 layout_mode = 0
@@ -95,7 +95,7 @@ offset_left = 49.0
 offset_top = 11.0
 offset_right = 99.0
 offset_bottom = 52.0
-theme = ExtResource("7_5tmqg")
+theme = ExtResource("7_ldegq")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "PLAY
 "
@@ -109,7 +109,7 @@ offset_bottom = 677.0
 [node name="Sprite2D" type="Sprite2D" parent="DiscardButton"]
 position = Vector2(74, 32)
 scale = Vector2(2.8, 3)
-texture = ExtResource("6_nfyjk")
+texture = ExtResource("8_wtntn")
 
 [node name="Label" type="Label" parent="DiscardButton"]
 layout_mode = 0
@@ -117,14 +117,14 @@ offset_left = 33.0
 offset_top = 11.0
 offset_right = 121.0
 offset_bottom = 52.0
-theme = ExtResource("7_5tmqg")
+theme = ExtResource("7_ldegq")
 text = "DISCARD
 "
 
 [node name="StackSprite" type="Sprite2D" parent="."]
 position = Vector2(751, 272)
 scale = Vector2(3.04167, 4.64583)
-texture = ExtResource("6_w5tji")
+texture = ExtResource("9_lwvlg")
 
 [node name="Stack" type="VBoxContainer" parent="."]
 anchors_preset = 7
@@ -139,9 +139,9 @@ offset_bottom = 483.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
-theme = ExtResource("5_bsc3n")
+theme = ExtResource("10_ydtrd")
 alignment = 2
-script = ExtResource("6_icv8i")
+script = ExtResource("11_0c8oh")
 metadata/_edit_use_anchors_ = true
 
 [node name="StackCalculationButton" type="Button" parent="."]
@@ -157,7 +157,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_bwroh")
 [node name="Sprite2D" type="Sprite2D" parent="StackCalculationButton"]
 position = Vector2(64, 64)
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("7_t4ijt")
+texture = ExtResource("12_6whj4")
 
 [node name="Label" type="Label" parent="StackCalculationButton"]
 layout_mode = 0
@@ -165,7 +165,7 @@ offset_left = 58.0
 offset_top = 23.0
 offset_right = 108.0
 offset_bottom = 64.0
-theme = ExtResource("7_5tmqg")
+theme = ExtResource("7_ldegq")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "HACK"
 
@@ -182,15 +182,15 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("5_bsc3n")
-script = ExtResource("8_a82j4")
+theme = ExtResource("10_ydtrd")
+script = ExtResource("13_svkq8")
 
 [node name="TargetLabelRich" type="RichTextLabel" parent="."]
 offset_left = 50.0
 offset_top = 179.0
 offset_right = 280.0
 offset_bottom = 233.0
-theme = ExtResource("7_5tmqg")
+theme = ExtResource("7_ldegq")
 bbcode_enabled = true
 
 [node name="TargetLabel2" type="Label" parent="."]
@@ -198,7 +198,7 @@ offset_left = 30.0
 offset_top = 280.0
 offset_right = 296.0
 offset_bottom = 334.0
-theme = ExtResource("7_5tmqg")
+theme = ExtResource("7_ldegq")
 text = "TO COMPLETE THE HACK"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -210,24 +210,24 @@ offset_left = 360.0
 offset_top = 520.0
 offset_right = 460.0
 offset_bottom = 670.0
-script = ExtResource("14_8gfyp")
+script = ExtResource("14_lfu3u")
 
 [node name="BackgroundDeckSprite" type="Sprite2D" parent="Deck"]
 modulate = Color(0.40642, 0.40642, 0.40642, 1)
 position = Vector2(7, 6)
-texture = ExtResource("14_p3q1b")
+texture = ExtResource("15_ask3q")
 centered = false
 
 [node name="DeckSprite" type="Sprite2D" parent="Deck"]
 position = Vector2(50, 75)
-texture = ExtResource("14_p3q1b")
+texture = ExtResource("15_ask3q")
 
 [node name="MovesLabel" type="Label" parent="."]
 offset_left = 22.0
 offset_top = 377.0
 offset_right = 297.0
 offset_bottom = 431.0
-theme = ExtResource("7_5tmqg")
+theme = ExtResource("7_ldegq")
 theme_override_font_sizes/font_size = 46
 text = "MOVES UNTIL DETECTION"
 horizontal_alignment = 1
@@ -240,23 +240,23 @@ offset_left = 132.0
 offset_top = 450.0
 offset_right = 196.0
 offset_bottom = 514.0
-script = ExtResource("16_do005")
+script = ExtResource("16_rdoxq")
 
 [node name="MovesSprite" type="Sprite2D" parent="Moves"]
 position = Vector2(32, 30)
 scale = Vector2(3, 3)
-texture = ExtResource("16_mna31")
+texture = ExtResource("17_3k8kb")
 
 [node name="TargetSprite" type="Sprite2D" parent="Moves"]
 position = Vector2(32, 30)
 scale = Vector2(3, 3)
-texture = ExtResource("16_mna31")
+texture = ExtResource("17_3k8kb")
 
 [node name="Label" type="Label" parent="Moves"]
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
-theme = ExtResource("5_bsc3n")
+theme = ExtResource("10_ydtrd")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -274,14 +274,14 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_yfq0j")
 position = Vector2(64, 64)
 rotation = 3.14159
 scale = Vector2(6, 6)
-texture = ExtResource("18_fx8gh")
+texture = ExtResource("18_nakdl")
 
 [node name="ContinueLabel" type="Label" parent="."]
 offset_left = 938.0
 offset_top = 253.0
 offset_right = 1272.0
 offset_bottom = 317.0
-theme = ExtResource("5_bsc3n")
+theme = ExtResource("10_ydtrd")
 theme_override_font_sizes/font_size = 37
 text = "CONTINUE HACK"
 horizontal_alignment = 1
