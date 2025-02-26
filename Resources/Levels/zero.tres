@@ -6,5 +6,5 @@
 script = ExtResource("1_kxahu")
 level_number = 0
 hand = Array[String](["two"])
-start_stack = Array[String]([])
-target_state = Array[String](["2"])
+target_value = 2
+exact_target = true

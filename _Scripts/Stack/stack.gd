@@ -25,16 +25,6 @@ func push(value_to_push : String):
 	stack_second = stack_top
 	stack_top = value_to_push
 
-	#var sep_label : Label = Label.new()
-	#sep_label.text = "----------"
-	#sep_label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-	#self.add_child(sep_label)
-	#self.move_child(sep_label, 0)
-
-func initialise_stack(array : Array[String]):
-	for a in array:
-		push(a)
-
 func _on_card_played(card: Card):
 	push(card.card_data.text)
 	
