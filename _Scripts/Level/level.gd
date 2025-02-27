@@ -4,6 +4,7 @@ class_name Level
 var level_data : LevelDataResource
 
 var title_node : Label
+var tier_title_node : Label
 var stack_node : Stack
 var hand_node : Hand
 var target_node : Target
@@ -28,6 +29,10 @@ func load_level(level_data) -> void:
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
 	title_node.text = "LEVEL " + str(level_data.level_number)
+	
+	# Tier title initialisation
+	tier_title_node = self.get_node("LevelTierLabel")
+	tier_title_node.text = "TIER " + str(level_data.tier) + " HACK" 
 	
 	# Stack initialisation
 	stack_node = self.get_node("Stack")
