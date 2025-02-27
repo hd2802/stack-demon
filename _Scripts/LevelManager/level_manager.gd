@@ -35,17 +35,16 @@ func _create_next_level() -> LevelDataResource:
 	current_tier += 1
 	
 	if current_tier == 1:
-		lvl_data.exact_target = true
 		tier_current_target += rng.randi_range(MIN_RAND_RANGE, MAX_RAND_RANGE)
+	
 	elif current_tier == 2:
-		lvl_data.exact_target = true
 		tier_current_target += rng.randi_range(MIN_RAND_RANGE, MAX_RAND_RANGE)
+	
 	else: # current_tier == 3
 		current_tier = 0
 		current_level += 1
 		tier_base_target += TIER_INCREASE
 		tier_current_target = tier_base_target
-		lvl_data.exact_target = false
 	
 	lvl_data.level_number = current_level
 	lvl_data.target_value = tier_current_target

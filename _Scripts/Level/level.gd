@@ -12,7 +12,6 @@ var move_node : Moves
 var next_button
 var next_label
 
-var exact : bool
 var target : int
 
 signal level_complete()
@@ -42,10 +41,7 @@ func load_level(level_data) -> void:
 	
 	# Setting up the target label
 	var target_label = self.get_node("TargetLabelRich")
-	if level_data.exact_target:
-		target_label.text = "[center]SCORE [color=red]EXACTLY[/color][/center]"
-	else:
-		target_label.text = "[center]SCORE [color=red]AT LEAST[/color][/center]"
+	target_label.text = "[center]SCORE [color=red]AT LEAST[/color][/center]"
 		
 	# Setting up the Move Counter
 	move_node = self.get_node("Moves")
@@ -57,7 +53,6 @@ func load_level(level_data) -> void:
 	next_label = self.get_node("ContinueLabel")
 	next_label.visible = false
 	
-	exact = level_data.exact_target
 	target = level_data.target_value
 
 func _on_hand_move() -> void:
@@ -68,15 +63,9 @@ func _on_moves_game_over() -> void:
 
 func _on_stack_target_check(current_stack: Array[String]) -> void:
 	if len(current_stack) == 1:
-		if exact:
-			if int(current_stack[0]) == target:
-				next_button.visible = true
-				next_label.visible = true
-
-		else:
-			if int(current_stack[0]) >= target:
-				next_button.visible = true
-				next_label.visible = true
+		if int(current_stack[0]) >= target:
+			next_button.visible = true
+			next_label.visible = true
 	else:
 		pass	
 
