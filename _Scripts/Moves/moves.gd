@@ -2,18 +2,18 @@ extends Node
 class_name Moves
 
 var label : Label
-var moves : int
+var num : int
 
 signal game_over()
 
-func initialise_move_counter() -> void:
+func set_move_counter(moves : int) -> void:
 	label = self.get_node("Label")
-	moves = 5
-	label.text = str(moves)
+	num = moves
+	label.text = str(num)
 
 func decrement_move_counter() -> void:
-	moves-=1
-	label.text = str(moves)
+	num-=1
+	label.text = str(num)
 	
-	if moves < 0:
+	if num < 0:
 		game_over.emit()

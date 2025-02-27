@@ -10,6 +10,9 @@ var current_level : int = 0
 var tier_base_target : int = 2
 var tier_current_target : int = tier_base_target
 
+const MAX_MOVES : int = 10
+var moves : int = 10
+
 var rng = RandomNumberGenerator.new()
 
 const MIN_RAND_RANGE : int = 5
@@ -21,12 +24,17 @@ func _ready() -> void:
 	level = load("res://_Scenes/Level/level.tscn").instantiate()
 	var lvl_data = load("res://Resources/Levels/start.tres")
 	level.load_level(lvl_data)
+	level.set_move_counter(MAX_MOVES)
 	self.add_child(level)
 	
 	level.level_complete.connect(_on_level_complete)
+	level.moves_decremented.connect(_on_moves_decremented)
 	
 func _on_level_complete() -> void:
 	_load_next_level()
+
+func _on_moves_decremented() -> void:
+	moves-=1
 	
 func _create_next_level() -> LevelDataResource:
 	var lvl_data = LevelDataResource.new()
@@ -45,7 +53,9 @@ func _create_next_level() -> LevelDataResource:
 		current_level += 1
 		tier_base_target += TIER_INCREASE
 		tier_current_target = tier_base_target
+		moves = MAX_MOVES
 	
+	lvl_data.moves = moves
 	lvl_data.level_number = current_level
 	lvl_data.target_value = tier_current_target
 	lvl_data.tier = current_tier

@@ -17,6 +17,7 @@ var target : int
 
 signal level_complete()
 signal game_over()
+signal moves_decremented()
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
@@ -50,7 +51,7 @@ func load_level(level_data) -> void:
 		
 	# Setting up the Move Counter
 	move_node = self.get_node("Moves")
-	move_node.initialise_move_counter()
+	move_node.set_move_counter(level_data.moves)
 	
 	# Initialising the Next Button
 	next_button = self.get_node("NextButton")
@@ -60,8 +61,12 @@ func load_level(level_data) -> void:
 	
 	target = level_data.target_value
 
+func set_move_counter(moves : int) -> void:
+	move_node.set_move_counter(moves)
+
 func _on_hand_move() -> void:
 	move_node.decrement_move_counter()
+	moves_decremented.emit()
 
 func _on_moves_game_over() -> void:
 	game_over.emit()
@@ -77,3 +82,4 @@ func _on_stack_target_check(current_stack: Array[String]) -> void:
 func _on_next_button_pressed() -> void:
 	level_complete.emit()
 	stack_node.clear_stack()
+	
