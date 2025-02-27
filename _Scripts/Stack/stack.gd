@@ -23,9 +23,7 @@ func push(value_to_push : String):
 	self.add_child(label)
 	self.move_child(label, 0)
 	
-	stack_third = stack_second
-	stack_second = stack_top
-	stack_top = value_to_push
+	update_stack_references()
 
 func _on_card_played(card: Card):
 	push(card.card_data.text)
@@ -33,41 +31,48 @@ func _on_card_played(card: Card):
 #----------------------------------------------------------------
 
 func is_operation(v : String) -> bool:
-	if int(v) == 0 and v != "0":
-		return true
-	else:
-		return false
+	return v in ["+", "-", "*", "/"]
 
 func calculator(operation : String, operand_1 : String, operand_2 : String) -> int:
 	match operation:
 		"+":
-			return int(operand_1) + int(operand_2)
+			return int(operand_2) + int(operand_1)
 		"-":
-			return int(operand_1) - int(operand_2)
+			return int(operand_2) - int(operand_1)
 		"/":
-			return int(operand_1) / int(operand_2)
+			# Preventing division by 0
+			if int(operand_1) == 0:
+				return 0 
+			return int(operand_2) / int(operand_1)
 		"*":
-			return int(operand_1) / int(operand_2)
-	
+			return int(operand_2) * int(operand_1)
 	return 0
-			
+
 
 func _on_stack_calculation_button_pressed() -> void:
-	if is_operation(stack_top) and !is_operation(stack_third) and !is_operation(stack_second):
-		var result = calculator(stack_top, stack_third, stack_second)
-		
-		self.remove_child(self.get_children()[len(stack) - 1])
-		self.remove_child(self.get_children()[len(stack) - 2])
-		self.remove_child(self.get_children()[len(stack) - 3])
-		stack.pop_back()
-		stack.pop_back()
-		stack.pop_back()
-		
-		self.push(str(result))
-		
+	if is_operation(stack_top) and not is_operation(stack_second) and not is_operation(stack_third):
+		var result = calculator(stack_top, stack_second, stack_third)
+
+		# Remove the last three items from the stack and UI
+		for i in range(3):
+			self.remove_child(self.get_children()[len(stack) - 1])
+			stack.pop_back()
+
+		push(str(result))
+		update_stack_references()
+
 		# Checking if the target is achieved after calculation
 		target_check.emit(stack)
-		
 	else:
 		# Check if the target is achieved regardless of calculation
 		target_check.emit(stack)
+
+func update_stack_references():
+	stack_top = stack[-1] if stack.size() > 0 else ""
+	stack_second = stack[-2] if stack.size() > 1 else ""
+	stack_third = stack[-3] if stack.size() > 2 else ""
+
+func clear():
+	for idx in stack:
+		stack.pop_back()
+		
