@@ -7,7 +7,7 @@ var selected_card : Card = null
 
 const POSSIBLE_CARDS = [
 	"add", "divide", "multiply", "subtract",
-	"zero", "one", "two", "three", "four",
+	"one", "two", "three", "four",
 	"five", "six", "seven", "eight", "nine"
 ]
 
