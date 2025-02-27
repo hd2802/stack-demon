@@ -76,4 +76,4 @@ func _on_stack_target_check(current_stack: Array[String]) -> void:
 
 func _on_next_button_pressed() -> void:
 	level_complete.emit()
-	stack_node.clear()
+	stack_node.clear_stack()

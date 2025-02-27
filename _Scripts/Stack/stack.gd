@@ -11,7 +11,10 @@ signal target_check(current_stack : Array[String])
 
 func _ready():
 	var hand = get_parent().get_node("Hand")
-	hand.card_played.connect(_on_card_played)
+	if hand: 
+		hand.card_played.connect(_on_card_played)
+	else:
+		pass
 
 #----------------------------------------------------------------
 
@@ -36,16 +39,16 @@ func is_operation(v : String) -> bool:
 func calculator(operation : String, operand_1 : String, operand_2 : String) -> int:
 	match operation:
 		"+":
-			return int(operand_2) + int(operand_1)
+			return int(operand_1) + int(operand_2)
 		"-":
-			return int(operand_2) - int(operand_1)
+			return int(operand_1) - int(operand_2)
 		"/":
 			# Preventing division by 0
 			if int(operand_1) == 0:
 				return 0 
-			return int(operand_2) / int(operand_1)
+			return int(operand_1) / int(operand_2)
 		"*":
-			return int(operand_2) * int(operand_1)
+			return int(operand_1) * int(operand_2)
 	return 0
 
 
@@ -72,7 +75,13 @@ func update_stack_references():
 	stack_second = stack[-2] if stack.size() > 1 else ""
 	stack_third = stack[-3] if stack.size() > 2 else ""
 
-func clear():
-	for idx in stack:
-		stack.pop_back()
+func clear_stack():
+	for child in get_children():
+		if child is Label:
+			remove_child(child)
+			child.queue_free() 
+
+	stack.clear()
+
+	update_stack_references()
 		
