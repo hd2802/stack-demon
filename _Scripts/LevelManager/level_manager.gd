@@ -48,6 +48,7 @@ func _create_next_level() -> LevelDataResource:
 	
 	lvl_data.level_number = current_level
 	lvl_data.target_value = tier_current_target
+	lvl_data.tier = current_tier
 
 	return lvl_data
 
