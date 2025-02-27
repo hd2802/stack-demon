@@ -18,16 +18,11 @@ signal card_played(card: Card)
 signal move()
 
 func _ready():
-	pass
-
-func initialise_hand(start_cards : Array[String]):
-	for card in start_cards:
-		add_card(card)
-	
-	fill_hand(len(start_cards))
+	fill_hand(0)
 
 func add_card(card_id : String):
-	var new_card : Card = load("res://_Scenes/card.tscn").instantiate()
+	cards.push_back(card_id)
+	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
 	new_card.createCard(card_id)
 	new_card.clicked.connect(_on_card_clicked)
 	self.add_child(new_card)

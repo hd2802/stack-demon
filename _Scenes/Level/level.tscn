@@ -293,3 +293,4 @@ vertical_alignment = 1
 [connection signal="target_check" from="Stack" to="." method="_on_stack_target_check"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
 [connection signal="game_over" from="Moves" to="." method="_on_moves_game_over"]
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

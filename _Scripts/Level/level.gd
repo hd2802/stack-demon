@@ -12,12 +12,20 @@ var move_node : Moves
 var next_button
 var next_label
 
+var exact : bool
+var target : int
+
+signal level_complete()
 signal game_over()
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
-	level_data = load("res://Resources/Levels/zero.tres")
+	#level_data = load("res://Resources/Levels/zero.tres")
+	#load_level(level_data)
+	pass
 	
+
+func load_level(level_data) -> void:
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
 	title_node.text = "LEVEL " + str(level_data.level_number)
@@ -27,7 +35,6 @@ func _ready() -> void:
 	
 	# Hand initialisation
 	hand_node = self.get_node("Hand")
-	hand_node.initialise_hand(level_data.hand)
 	
 	# Target initialisation
 	target_node = self.get_node("Target")
@@ -49,6 +56,9 @@ func _ready() -> void:
 	next_button.visible = false
 	next_label = self.get_node("ContinueLabel")
 	next_label.visible = false
+	
+	exact = level_data.exact_target
+	target = level_data.target_value
 
 func _on_hand_move() -> void:
 	move_node.decrement_move_counter()
@@ -58,17 +68,17 @@ func _on_moves_game_over() -> void:
 
 func _on_stack_target_check(current_stack: Array[String]) -> void:
 	if len(current_stack) == 1:
-		if level_data.exact_target:
-			if int(current_stack[0]) == level_data.target_value:
-				# Level is complete
-				print("Level complete")
+		if exact:
+			if int(current_stack[0]) == target:
 				next_button.visible = true
 				next_label.visible = true
+
 		else:
-			if int(current_stack[0]) >= level_data.target_value:
-				# Level is complete
-				print("Level complete")
+			if int(current_stack[0]) >= target:
 				next_button.visible = true
 				next_label.visible = true
 	else:
 		pass	
+
+func _on_next_button_pressed() -> void:
+	level_complete.emit()
