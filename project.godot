@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="game"
-run/main_scene="res://_Scenes/LevelManager/level_manager.tscn"
+run/main_scene="res://_Scenes/Level/level.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.png"
+
+[autoload]
+
+_LevelManager="*res://_Scripts/LevelManager/level_manager.gd"
 
 [display]
 

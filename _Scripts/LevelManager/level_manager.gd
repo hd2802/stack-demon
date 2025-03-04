@@ -1,53 +1,57 @@
 extends Node
 class_name LevelManager
 
-var level : Level
+var level: Level = null
 
-# Can only be the values 0, 1 or 2 
-var current_tier : int = 0
+# Can only be 0, 1, or 2 
+var current_tier: int = 0
 # Incremented when all 3 tiers are completed
-var current_level : int = 0
-var tier_base_target : int = 2
-var tier_current_target : int = tier_base_target
+var current_level: int = 0
+var tier_base_target: int = 2
+var tier_current_target: int = tier_base_target
 
-const MAX_MOVES : int = 10
-var moves : int = 10
+const MAX_MOVES: int = 10
+var moves: int = 10
 
 var rng = RandomNumberGenerator.new()
 
-const MIN_RAND_RANGE : int = 5
-const MAX_RAND_RANGE : int = 12
-
-const TIER_INCREASE : int = 5
+const MIN_RAND_RANGE: int = 5
+const MAX_RAND_RANGE: int = 12
+const TIER_INCREASE: int = 5
 
 func _ready() -> void:
+	# Ensure that LevelManager is only initialized once
+	if level == null:
+		_load_first_level()
+
+func _load_first_level():
 	level = load("res://_Scenes/Level/level.tscn").instantiate()
 	var lvl_data = load("res://Resources/Levels/start.tres")
 	level.load_level(lvl_data)
 	level.set_move_counter(MAX_MOVES)
-	self.add_child(level)
+
+	# Add the level to the current scene
+	get_tree().current_scene.add_child(level)
 	
 	level.level_complete.connect(_on_level_complete)
 	level.moves_decremented.connect(_on_moves_decremented)
-	
+
 func _on_level_complete() -> void:
 	_load_next_level()
 
 func _on_moves_decremented() -> void:
-	moves-=1
-	
+	moves -= 1
+
 func _create_next_level() -> LevelDataResource:
 	var lvl_data = LevelDataResource.new()
 	
-	# Note: this is when the level is completed so the tier needs to be incremented
+	# Increment tier
 	current_tier += 1
 	
 	if current_tier == 1:
 		tier_current_target += rng.randi_range(MIN_RAND_RANGE, MAX_RAND_RANGE)
-	
 	elif current_tier == 2:
 		tier_current_target += rng.randi_range(MIN_RAND_RANGE, MAX_RAND_RANGE)
-	
 	else: # current_tier == 3
 		current_tier = 0
 		current_level += 1
@@ -69,6 +73,8 @@ func _load_next_level() -> void:
 	level = load("res://_Scenes/Level/level.tscn").instantiate()
 	var level_data = _create_next_level()
 	level.load_level(level_data)
-	self.add_child(level)
+
+	# Add to the current scene tree
+	get_tree().current_scene.add_child(level)
 
 	level.level_complete.connect(_on_level_complete)
