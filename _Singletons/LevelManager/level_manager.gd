@@ -21,7 +21,7 @@ const TIER_INCREASE: int = 5
 
 func _ready() -> void:
 	# Ensure that LevelManager is only initialized once
-	if level == null:
+	if level == null and _GameManager.game_loop:
 		_load_first_level()
 
 func _load_first_level():
