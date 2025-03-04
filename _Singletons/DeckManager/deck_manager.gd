@@ -19,7 +19,9 @@ const START_DECK : Array[String] = [
 	"add", "add",
 	"add", "add",
 	"multiply", "multiply",
-	"multiply", "multiply"
+	"multiply", "multiply",
+	# debugging - increase chance of having card to test appear
+	"del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del", "del"
 ]
 
 func _ready() -> void:

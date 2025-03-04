@@ -3,6 +3,10 @@ class_name Stack
 
 var stack : Array[String]
 
+const SPECIAL_CARD : Array[String] = [
+	"del"
+]
+
 var stack_top : String = ""
 var stack_second : String = ""
 var stack_third : String = ""
@@ -36,6 +40,9 @@ func _on_card_played(card: Card):
 func is_operation(v : String) -> bool:
 	return v in ["+", "-", "*", "/"]
 
+func is_special_card(v : String) -> bool:
+	return v in SPECIAL_CARD
+
 func calculator(operation : String, operand_1 : String, operand_2 : String) -> int:
 	match operation:
 		"+":
@@ -66,9 +73,22 @@ func _on_stack_calculation_button_pressed() -> void:
 
 		# Checking if the target is achieved after calculation
 		target_check.emit(stack)
+		
+	elif is_special_card(stack_top):
+		handle_special_card(stack_top)
+		
 	else:
 		# Check if the target is achieved regardless of calculation
 		target_check.emit(stack)
+	
+func handle_special_card(spec : String):
+	match spec:
+		"del":
+			self.remove_child(self.get_children()[len(stack) - 1])
+			stack.pop_back()
+			self.remove_child(self.get_children()[len(stack) - 1])
+			stack.pop_back()
+	
 
 func update_stack_references():
 	stack_top = stack[-1] if stack.size() > 0 else ""
