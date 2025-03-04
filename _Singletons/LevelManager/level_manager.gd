@@ -78,3 +78,5 @@ func _load_next_level() -> void:
 	get_tree().current_scene.add_child(level)
 
 	level.level_complete.connect(_on_level_complete)
+	
+	_DeckManager.reset_draw_pile()

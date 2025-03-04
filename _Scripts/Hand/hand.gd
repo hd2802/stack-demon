@@ -1,15 +1,9 @@
 extends Node
 class_name Hand
 
-var cards : Array[String]
+var current_hand : Array[String]
 
 var selected_card : Card = null
-
-const POSSIBLE_CARDS = [
-	"add", "divide", "multiply", "subtract",
-	"one", "two", "three", "four",
-	"five", "six", "seven", "eight", "nine"
-]
 
 const HAND_SIZE = 5
 
@@ -21,16 +15,15 @@ func _ready():
 	fill_hand(0)
 
 func add_card(card_id : String):
-	cards.push_back(card_id)
+	current_hand.push_back(card_id)
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
 	new_card.createCard(card_id)
 	new_card.clicked.connect(_on_card_clicked)
 	self.add_child(new_card)
 
 func add_random_card():
-	var rng = RandomNumberGenerator.new()
-	var card_id = POSSIBLE_CARDS[rng.randi_range(0, len(POSSIBLE_CARDS) - 1)]
-	add_card(card_id)
+	var new_card_id = _DeckManager.draw_card()
+	add_card(new_card_id)
 	
 func fill_hand(num_cards : int) -> void:
 	while num_cards < HAND_SIZE:
