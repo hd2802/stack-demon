@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=6 format=3 uid="uid://m1cief7boe3f"]
 
-[ext_resource type="Texture2D" uid="uid://djqhdffattcnl" path="res://Assets/Sprites/card_sprite.png" id="1_02skm"]
 [ext_resource type="Theme" uid="uid://w4cehlc025w8" path="res://Assets/Themes/default.tres" id="1_da12g"]
 [ext_resource type="Script" path="res://_Scripts/Card/card.gd" id="1_hcfnd"]
 [ext_resource type="Shader" path="res://Assets/Shaders/card_hover.gdshader" id="3_ski5l"]
@@ -41,54 +40,7 @@ script = ExtResource("1_hcfnd")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n24tl")
 position = Vector2(50, 75)
-texture = ExtResource("1_02skm")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -13.0
-offset_top = -27.0
-offset_right = 13.0
-offset_bottom = 27.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "t"
-
-[node name="MiniLabel1" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -45.0
-offset_top = -70.0
-offset_right = -30.0
-offset_bottom = -55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "t"
-
-[node name="MiniLabel2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 35.0
-offset_top = 57.0
-offset_right = 50.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "t"
+scale = Vector2(0.25, 0.25)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
