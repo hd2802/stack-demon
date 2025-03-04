@@ -17,7 +17,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-_LevelManager="*res://_Scripts/LevelManager/level_manager.gd"
+_LevelManager="*res://_Singletons/LevelManager/level_manager.gd"
 
 [display]
 
