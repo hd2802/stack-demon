@@ -6,6 +6,9 @@ var deck : Array[String] = []
 # Used in gameplay 
 var draw_pile : Array[String] = []
 
+# Used for showing what cards remain in the deck
+var draw_pile_unshuffled : Array[String] = []
+
 const START_DECK : Array[String] = [
 	"one", "one",
 	"two", "two",
@@ -29,6 +32,8 @@ func _ready() -> void:
 	if draw_pile.is_empty():
 		draw_pile = START_DECK.duplicate()
 		draw_pile.shuffle()
+	if draw_pile_unshuffled.is_empty():
+		draw_pile_unshuffled = START_DECK.duplicate()
 
 # These functions are for permanant changes to the cards of the
 # deck
@@ -43,6 +48,9 @@ func draw_card() -> String:
 		return ""
 	else:
 		return draw_pile.pop_front()
+
+func draw_card_unshuffled(card_to_remove : String) -> void:
+	draw_pile_unshuffled.erase(card_to_remove)
 	
 func reset_draw_pile():
 	draw_pile = deck.duplicate()
