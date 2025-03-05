@@ -20,4 +20,3 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			clicked.emit(self)
 			card_selected_player.play()
-			
