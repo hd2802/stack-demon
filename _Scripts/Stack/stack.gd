@@ -86,6 +86,7 @@ func handle_special_card(spec : String):
 		"del":
 			self.remove_child(self.get_children()[len(stack) - 1])
 			stack.pop_back()
+			# TODO fix this being applied when only delete is on the stack 
 			self.remove_child(self.get_children()[len(stack) - 1])
 			stack.pop_back()
 	

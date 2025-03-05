@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=29 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/Level/level.gd" id="1_er2o0"]
 [ext_resource type="Texture2D" uid="uid://c72cn840ks5bd" path="res://Assets/Sprites/UI_Hologram_Frame_Standard_01a.png" id="2_lw7vb"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://_Scripts/Moves/moves.gd" id="16_rdoxq"]
 [ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI_Hologram_Slot_Available_02a.png" id="17_3k8kb"]
 [ext_resource type="Texture2D" uid="uid://kh2r02sj7l02" path="res://Assets/Sprites/UI_Glass_Arrow_Large_01a.png" id="18_nakdl"]
+[ext_resource type="Shader" path="res://Assets/Shaders/scanline.gdshader" id="19_x6r1j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wyf"]
 
@@ -34,6 +35,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rkml8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yfq0j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8t6n6"]
+shader = ExtResource("19_x6r1j")
+shader_parameter/scanline_color = Color(0.223103, 0.223103, 0.223103, 0.5)
+shader_parameter/scanline_spacing = 7.843
+shader_parameter/scanline_width = 0.5
+shader_parameter/edge_softness = 1.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_er2o0")
@@ -61,6 +69,38 @@ modulate = Color(0.552956, 0.552956, 0.552956, 1)
 position = Vector2(160, 463)
 scale = Vector2(3, 2)
 texture = ExtResource("3_nqvpy")
+
+[node name="StackSprite" type="Sprite2D" parent="."]
+position = Vector2(751, 272)
+scale = Vector2(3.04167, 4.64583)
+texture = ExtResource("9_lwvlg")
+
+[node name="Moves" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 450.0
+offset_right = 196.0
+offset_bottom = 514.0
+script = ExtResource("16_rdoxq")
+
+[node name="MovesSprite" type="Sprite2D" parent="Moves"]
+position = Vector2(32, 30)
+scale = Vector2(3, 3)
+texture = ExtResource("17_3k8kb")
+
+[node name="TargetSprite" type="Sprite2D" parent="Moves"]
+position = Vector2(32, 30)
+scale = Vector2(3, 3)
+texture = ExtResource("17_3k8kb")
+
+[node name="Label" type="Label" parent="Moves"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+theme = ExtResource("10_ydtrd")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelTitleLabel" type="Label" parent="."]
 offset_top = 42.0
@@ -130,11 +170,6 @@ offset_bottom = 52.0
 theme = ExtResource("7_ldegq")
 text = "DISCARD
 "
-
-[node name="StackSprite" type="Sprite2D" parent="."]
-position = Vector2(751, 272)
-scale = Vector2(3.04167, 4.64583)
-texture = ExtResource("9_lwvlg")
 
 [node name="Stack" type="VBoxContainer" parent="."]
 anchors_preset = 7
@@ -243,33 +278,6 @@ text = "MOVES UNTIL DETECTION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Moves" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 132.0
-offset_top = 450.0
-offset_right = 196.0
-offset_bottom = 514.0
-script = ExtResource("16_rdoxq")
-
-[node name="MovesSprite" type="Sprite2D" parent="Moves"]
-position = Vector2(32, 30)
-scale = Vector2(3, 3)
-texture = ExtResource("17_3k8kb")
-
-[node name="TargetSprite" type="Sprite2D" parent="Moves"]
-position = Vector2(32, 30)
-scale = Vector2(3, 3)
-texture = ExtResource("17_3k8kb")
-
-[node name="Label" type="Label" parent="Moves"]
-layout_mode = 0
-offset_right = 64.0
-offset_bottom = 64.0
-theme = ExtResource("10_ydtrd")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="NextButton" type="Button" parent="."]
 offset_left = 1048.0
 offset_top = 108.0
@@ -297,10 +305,17 @@ text = "CONTINUE HACK"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_8t6n6")
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[connection signal="game_over" from="Moves" to="." method="_on_moves_game_over"]
 [connection signal="move" from="Hand" to="." method="_on_hand_move"]
 [connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="Hand" method="_on_discard_button_pressed"]
 [connection signal="target_check" from="Stack" to="." method="_on_stack_target_check"]
 [connection signal="pressed" from="StackCalculationButton" to="Stack" method="_on_stack_calculation_button_pressed"]
-[connection signal="game_over" from="Moves" to="." method="_on_moves_game_over"]
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
