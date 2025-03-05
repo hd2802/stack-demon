@@ -25,7 +25,7 @@ func _ready():
 func push(value_to_push : String):
 	stack.push_back(value_to_push)
 	var label : Label = Label.new()
-	label.text = value_to_push
+	label.text = value_to_push.to_upper()
 	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 	self.add_child(label)
 	self.move_child(label, 0)
@@ -86,9 +86,9 @@ func handle_special_card(spec : String):
 		"del":
 			self.remove_child(self.get_children()[len(stack) - 1])
 			stack.pop_back()
-			# TODO fix this being applied when only delete is on the stack 
-			self.remove_child(self.get_children()[len(stack) - 1])
-			stack.pop_back()
+			if !stack.is_empty():
+				self.remove_child(self.get_children()[len(stack) - 1])
+				stack.pop_back()
 	
 
 func update_stack_references():
