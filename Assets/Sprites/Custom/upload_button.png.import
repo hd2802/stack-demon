@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kh2r02sj7l02"
-path="res://.godot/imported/UI_Glass_Arrow_Large_01a.png-065bcaaec0164180fec83d2bc2353c77.ctex"
+uid="uid://cvyyq7gn65onv"
+path="res://.godot/imported/upload_button.png-3891a1b96e6d49bb08f566029c0d7b94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI_Glass_Arrow_Large_01a.png"
-dest_files=["res://.godot/imported/UI_Glass_Arrow_Large_01a.png-065bcaaec0164180fec83d2bc2353c77.ctex"]
+source_file="res://Assets/Sprites/Custom/upload_button.png"
+dest_files=["res://.godot/imported/upload_button.png-3891a1b96e6d49bb08f566029c0d7b94.ctex"]
 
 [params]
 

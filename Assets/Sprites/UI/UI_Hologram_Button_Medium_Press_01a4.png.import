@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djqhdffattcnl"
-path="res://.godot/imported/card_sprite.png-47c5d870f0a63975238a3b21843cf896.ctex"
+uid="uid://dnjnvwas2bx50"
+path="res://.godot/imported/UI_Hologram_Button_Medium_Press_01a4.png-e468bbc600148f97fbf263435cb05c32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/card_sprite.png"
-dest_files=["res://.godot/imported/card_sprite.png-47c5d870f0a63975238a3b21843cf896.ctex"]
+source_file="res://Assets/Sprites/UI/UI_Hologram_Button_Medium_Press_01a4.png"
+dest_files=["res://.godot/imported/UI_Hologram_Button_Medium_Press_01a4.png-e468bbc600148f97fbf263435cb05c32.ctex"]
 
 [params]
 

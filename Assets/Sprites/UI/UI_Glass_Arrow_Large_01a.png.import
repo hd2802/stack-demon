@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btbvabwt5xyfm"
-path="res://.godot/imported/UI_Hologram_Slot_Available_02a.png-86841cb765aa3a257f3770447af2bbea.ctex"
+uid="uid://kh2r02sj7l02"
+path="res://.godot/imported/UI_Glass_Arrow_Large_01a.png-adfccddb20fd062b037ceee708857654.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI_Hologram_Slot_Available_02a.png"
-dest_files=["res://.godot/imported/UI_Hologram_Slot_Available_02a.png-86841cb765aa3a257f3770447af2bbea.ctex"]
+source_file="res://Assets/Sprites/UI/UI_Glass_Arrow_Large_01a.png"
+dest_files=["res://.godot/imported/UI_Glass_Arrow_Large_01a.png-adfccddb20fd062b037ceee708857654.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1orrqurc3q63"
-path="res://.godot/imported/UI_Glass_Frame_Standard_01a.png-547738b8da3993044eea97f7a0687a99.ctex"
+uid="uid://brkxbrggtrgk1"
+path="res://.godot/imported/enter_button.png-3ddc5dfb55bd6bc4ff59dca2d205ed67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI_Glass_Frame_Standard_01a.png"
-dest_files=["res://.godot/imported/UI_Glass_Frame_Standard_01a.png-547738b8da3993044eea97f7a0687a99.ctex"]
+source_file="res://Assets/Sprites/Custom/enter_button.png"
+dest_files=["res://.godot/imported/enter_button.png-3ddc5dfb55bd6bc4ff59dca2d205ed67.ctex"]
 
 [params]
 

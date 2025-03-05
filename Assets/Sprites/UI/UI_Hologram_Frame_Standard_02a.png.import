@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daxmqeqlsy35q"
-path="res://.godot/imported/deck.png-ebe517137a5b31e4bc0813f1bb77d349.ctex"
+uid="uid://fj3qfmyyrfit"
+path="res://.godot/imported/UI_Hologram_Frame_Standard_02a.png-65c3a9a19e9602138cd0e76334814d9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/deck.png"
-dest_files=["res://.godot/imported/deck.png-ebe517137a5b31e4bc0813f1bb77d349.ctex"]
+source_file="res://Assets/Sprites/UI/UI_Hologram_Frame_Standard_02a.png"
+dest_files=["res://.godot/imported/UI_Hologram_Frame_Standard_02a.png-65c3a9a19e9602138cd0e76334814d9e.ctex"]
 
 [params]
 
