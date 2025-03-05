@@ -5,7 +5,7 @@ var card_data : CardDataResource
 
 signal clicked(card: Node)
 
-func _ready() -> void:
+func _ready() -> void:  
 	pass
 
 func createCard(card : String):
