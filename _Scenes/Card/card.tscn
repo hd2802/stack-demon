@@ -1,29 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=7 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Theme" uid="uid://w4cehlc025w8" path="res://Assets/Themes/default.tres" id="1_da12g"]
 [ext_resource type="Script" path="res://_Scripts/Card/card.gd" id="1_hcfnd"]
-[ext_resource type="Shader" path="res://Assets/Shaders/card_hover.gdshader" id="3_ski5l"]
+[ext_resource type="Shader" path="res://Assets/Shaders/card_effect.gdshader" id="3_wd3g7"]
+[ext_resource type="Script" path="res://_Scripts/Card/card_effect.gd" id="4_mft3s"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n24tl"]
-shader = ExtResource("3_ski5l")
-shader_parameter/debug = false
-shader_parameter/border_scale = 2.0
-shader_parameter/shadow_offset = Vector2(0, -5)
-shader_parameter/color = Color(0.212305, 0.212305, 0.212305, 1)
-shader_parameter/blur_amount = 0.0
-shader_parameter/shadow_scale = 1.5
-shader_parameter/disable_rotating = false
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gal8a"]
+shader = ExtResource("3_wd3g7")
 shader_parameter/fov = 90.0
 shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
-shader_parameter/hovering = 0.0
-shader_parameter/rand_trans_power = 1.0
-shader_parameter/rand_seed = null
-shader_parameter/vortex_amt = null
-shader_parameter/rotation = 0.0
-shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
@@ -38,9 +26,10 @@ theme = ExtResource("1_da12g")
 script = ExtResource("1_hcfnd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_n24tl")
+material = SubResource("ShaderMaterial_gal8a")
 position = Vector2(50, 75)
 scale = Vector2(0.25, 0.25)
+script = ExtResource("4_mft3s")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
