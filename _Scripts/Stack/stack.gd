@@ -11,9 +11,14 @@ var stack_top : String = ""
 var stack_second : String = ""
 var stack_third : String = ""
 
+var enter_audio_player
+var card_audio_player
+
 signal target_check(current_stack : Array[String])
 
 func _ready():
+	enter_audio_player = $"../EnterButtonAudio"
+	card_audio_player = $"../CardPlayedAudio"
 	var hand = get_parent().get_node("Hand")
 	if hand: 
 		hand.card_played.connect(_on_card_played)
@@ -33,6 +38,7 @@ func push(value_to_push : String):
 	update_stack_references()
 
 func _on_card_played(card: Card):
+	card_audio_player.play()
 	push(card.card_data.text)
 	
 #----------------------------------------------------------------
@@ -60,6 +66,7 @@ func calculator(operation : String, operand_1 : String, operand_2 : String) -> i
 
 
 func _on_stack_calculation_button_pressed() -> void:
+	enter_audio_player.play()
 	if is_operation(stack_top) and not is_operation(stack_second) and not is_operation(stack_third):
 		var result = calculator(stack_top, stack_second, stack_third)
 

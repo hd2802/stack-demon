@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=9 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Theme" uid="uid://w4cehlc025w8" path="res://Assets/Themes/default.tres" id="1_da12g"]
 [ext_resource type="Script" path="res://_Scripts/Card/card.gd" id="1_hcfnd"]
+[ext_resource type="AudioStream" uid="uid://ds7bpdlmy2pv0" path="res://Assets/SoundFX/39562__the_bizniss__mouse-click.wav" id="3_07ivs"]
+[ext_resource type="AudioStream" uid="uid://ca8kdkqfwwjgd" path="res://Assets/SoundFX/773604__kreha__smallclick.wav" id="3_pf7vg"]
 [ext_resource type="Shader" path="res://Assets/Shaders/card_effect.gdshader" id="3_wd3g7"]
 [ext_resource type="Script" path="res://_Scripts/Card/card_effect.gd" id="4_mft3s"]
 
@@ -24,6 +26,14 @@ offset_bottom = 150.0
 mouse_filter = 2
 theme = ExtResource("1_da12g")
 script = ExtResource("1_hcfnd")
+
+[node name="CardSelectedPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_07ivs")
+
+[node name="CardHoverPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pf7vg")
+volume_db = -10.4
+pitch_scale = 0.47
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_gal8a")
