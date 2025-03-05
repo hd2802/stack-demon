@@ -53,12 +53,6 @@ func load_level(level_data) -> void:
 	move_node = self.get_node("Moves")
 	move_node.set_move_counter(level_data.moves)
 	
-	# Initialising the Next Button
-	next_button = self.get_node("NextButton")
-	next_button.visible = false
-	next_label = self.get_node("ContinueLabel")
-	next_label.visible = false
-	
 	target = level_data.target_value
 
 func set_move_counter(moves : int) -> void:
@@ -74,8 +68,15 @@ func _on_moves_game_over() -> void:
 func _on_stack_target_check(current_stack: Array[String]) -> void:
 	if len(current_stack) == 1:
 		if int(current_stack[0]) >= target:
-			next_button.visible = true
-			next_label.visible = true
+			
+			var transition = load("res://_Scenes/HackComplete/hack_complete.tscn").instantiate()
+			self.add_child(transition)
+			transition.initialise()
+			transition.visible = true
+			
+			if transition.has_node("Button"): 
+				var button = transition.get_node("Button")
+				button.pressed.connect(_on_next_button_pressed)
 	else:
 		pass	
 
