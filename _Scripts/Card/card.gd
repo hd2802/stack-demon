@@ -5,8 +5,10 @@ var card_data : CardDataResource
 
 signal clicked(card: Node)
 
+var card_selected_player
+
 func _ready() -> void:  
-	pass
+	card_selected_player = $CardSelectedPlayer
 
 func createCard(card : String):
 	self.card_data = load("res://Resources/CardData/" + card + ".tres")
@@ -20,4 +22,5 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			clicked.emit(self)
+			card_selected_player.play()
 			
