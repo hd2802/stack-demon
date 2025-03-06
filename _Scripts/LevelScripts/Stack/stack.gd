@@ -33,7 +33,10 @@ func push(value_to_push : String):
 	label.text = value_to_push.to_upper()
 	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
 	self.add_child(label)
-	self.move_child(label, 0)
+	
+	var spacer_label : Label = Label.new()
+	spacer_label.text = " "
+	self.add_child(spacer_label)
 	
 	label.set_scale(Vector2(0, 0))
 	label.modulate.a = 0
@@ -79,7 +82,7 @@ func _on_stack_calculation_button_pressed() -> void:
 
 		# Remove the last three items from the stack and UI
 		for i in range(3):
-			var label = get_children()[len(stack) - 1]
+			var label = self.get_children()[len(stack) - 1]
 			if label is Label:
 				var tween = get_tree().create_tween()
 				tween.tween_property(label, "scale", Vector2(0, 0), 0.3).set_trans(Tween.TRANS_CUBIC)
