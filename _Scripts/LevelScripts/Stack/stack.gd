@@ -35,6 +35,13 @@ func push(value_to_push : String):
 	self.add_child(label)
 	self.move_child(label, 0)
 	
+	label.set_scale(Vector2(0, 0))
+	label.modulate.a = 0
+
+	var tween = get_tree().create_tween()
+	tween.tween_property(label, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_BOUNCE)
+	tween.parallel().tween_property(label, "modulate:a", 1, 0.3)
+
 	update_stack_references()
 
 func _on_card_played(card: Card):
@@ -72,12 +79,20 @@ func _on_stack_calculation_button_pressed() -> void:
 
 		# Remove the last three items from the stack and UI
 		for i in range(3):
-			self.remove_child(self.get_children()[len(stack) - 1])
-			stack.pop_back()
+			var label = get_children()[len(stack) - 1]
+			if label is Label:
+				var tween = get_tree().create_tween()
+				tween.tween_property(label, "scale", Vector2(0, 0), 0.3).set_trans(Tween.TRANS_CUBIC)
+				tween.parallel().tween_property(label, "modulate:a", 0, 0.3)
+				await tween.finished
+				self.remove_child(label)
+				stack.pop_back()
 
 		push(str(result))
 		update_stack_references()
-
+		
+		await get_tree().create_timer(1.0).timeout
+		
 		# Checking if the target is achieved after calculation
 		target_check.emit(stack)
 		
