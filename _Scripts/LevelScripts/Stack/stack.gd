@@ -74,15 +74,23 @@ func calculator(operation : String, operand_1 : String, operand_2 : String) -> i
 			return int(operand_1) * int(operand_2)
 	return 0
 
-
 func _on_stack_calculation_button_pressed() -> void:
+	print(stack)
 	enter_audio_player.play()
-	if is_operation(stack_top) and not is_operation(stack_second) and not is_operation(stack_third):
-		var result = calculator(stack_top, stack_second, stack_third)
+	# Ensure we have enough elements for a calculation
+	if stack.size() >= 3 and is_operation(stack[-1]) and not is_operation(stack[-2]) and not is_operation(stack[-3]):
+		var operand_1 = stack[-2]
+		var operand_2 = stack[-3]
+		var operation = stack[-1]
 
-		# Remove the last three items from the stack and UI
-		for i in range(3):
-			var label = self.get_children()[len(stack) - 1]
+		var result = calculator(operation, operand_1, operand_2)
+
+		# Remove last three items from stack and UI
+		
+		# Range here is 6 because we have padding elements
+		# REMOVE THESE IF PADDING LABELS ARE REMOVED
+		for i in range(6):
+			var label = self.get_children()[-1]
 			if label is Label:
 				var tween = get_tree().create_tween()
 				tween.tween_property(label, "scale", Vector2(0, 0), 0.3).set_trans(Tween.TRANS_CUBIC)
@@ -91,19 +99,16 @@ func _on_stack_calculation_button_pressed() -> void:
 				self.remove_child(label)
 				stack.pop_back()
 
+		# Push result onto stack
 		push(str(result))
 		update_stack_references()
-		
+
 		await get_tree().create_timer(1.0).timeout
-		
-		# Checking if the target is achieved after calculation
 		target_check.emit(stack)
-		
+
 	elif is_special_card(stack_top):
 		handle_special_card(stack_top)
-		
 	else:
-		# Check if the target is achieved regardless of calculation
 		target_check.emit(stack)
 	
 func handle_special_card(spec : String):
