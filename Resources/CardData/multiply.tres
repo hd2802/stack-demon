@@ -4,6 +4,4 @@
 
 [resource]
 script = ExtResource("1_y4m3x")
-value = -1
-operation = "*"
-text = "*"
+text = "X"

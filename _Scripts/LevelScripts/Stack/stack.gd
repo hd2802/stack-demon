@@ -7,6 +7,21 @@ const SPECIAL_CARD : Array[String] = [
 	"del"
 ]
 
+const CONVERSIONS = {
+	"1" : "one",
+	"2" : "two",
+	"3" : "three",
+	"4" : "four",
+	"5" : "five", 
+	"6" : "six", 
+	"7" : "seven",
+	"8" : "eight",
+	"9" : "nine",
+	"+" : "add",
+	"X" : "multiply"
+	
+}
+
 var stack_top : String = ""
 var stack_second : String = ""
 var stack_third : String = ""
@@ -27,24 +42,12 @@ func _ready():
 
 #----------------------------------------------------------------
 
-func push(value_to_push : String):
-	stack.push_back(value_to_push)
-	var label : Label = Label.new()
-	label.text = value_to_push.to_upper()
-	label.set_horizontal_alignment(HORIZONTAL_ALIGNMENT_CENTER)
-	self.add_child(label)
+func push(card : String):
+	stack.push_back(card)
+	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
+	new_card.createCard(CONVERSIONS[card])
+	self.add_child(new_card)
 	
-	var spacer_label : Label = Label.new()
-	spacer_label.text = " "
-	self.add_child(spacer_label)
-	
-	label.set_scale(Vector2(0, 0))
-	label.modulate.a = 0
-
-	var tween = get_tree().create_tween()
-	tween.tween_property(label, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_BOUNCE)
-	tween.parallel().tween_property(label, "modulate:a", 1, 0.3)
-
 	update_stack_references()
 
 func _on_card_played(card: Card):
@@ -86,18 +89,11 @@ func _on_stack_calculation_button_pressed() -> void:
 		var result = calculator(operation, operand_1, operand_2)
 
 		# Remove last three items from stack and UI
-		
-		# Range here is 6 because we have padding elements
-		# REMOVE THESE IF PADDING LABELS ARE REMOVED
-		for i in range(6):
-			var label = self.get_children()[-1]
-			if label is Label:
-				var tween = get_tree().create_tween()
-				tween.tween_property(label, "scale", Vector2(0, 0), 0.3).set_trans(Tween.TRANS_CUBIC)
-				tween.parallel().tween_property(label, "modulate:a", 0, 0.3)
-				await tween.finished
-				self.remove_child(label)
-				stack.pop_back()
+
+		for i in range(3):
+			var elem = self.get_children()[-1]
+			self.remove_child(elem)
+			stack.pop_back()
 
 		# Push result onto stack
 		push(str(result))

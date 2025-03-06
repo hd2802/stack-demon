@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=26 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://c6xvrihnfurh3" path="res://Assets/SoundFX/789630__sadiquecat__keychron-k10-space_bar.wav" id="2_buyg3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="4_5phq7"]
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Hand/hand.gd" id="5_fjvq6"]
 [ext_resource type="Texture2D" uid="uid://bssh646yb7tjt" path="res://Assets/Sprites/Custom/playbutton.png" id="6_jtbaf"]
+[ext_resource type="Texture2D" uid="uid://cdhgjg1w1qb73" path="res://Assets/Sprites/Custom/stack_container_yello.png" id="6_tg70n"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="7_ldegq"]
 [ext_resource type="Texture2D" uid="uid://dnjnvwas2bx50" path="res://Assets/Sprites/UI/UI_Hologram_Button_Medium_Press_01a4.png" id="8_wtntn"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="10_ydtrd"]
@@ -72,6 +73,10 @@ modulate = Color(0.552956, 0.552956, 0.552956, 1)
 position = Vector2(160, 463)
 scale = Vector2(3, 2)
 texture = ExtResource("3_nqvpy")
+
+[node name="StackContainer" type="Sprite2D" parent="."]
+position = Vector2(740, 275)
+texture = ExtResource("6_tg70n")
 
 [node name="Moves" type="Control" parent="."]
 layout_mode = 3
@@ -174,16 +179,14 @@ layout_direction = 2
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 441.0
-offset_top = 204.0
-offset_right = 1041.0
-offset_bottom = 354.0
+offset_left = 440.0
+offset_top = 200.0
+offset_right = 1040.0
+offset_bottom = 350.0
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-theme = ExtResource("10_ydtrd")
 script = ExtResource("11_0c8oh")
-metadata/_edit_use_anchors_ = true
 
 [node name="StackCalculationButton" type="Button" parent="."]
 offset_left = 1092.0
