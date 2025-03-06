@@ -13,7 +13,7 @@ signal move()
 
 func _ready():
 	fill_hand(0)
-
+	
 func add_card(card_id : String):
 	current_hand.push_back(card_id)
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()

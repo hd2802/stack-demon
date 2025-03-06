@@ -275,7 +275,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_8t6n6")
 offset_right = 1280.0
 offset_bottom = 720.0

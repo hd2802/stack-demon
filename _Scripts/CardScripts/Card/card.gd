@@ -16,7 +16,9 @@ func createCard(card : String):
 	sprite.texture = load("res://Assets/Sprites/CardSprites/" + card + ".png")
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
 			clicked.emit(self)
 			card_selected_player.play()
+		elif event.button_index == MOUSE_BUTTON_RIGHT and get_parent().selected_card == self:
+			get_parent()._on_card_clicked(self)
