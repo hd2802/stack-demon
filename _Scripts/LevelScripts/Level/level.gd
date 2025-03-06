@@ -68,7 +68,7 @@ func _on_moves_game_over() -> void:
 func _on_stack_target_check(current_stack: Array[String]) -> void:
 	if len(current_stack) == 1:
 		if int(current_stack[0]) >= target:
-			
+			await get_tree().create_timer(1.0).timeout
 			var transition = load("res://_Scenes/HackComplete/hack_complete.tscn").instantiate()
 			self.add_child(transition)
 			transition.initialise()

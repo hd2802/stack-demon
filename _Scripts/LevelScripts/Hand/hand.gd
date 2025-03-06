@@ -52,6 +52,15 @@ func _on_play_card_button_pressed() -> void:
 
 func _on_discard_button_pressed() -> void:
 	if selected_card:
+		var tween = get_tree().create_tween()
+
+		selected_card.pivot_offset = selected_card.get_rect().size / 2
+
+		tween.tween_property(selected_card, "scale", Vector2(0, 0), 0.4).set_trans(Tween.TRANS_QUAD)
+		tween.parallel().tween_property(selected_card, "modulate:a", 0, 0.4)
+		
+		await tween.finished
+		
 		selected_card.queue_free()
 		selected_card = null
 		move.emit()

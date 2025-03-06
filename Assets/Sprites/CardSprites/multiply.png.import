@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hffykgd8sklr"
-path="res://.godot/imported/times.png-51eef4dc2df243fef86a1b5a0bf4a376.ctex"
+path="res://.godot/imported/multiply.png-e50a212bf1c53336d1b632e806e5cba3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/CardSprites/times.png"
-dest_files=["res://.godot/imported/times.png-51eef4dc2df243fef86a1b5a0bf4a376.ctex"]
+source_file="res://Assets/Sprites/CardSprites/multiply.png"
+dest_files=["res://.godot/imported/multiply.png-e50a212bf1c53336d1b632e806e5cba3.ctex"]
 
 [params]
 
