@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=25 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://c6xvrihnfurh3" path="res://Assets/SoundFX/789630__sadiquecat__keychron-k10-space_bar.wav" id="2_buyg3"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bssh646yb7tjt" path="res://Assets/Sprites/Custom/playbutton.png" id="6_jtbaf"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="7_ldegq"]
 [ext_resource type="Texture2D" uid="uid://dnjnvwas2bx50" path="res://Assets/Sprites/UI/UI_Hologram_Button_Medium_Press_01a4.png" id="8_wtntn"]
-[ext_resource type="Texture2D" uid="uid://fj3qfmyyrfit" path="res://Assets/Sprites/UI/UI_Hologram_Frame_Standard_02a.png" id="9_lwvlg"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="10_ydtrd"]
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Stack/stack.gd" id="11_0c8oh"]
 [ext_resource type="Texture2D" uid="uid://brkxbrggtrgk1" path="res://Assets/Sprites/Custom/enter_button.png" id="12_6whj4"]
@@ -74,11 +73,6 @@ position = Vector2(160, 463)
 scale = Vector2(3, 2)
 texture = ExtResource("3_nqvpy")
 
-[node name="StackSprite" type="Sprite2D" parent="."]
-position = Vector2(751, 272)
-scale = Vector2(3.04167, 4.64583)
-texture = ExtResource("9_lwvlg")
-
 [node name="Moves" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -125,18 +119,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hand" type="HBoxContainer" parent="."]
-offset_left = 500.0
-offset_top = 523.0
-offset_right = 1000.0
-offset_bottom = 673.0
+offset_left = 560.0
+offset_top = 526.0
+offset_right = 1060.0
+offset_bottom = 676.0
 mouse_filter = 2
 script = ExtResource("5_fjvq6")
 
 [node name="PlayCardButton" type="Button" parent="."]
-offset_left = 1073.0
-offset_top = 532.0
-offset_right = 1221.0
-offset_bottom = 596.0
+offset_left = 840.0
+offset_top = 428.0
+offset_right = 988.0
+offset_bottom = 492.0
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayCardButton"]
 position = Vector2(74, 32)
@@ -155,10 +149,10 @@ text = "PLAY
 "
 
 [node name="DiscardButton" type="Button" parent="."]
-offset_left = 1073.0
-offset_top = 613.0
-offset_right = 1221.0
-offset_bottom = 677.0
+offset_left = 640.0
+offset_top = 428.0
+offset_right = 788.0
+offset_bottom = 492.0
 
 [node name="Sprite2D" type="Sprite2D" parent="DiscardButton"]
 position = Vector2(74, 32)
@@ -175,29 +169,27 @@ theme = ExtResource("7_ldegq")
 text = "DISCARD
 "
 
-[node name="Stack" type="VBoxContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 623.0
-offset_top = 57.0
-offset_right = 879.0
-offset_bottom = 483.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_vertical = 8
+[node name="Stack" type="HBoxContainer" parent="."]
+layout_direction = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 441.0
+offset_top = 204.0
+offset_right = 1041.0
+offset_bottom = 354.0
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 theme = ExtResource("10_ydtrd")
-alignment = 2
 script = ExtResource("11_0c8oh")
 metadata/_edit_use_anchors_ = true
 
 [node name="StackCalculationButton" type="Button" parent="."]
-offset_left = 1084.0
-offset_top = 350.0
-offset_right = 1212.0
-offset_bottom = 478.0
+offset_left = 1092.0
+offset_top = 205.0
+offset_right = 1220.0
+offset_bottom = 333.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_o3wyf")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_iaytm")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_c4lne")
@@ -210,13 +202,13 @@ texture = ExtResource("12_6whj4")
 
 [node name="Label" type="Label" parent="StackCalculationButton"]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 23.0
-offset_right = 108.0
-offset_bottom = 64.0
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 123.0
+offset_bottom = 88.0
 theme = ExtResource("7_ldegq")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "HACK"
+text = "CALCULATE"
 
 [node name="Target" type="Control" parent="."]
 layout_mode = 3
@@ -255,10 +247,10 @@ vertical_alignment = 1
 [node name="Deck" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 360.0
-offset_top = 520.0
-offset_right = 460.0
-offset_bottom = 670.0
+offset_left = 400.0
+offset_top = 526.0
+offset_right = 500.0
+offset_bottom = 676.0
 script = SubResource("GDScript_6ewan")
 
 [node name="BackgroundDeckSprite" type="Sprite2D" parent="Deck"]
@@ -283,6 +275,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_8t6n6")
 offset_right = 1280.0
 offset_bottom = 720.0
