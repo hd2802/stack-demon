@@ -45,9 +45,13 @@ func _ready():
 func push(card : String):
 	stack.push_back(card)
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
-	new_card.createCard(CONVERSIONS[card])
-	self.add_child(new_card)
 	
+	if int(card) > 9:
+		new_card.create_result_card(card)
+	else:
+		new_card.createCard(CONVERSIONS[card])
+		
+	self.add_child(new_card)
 	update_stack_references()
 
 func _on_card_played(card: Card):
@@ -57,7 +61,7 @@ func _on_card_played(card: Card):
 #----------------------------------------------------------------
 
 func is_operation(v : String) -> bool:
-	return v in ["+", "-", "*", "/"]
+	return v in ["+", "-", "X", "/"]
 
 func is_special_card(v : String) -> bool:
 	return v in SPECIAL_CARD
@@ -73,7 +77,7 @@ func calculator(operation : String, operand_1 : String, operand_2 : String) -> i
 			if int(operand_1) == 0:
 				return 0 
 			return int(operand_1) / int(operand_2)
-		"*":
+		"X":
 			return int(operand_1) * int(operand_2)
 	return 0
 
