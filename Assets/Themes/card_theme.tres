@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8rufdjyp1b2b"]
+
+[ext_resource type="FontFile" uid="uid://ddaxbmish44ev" path="res://Assets/Fonts/m6x11.ttf" id="1_8tug8"]
+
+[resource]
+default_font = ExtResource("1_8tug8")
+default_font_size = 72
+Label/colors/font_color = Color(0, 0, 0, 1)
