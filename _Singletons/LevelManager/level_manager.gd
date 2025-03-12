@@ -80,3 +80,7 @@ func _load_next_level() -> void:
 	level.level_complete.connect(_on_level_complete)
 	
 	_DeckManager.reset_draw_pile()
+	
+func _clear_level() -> void:
+	if level:
+		level.queue_free()
