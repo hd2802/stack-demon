@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=24 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://c6xvrihnfurh3" path="res://Assets/SoundFX/789630__sadiquecat__keychron-k10-space_bar.wav" id="2_buyg3"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Assets/Sprites/Custom/deck.png" id="15_ask3q"]
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Moves/moves.gd" id="16_rdoxq"]
 [ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI/UI_Hologram_Slot_Available_02a.png" id="17_3k8kb"]
-[ext_resource type="Shader" path="res://Assets/Shaders/scanline.gdshader" id="19_x6r1j"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wyf"]
 
@@ -32,13 +31,6 @@
 script/source = "extends Node
 class_name Deck
 "
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8t6n6"]
-shader = ExtResource("19_x6r1j")
-shader_parameter/scanline_color = Color(0.223103, 0.223103, 0.223103, 0.5)
-shader_parameter/scanline_spacing = 7.843
-shader_parameter/scanline_width = 0.5
-shader_parameter/edge_softness = 1.0
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_er2o0")
@@ -276,13 +268,6 @@ theme_override_font_sizes/font_size = 46
 text = "MOVES UNTIL DETECTION"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_8t6n6")
-offset_right = 1280.0
-offset_bottom = 720.0
-mouse_filter = 2
-color = Color(1, 1, 1, 0)
 
 [connection signal="game_over" from="Moves" to="." method="_on_moves_game_over"]
 [connection signal="move" from="Hand" to="." method="_on_hand_move"]
