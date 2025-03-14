@@ -20,7 +20,7 @@ script = ExtResource("1_nvupq")
 
 [node name="Level" parent="." instance=ExtResource("1_c4uvv")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Terminal" type="ColorRect" parent="."]
 offset_left = 425.0
 offset_top = 45.0
 offset_right = 1055.0

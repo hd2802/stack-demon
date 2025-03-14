@@ -10,6 +10,8 @@ var hand_node : Hand
 var target_node : Target
 var move_node : Moves
 
+var term : Terminal
+
 var next_button
 var next_label
 
@@ -54,6 +56,10 @@ func load_level(level_data) -> void:
 	move_node.set_move_counter(level_data.moves)
 	
 	target = level_data.target_value
+	
+	term = load("res://_Scenes/Terminal/terminal.tscn").instantiate()
+	self.add_child(term)
+	term.visible = false
 
 func set_move_counter(moves : int) -> void:
 	move_node.set_move_counter(moves)
@@ -68,17 +74,7 @@ func _on_moves_game_over() -> void:
 func _on_stack_target_check(current_stack: Array[String]) -> void:
 	if len(current_stack) == 1:
 		if int(current_stack[0]) >= target:
-			await get_tree().create_timer(1.0).timeout
-			var transition = load("res://_Scenes/HackComplete/hack_complete.tscn").instantiate()
-			self.add_child(transition)
-			transition.initialise()
-			transition.visible = true
-			
-			if transition.has_node("Button"): 
-				var button = transition.get_node("Button")
-				button.pressed.connect(_on_next_button_pressed)
-	else:
-		pass	
+			term.set_text("> CHECKING HACK .........")
 
 func _on_next_button_pressed() -> void:
 	level_complete.emit()
