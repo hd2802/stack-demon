@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqp1x5mph55qb"]
+
+[ext_resource type="Script" path="res://_Scripts/Terminal/terminal.gd" id="1_78pbb"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="1_v4qn4"]
+
+[node name="Terminal" type="Node2D"]
+script = ExtResource("1_78pbb")
+
+[node name="Terminal" type="ColorRect" parent="."]
+offset_left = 425.0
+offset_top = 45.0
+offset_right = 1055.0
+offset_bottom = 170.0
+color = Color(0, 0, 0, 1)
+
+[node name="TerminalText" type="Label" parent="."]
+offset_left = 435.0
+offset_top = 60.0
+offset_right = 909.0
+offset_bottom = 160.0
+theme = ExtResource("1_v4qn4")
+text = "> TODO: COMPLETE THE HACK
+
+"
+
+[node name="ClickPrompt" type="Label" parent="."]
+visible = false
+offset_left = 916.0
+offset_top = 136.0
+offset_right = 1047.0
+offset_bottom = 161.0
+theme = ExtResource("1_v4qn4")
+theme_override_font_sizes/font_size = 30
+text = "CLICK TO CONTINUE"
+
+[node name="NextButton" type="Button" parent="."]
+offset_left = 425.0
+offset_top = 45.0
+offset_right = 1055.0
+offset_bottom = 170.0
+flat = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.04
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

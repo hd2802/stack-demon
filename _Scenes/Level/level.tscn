@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=23 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://c6xvrihnfurh3" path="res://Assets/SoundFX/789630__sadiquecat__keychron-k10-space_bar.wav" id="2_buyg3"]
-[ext_resource type="Texture2D" uid="uid://c72cn840ks5bd" path="res://Assets/Sprites/UI/UI_Hologram_Frame_Standard_01a.png" id="2_lw7vb"]
+[ext_resource type="Texture2D" uid="uid://bw1xjnxmmg4yv" path="res://Assets/Sprites/New Piskel-1.png(15).png" id="2_i7m13"]
 [ext_resource type="AudioStream" uid="uid://d3bl4qq711mrt" path="res://Assets/SoundFX/96127__bmaczero__contact1.wav" id="3_e10y2"]
-[ext_resource type="Texture2D" uid="uid://c1orrqurc3q63" path="res://Assets/Sprites/UI/UI_Glass_Frame_Standard_01a.png" id="3_nqvpy"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="4_5phq7"]
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Hand/hand.gd" id="5_fjvq6"]
 [ext_resource type="Texture2D" uid="uid://bssh646yb7tjt" path="res://Assets/Sprites/Custom/playbutton.png" id="6_jtbaf"]
@@ -17,7 +16,7 @@
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Target/target.gd" id="13_svkq8"]
 [ext_resource type="Texture2D" uid="uid://daxmqeqlsy35q" path="res://Assets/Sprites/Custom/deck.png" id="15_ask3q"]
 [ext_resource type="Script" path="res://_Scripts/LevelScripts/Moves/moves.gd" id="16_rdoxq"]
-[ext_resource type="Texture2D" uid="uid://btbvabwt5xyfm" path="res://Assets/Sprites/UI/UI_Hologram_Slot_Available_02a.png" id="17_3k8kb"]
+[ext_resource type="PackedScene" uid="uid://cqp1x5mph55qb" path="res://_Scenes/Terminal/terminal.tscn" id="17_3i1r4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o3wyf"]
 
@@ -35,36 +34,46 @@ class_name Deck
 [node name="Level" type="Node2D"]
 script = ExtResource("1_er2o0")
 
+[node name="MainBackground" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(162, 360)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i7m13")
+
+[node name="StackBackground" type="ColorRect" parent="."]
+offset_left = 405.0
+offset_top = 212.0
+offset_right = 1073.0
+offset_bottom = 337.0
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="Sidebar" type="ColorRect" parent="."]
+visible = false
+offset_right = 325.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[node name="HandBackground" type="ColorRect" parent="."]
+offset_left = 523.0
+offset_top = 544.0
+offset_right = 1107.0
+offset_bottom = 670.0
+mouse_filter = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
 [node name="EnterButtonAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_buyg3")
 
 [node name="CardPlayedAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_e10y2")
 volume_db = 4.952
-
-[node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.627635, 0.627635, 0.627635, 1)
-position = Vector2(795, 360)
-scale = Vector2(10, 7.5)
-texture = ExtResource("2_lw7vb")
-
-[node name="Sidebar" type="Sprite2D" parent="."]
-modulate = Color(0.408329, 0.408329, 0.408329, 1)
-position = Vector2(160, 360)
-scale = Vector2(3.24, 7.4)
-texture = ExtResource("2_lw7vb")
-
-[node name="TargetPanel" type="Sprite2D" parent="."]
-modulate = Color(0.552956, 0.552956, 0.552956, 1)
-position = Vector2(160, 256)
-scale = Vector2(3, 2)
-texture = ExtResource("3_nqvpy")
-
-[node name="MovesPanel" type="Sprite2D" parent="."]
-modulate = Color(0.552956, 0.552956, 0.552956, 1)
-position = Vector2(160, 463)
-scale = Vector2(3, 2)
-texture = ExtResource("3_nqvpy")
 
 [node name="StackContainer" type="Sprite2D" parent="."]
 position = Vector2(740, 275)
@@ -78,16 +87,6 @@ offset_top = 450.0
 offset_right = 196.0
 offset_bottom = 514.0
 script = ExtResource("16_rdoxq")
-
-[node name="MovesSprite" type="Sprite2D" parent="Moves"]
-position = Vector2(32, 30)
-scale = Vector2(3, 3)
-texture = ExtResource("17_3k8kb")
-
-[node name="TargetSprite" type="Sprite2D" parent="Moves"]
-position = Vector2(32, 30)
-scale = Vector2(3, 3)
-texture = ExtResource("17_3k8kb")
 
 [node name="Label" type="Label" parent="Moves"]
 layout_mode = 0
@@ -250,12 +249,12 @@ script = SubResource("GDScript_6ewan")
 
 [node name="BackgroundDeckSprite" type="Sprite2D" parent="Deck"]
 modulate = Color(0.40642, 0.40642, 0.40642, 1)
-position = Vector2(7, 6)
+position = Vector2(-19, 4)
 texture = ExtResource("15_ask3q")
 centered = false
 
 [node name="DeckSprite" type="Sprite2D" parent="Deck"]
-position = Vector2(50, 75)
+position = Vector2(18, 75)
 texture = ExtResource("15_ask3q")
 
 [node name="MovesLabel" type="Label" parent="."]
@@ -268,6 +267,8 @@ theme_override_font_sizes/font_size = 46
 text = "MOVES UNTIL DETECTION"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Terminal" parent="." instance=ExtResource("17_3i1r4")]
 
 [connection signal="game_over" from="Moves" to="." method="_on_moves_game_over"]
 [connection signal="move" from="Hand" to="." method="_on_hand_move"]

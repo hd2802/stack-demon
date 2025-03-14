@@ -32,7 +32,7 @@ stream = ExtResource("3_07ivs")
 
 [node name="CardHoverPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pf7vg")
-volume_db = -10.4
+volume_db = -30.704
 pitch_scale = 0.47
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
