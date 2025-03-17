@@ -33,13 +33,6 @@ theme = ExtResource("1_v4qn4")
 theme_override_font_sizes/font_size = 30
 text = "CLICK TO CONTINUE"
 
-[node name="NextButton" type="Button" parent="."]
-offset_left = 425.0
-offset_top = 45.0
-offset_right = 1055.0
-offset_bottom = 170.0
-flat = true
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.04
 

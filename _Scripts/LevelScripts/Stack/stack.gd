@@ -53,6 +53,7 @@ func push(card : String):
 		
 	self.add_child(new_card)
 	update_stack_references()
+	_on_push()
 
 func _on_card_played(card: Card):
 	card_audio_player.play()
@@ -81,10 +82,7 @@ func calculator(operation : String, operand_1 : String, operand_2 : String) -> i
 			return int(operand_1) * int(operand_2)
 	return 0
 
-func _on_stack_calculation_button_pressed() -> void:
-	print(stack)
-	enter_audio_player.play()
-	# Ensure we have enough elements for a calculation
+func _on_push() -> void:
 	if stack.size() >= 3 and is_operation(stack[-1]) and not is_operation(stack[-2]) and not is_operation(stack[-3]):
 		var operand_1 = stack[-2]
 		var operand_2 = stack[-3]
