@@ -51,3 +51,6 @@ func load_next_text():
 
 		>> THINK FAST. BREAK IN. GET THE JOB DONE. "
 	initialise_label()
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://_Scenes/TutorialManager/tutorial_manager.tscn")
