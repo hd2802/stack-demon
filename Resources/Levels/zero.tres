@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="LevelDataResource" load_steps=2 format=3 uid="uid://lffc0h8kg046"]
 
-[ext_resource type="Script" path="res://CustomResources/level_data.gd" id="1_kxahu"]
+[ext_resource type="Script" uid="uid://rwjcrwytakj6" path="res://CustomResources/level_data.gd" id="1_kxahu"]
 
 [resource]
 script = ExtResource("1_kxahu")
 level_number = 0
-hand = Array[String](["two"])
 target_value = 2
-exact_target = true
+tier = 0
+moves = 0

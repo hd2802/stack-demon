@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://caxqw4oag1u50"]
 
 [ext_resource type="PackedScene" uid="uid://dipmb0ce8ps10" path="res://_Scenes/Level/level.tscn" id="1_c4uvv"]
-[ext_resource type="Shader" path="res://Assets/Shaders/glitch.gdshader" id="1_dk5fh"]
-[ext_resource type="Script" path="res://_Scripts/Tutorial/tutorial.gd" id="1_nvupq"]
+[ext_resource type="Shader" uid="uid://cycivou0gyfns" path="res://Assets/Shaders/glitch.gdshader" id="1_dk5fh"]
+[ext_resource type="Script" uid="uid://62268364r5gi" path="res://_Scripts/Tutorial/tutorial.gd" id="1_nvupq"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="3_vjltb"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="4_tdmde"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Assets/Themes/level_title.tres" id="6_kc81u"]

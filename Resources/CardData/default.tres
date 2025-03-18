@@ -1,9 +1,7 @@
 [gd_resource type="Resource" script_class="CardDataResource" load_steps=2 format=3 uid="uid://d114n48u8x1sh"]
 
-[ext_resource type="Script" path="res://CustomResources/card_data.gd" id="1_thetd"]
+[ext_resource type="Script" uid="uid://dx3rblym6ob45" path="res://CustomResources/card_data.gd" id="1_thetd"]
 
 [resource]
 script = ExtResource("1_thetd")
-value = 0
-operation = "default"
 text = "default"

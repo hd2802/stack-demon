@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdsld6n6wbfu7"]
 
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="1_i1b8u"]
-[ext_resource type="Script" path="res://_Scripts/GameOverText/game_over_text.gd" id="1_paoni"]
+[ext_resource type="Script" uid="uid://dyfqslc60dqsx" path="res://_Scripts/GameOverText/game_over_text.gd" id="1_paoni"]
 
 [node name="GameOver" type="Node"]
 

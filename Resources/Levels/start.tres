@@ -1,9 +1,10 @@
 [gd_resource type="Resource" script_class="LevelDataResource" load_steps=2 format=3 uid="uid://bic2v0fwsb3ux"]
 
-[ext_resource type="Script" path="res://CustomResources/level_data.gd" id="1_ty04b"]
+[ext_resource type="Script" uid="uid://rwjcrwytakj6" path="res://CustomResources/level_data.gd" id="1_ty04b"]
 
 [resource]
 script = ExtResource("1_ty04b")
 level_number = 0
 target_value = 2
-exact_target = false
+tier = 0
+moves = 0

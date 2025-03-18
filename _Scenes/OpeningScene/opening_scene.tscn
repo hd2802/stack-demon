@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://drfaltbh2mdem"]
 
-[ext_resource type="Script" path="res://_Scripts/OpeningScene/opening_scene.gd" id="1_pnf56"]
+[ext_resource type="Script" uid="uid://djc6o1ymbx8l5" path="res://_Scripts/OpeningScene/opening_scene.gd" id="1_pnf56"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="1_sg3hp"]
 [ext_resource type="AudioStream" uid="uid://ccbdagiqj4u8k" path="res://Assets/SoundFX/450282__stu556__mechanical-keyboard-typing-treble-version.wav" id="2_p1qjf"]
 

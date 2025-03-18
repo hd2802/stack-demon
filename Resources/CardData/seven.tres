@@ -1,9 +1,7 @@
 [gd_resource type="Resource" script_class="CardDataResource" load_steps=2 format=3 uid="uid://unsl31lbbhtp"]
 
-[ext_resource type="Script" path="res://CustomResources/card_data.gd" id="1_1j528"]
+[ext_resource type="Script" uid="uid://dx3rblym6ob45" path="res://CustomResources/card_data.gd" id="1_1j528"]
 
 [resource]
 script = ExtResource("1_1j528")
-value = 7
-operation = "int"
 text = "7"
