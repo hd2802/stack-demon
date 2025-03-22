@@ -11,12 +11,14 @@ func _ready() -> void:
 
 	label = self.get_node("Label")
 	
-	$HUHButton.visible = false
+	$MathsLabel.visible = false
+	
 	$ContinueButton.visible = false
 	
 	initialise_label()
 
 func initialise_label() -> void:
+	$ContinueButton.visible = false
 	label.visible_ratio = 0.0
 	pc = 1.0 / label.text.length()
 	$Timer.start()
@@ -27,18 +29,17 @@ func _on_timer_timeout() -> void:
 		$Timer.stop()
 
 		if text_count == 0:
-			$HUHButton.visible = true
+			$ContinueButton.visible = true
 		elif text_count == 1:
-			$HUHButton.text = "WHAT?"
-			$HUHButton.visible = true
+			$ContinueButton.text = "WHAT?"
+			$ContinueButton.visible = true
 		elif text_count == 2:
-			$HUHButton.text = "HACKING???"
-			$HUHButton.visible = true
+			$ContinueButton.text = "HACKING???"
+			$ContinueButton.visible = true
 		elif text_count == 3:
 			$ContinueButton.visible = true
 
-func _on_huh_button_pressed() -> void:
-	$HUHButton.visible = false
+func _on_continue_button_pressed() -> void:
 	text_count += 1
 	if text_count == 1:
 		label.text = "> INFIX NOTATION... HAVE YOU EVER HEARD OF IT?"
@@ -46,12 +47,7 @@ func _on_huh_button_pressed() -> void:
 		label.text = "> DO YOU EVEN KNOW ANYTHING ABOUT HACKING?"
 	elif text_count == 3:
 		label.text = "> OKAY. LET'S START FROM THE BEGINNING
-		> IN THIS WORLD, COMPUTERS RUN OFF CODE FED TO THEM BY CARDS
-		> THE COMPUTER PROCESSES THESE CARDS TO RUN PROGRAMS"
-	initialise_label()
-
-func _on_continue_button_pressed() -> void:
-	text_count += 1
+		> IN THIS WORLD, COMPUTERS RUN OFF CODE IN REVERSE POLISH NOTATION"
 	if text_count == 4:
-		label.text = "> WE CAN HACK INTO SYSTEMS BY USING THESE CARDS TO OUR ADVANTAGE"
+		label.text = "> RATHER THAN WRITING 2 + 3, THIS SYSTEM USES THE NOTATION 2 3 +"
 	initialise_label()

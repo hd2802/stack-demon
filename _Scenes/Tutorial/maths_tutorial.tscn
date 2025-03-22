@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://chr00ggvqg3yl"]
+[gd_scene load_steps=4 format=3 uid="uid://chr00ggvqg3yl"]
 
 [ext_resource type="Script" uid="uid://ck76ge6wlenw8" path="res://_Scripts/Tutorial/maths_tutorial.gd" id="1_ghamr"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Assets/Themes/label.tres" id="3_fhw8l"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Assets/Themes/stack.tres" id="3_r5o7k"]
 
 [node name="MathsTutorial" type="Node2D"]
 script = ExtResource("1_ghamr")
@@ -12,36 +13,40 @@ offset_bottom = 720.0
 color = Color(0.121569, 0.121569, 0.121569, 1)
 
 [node name="Label" type="Label" parent="."]
-offset_left = 139.0
-offset_top = 76.0
-offset_right = 1143.0
-offset_bottom = 273.0
+offset_left = 51.0
+offset_top = 114.0
+offset_right = 1226.0
+offset_bottom = 513.0
 theme = ExtResource("3_fhw8l")
+theme_override_font_sizes/font_size = 72
 text = "> LISTEN UP, HACKER
 > YOU'VE BEEN CHOSEN SPECIALLY TO COMPLETE THIS MISSION BASED 
   ON YOUR KNOWLEDGE OF INFIX NOTATION 
 "
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.04
-
-[node name="HUHButton" type="Button" parent="."]
-offset_left = 1021.0
-offset_top = 251.0
-offset_right = 1126.0
-offset_bottom = 300.0
-theme = ExtResource("3_fhw8l")
-text = "HUH?"
-
 [node name="ContinueButton" type="Button" parent="."]
-offset_left = 933.0
-offset_top = 349.0
-offset_right = 1211.0
-offset_bottom = 421.0
+offset_left = 903.0
+offset_top = 521.0
+offset_right = 1207.0
+offset_bottom = 639.0
 theme = ExtResource("3_fhw8l")
+theme_override_font_sizes/font_size = 72
 text = "CONTINUE"
 flat = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="pressed" from="HUHButton" to="." method="_on_huh_button_pressed"]
+[node name="MathsLabel" type="Label" parent="."]
+offset_left = 214.0
+offset_top = 420.0
+offset_right = 684.0
+offset_bottom = 559.0
+theme = ExtResource("3_r5o7k")
+theme_override_font_sizes/font_size = 128
+text = "2 + 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.04
+
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
