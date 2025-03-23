@@ -117,9 +117,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hand" type="HBoxContainer" parent="."]
-offset_left = 457.0
+offset_left = 451.0
 offset_top = 528.0
-offset_right = 957.0
+offset_right = 972.0
 offset_bottom = 678.0
 mouse_filter = 2
 script = ExtResource("5_fjvq6")
