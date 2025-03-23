@@ -1,5 +1,7 @@
 # Hack-RPN
 
+As of 23/03/25: removing branch based development - slowing down the process unncessarily
+
 **GOAL:** Finish development by APRIL
 
 A hacker-themed game to teach stack-based reverse polish notation. Created for final year dissertation project at the University of Bath, graduation year 2025
