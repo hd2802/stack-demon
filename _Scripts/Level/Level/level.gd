@@ -5,7 +5,6 @@ var level_data : LevelDataResource
 
 var title_node : Label
 var tier_title_node : Label
-var stack_node : Stack
 var hand_node : Hand
 var target_node : Target
 var move_node : Moves
@@ -37,9 +36,6 @@ func load_level(level_data) -> void:
 	tier_title_node = self.get_node("LevelTierLabel")
 	tier_title_node.text = "TIER " + str(level_data.tier) + " HACK" 
 	
-	# Stack initialisation
-	stack_node = self.get_node("Stack")
-	
 	# Hand initialisation
 	hand_node = self.get_node("Hand")
 	
@@ -70,15 +66,5 @@ func _on_hand_move() -> void:
 func _on_moves_game_over() -> void:
 	game_over.emit()
 
-func _on_stack_target_check(current_stack: Array[String]) -> void:
-	await get_tree().create_timer(1.5).timeout
-	
-	if len(current_stack) == 1 and int(current_stack[0]) >= target:
-		tier_complete = true
-		next_button.visible = true
-	else:
-		pass
-
 func _on_next_button_pressed() -> void:
 	level_complete.emit()
-	stack_node.clear_stack()

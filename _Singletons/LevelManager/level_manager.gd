@@ -10,8 +10,8 @@ var current_level: int = 0
 var tier_base_target: int = 2
 var tier_current_target: int = tier_base_target
 
-const MAX_MOVES: int = 10
-var moves: int = 10
+const MAX_MOVES: int = 5
+var moves: int = 5
 
 var rng = RandomNumberGenerator.new()
 
