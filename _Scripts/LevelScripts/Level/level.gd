@@ -10,8 +10,6 @@ var hand_node : Hand
 var target_node : Target
 var move_node : Moves
 
-var term : Terminal
-
 var next_button
 var next_label
 
@@ -22,7 +20,6 @@ var tier_complete = false
 signal level_complete()
 signal game_over()
 signal moves_decremented()
-signal terminal_text(text : String)
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
@@ -60,10 +57,6 @@ func load_level(level_data) -> void:
 	
 	target = level_data.target_value
 	
-	term = load("res://_Scenes/Terminal/terminal.tscn").instantiate()
-	self.add_child(term)
-	term.visible = false
-	
 	next_button = self.get_node("NextButton")
 	next_button.visible = false
 
@@ -81,11 +74,10 @@ func _on_stack_target_check(current_stack: Array[String]) -> void:
 	await get_tree().create_timer(1.5).timeout
 	
 	if len(current_stack) == 1 and int(current_stack[0]) >= target:
-		terminal_text.emit("> HACK COMPLETE - PLEASE CONTINUE")
 		tier_complete = true
 		next_button.visible = true
 	else:
-		terminal_text.emit("> HACK INCOMPLETE - TRY AGAIN")
+		pass
 
 func _on_next_button_pressed() -> void:
 	level_complete.emit()
