@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=20 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/LevelScripts/Level/level.gd" id="1_er2o0"]
+[ext_resource type="Shader" uid="uid://b3vc87wpridi4" path="res://Assets/Shaders/swirl.gdshader" id="2_ayim6"]
 [ext_resource type="AudioStream" uid="uid://c6xvrihnfurh3" path="res://Assets/SoundFX/789630__sadiquecat__keychron-k10-space_bar.wav" id="2_buyg3"]
 [ext_resource type="Texture2D" uid="uid://bw1xjnxmmg4yv" path="res://Assets/Sprites/New Piskel-1.png(15).png" id="2_i7m13"]
 [ext_resource type="AudioStream" uid="uid://d3bl4qq711mrt" path="res://Assets/SoundFX/96127__bmaczero__contact1.wav" id="3_e10y2"]
@@ -17,6 +18,22 @@
 [ext_resource type="Script" uid="uid://dc840b3cgmdl0" path="res://_Scripts/LevelScripts/Moves/moves.gd" id="16_rdoxq"]
 [ext_resource type="Texture2D" uid="uid://di0qua3ao0lt" path="res://Assets/Sprites/next_button.png" id="17_0jqwp"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6fxwj"]
+shader = ExtResource("2_ayim6")
+shader_parameter/polar_coordinates = true
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.525101, 0.525101, 0.525101, 1)
+shader_parameter/colour_2 = Color(0.984546, 0.984547, 0.984546, 1)
+shader_parameter/colour_3 = Color(0, 0, 0, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.4
+shader_parameter/pixel_filter = 700.0
+
 [sub_resource type="GDScript" id="GDScript_6ewan"]
 script/source = "extends Node
 class_name Deck
@@ -26,6 +43,7 @@ class_name Deck
 script = ExtResource("1_er2o0")
 
 [node name="MainBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6fxwj")
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
