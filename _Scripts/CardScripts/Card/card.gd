@@ -10,28 +10,18 @@ var card_selected_player
 var stat : bool = false
 
 func _ready() -> void:  
-	card_selected_player = $CardSelectedPlayer
+	pass
 
 func createCard(card : String):
 	self.card_data = load("res://Resources/CardData/" + card + ".tres")
 	var sprite = self.get_node("Sprite2D")
 	sprite.texture = load("res://Assets/Sprites/CardSprites/" + card + ".png")
 
-func create_result_card(value : String):
-	var sprite = self.get_node("Sprite2D")
-	sprite.texture = load("res://Assets/Sprites/Custom/blank_card.png")
-	sprite.static_sprite = true
-	var label = Label.new()
-	label.text = value
-	label.position = Vector2(22, 45)
-	self.add_child(label)
-
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if !stat:
 		if event is InputEventMouseButton and event.pressed:
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				clicked.emit(self)
-				card_selected_player.play()
 			elif event.button_index == MOUSE_BUTTON_RIGHT and get_parent().selected_card == self:
 				get_parent()._on_card_clicked(self)
 	else:

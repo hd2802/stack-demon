@@ -22,8 +22,7 @@ const START_DECK : Array[String] = [
 	"add", "add",
 	"add", "add",
 	"multiply", "multiply",
-	"multiply", "multiply",
-	"del", "del"
+	"multiply", "multiply"
 ]
 
 func _ready() -> void:

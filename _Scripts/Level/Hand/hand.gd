@@ -10,7 +10,9 @@ var calculator : Calculator
 
 const HAND_SIZE = 7
 
-signal move()
+signal hand_played()
+signal hand_discarded()
+signal scored(sc : int)
 
 func _ready():
 	fill_hand(0)
@@ -58,24 +60,26 @@ func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		pass
 	else:
-		calculator._on_hand_played(selected_cards)
+		var score = calculator._on_hand_played(selected_cards)
+		scored.emit(score)
 
 		# remove them physically from the hand 
 		for card in selected_cards:
 			card.queue_free()
 			
-		move.emit()
+		hand_played.emit()
 		
 		# remove the selected cards from the logic of the hand 
 		selected_cards = []
 		add_random_card()
 
+# need to make it so multiple cards can be discarded at one time 
 func _on_discard_button_pressed() -> void:
 	
 	if selected_card:
 		selected_card.queue_free()
 		selected_card = null
-		move.emit()
+		hand_discarded.emit()
 		add_random_card()
 		
 	else:

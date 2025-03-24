@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=6 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Script" uid="uid://dm4mse77nk574" path="res://_Scripts/CardScripts/Card/card.gd" id="1_hcfnd"]
 [ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="1_pfrss"]
-[ext_resource type="AudioStream" uid="uid://ds7bpdlmy2pv0" path="res://Assets/SoundFX/39562__the_bizniss__mouse-click.wav" id="3_07ivs"]
-[ext_resource type="AudioStream" uid="uid://ca8kdkqfwwjgd" path="res://Assets/SoundFX/773604__kreha__smallclick.wav" id="3_pf7vg"]
 [ext_resource type="Shader" uid="uid://qm02wy00tpr0" path="res://Resources/Shaders/card_effect.gdshader" id="3_wd3g7"]
-[ext_resource type="Script" uid="uid://dpy628yfdds8k" path="res://_Scripts/CardScripts/CardEffect/card_effect.gd" id="6_6bccu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gal8a"]
 shader = ExtResource("3_wd3g7")
@@ -27,19 +24,10 @@ mouse_filter = 2
 theme = ExtResource("1_pfrss")
 script = ExtResource("1_hcfnd")
 
-[node name="CardSelectedPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_07ivs")
-
-[node name="CardHoverPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_pf7vg")
-volume_db = -30.704
-pitch_scale = 0.47
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_gal8a")
 position = Vector2(50, 75)
 scale = Vector2(0.25, 0.25)
-script = ExtResource("6_6bccu")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

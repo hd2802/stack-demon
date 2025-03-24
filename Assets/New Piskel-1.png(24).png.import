@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6da75ow854oy"
-path="res://.godot/imported/stack-container.png-8373c81924424a5de5af9032e2096491.ctex"
+uid="uid://disxuv14m6prs"
+path="res://.godot/imported/New Piskel-1.png(24).png-bc5ca37ac69d5b1ab485982965210b17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Custom/stack-container.png"
-dest_files=["res://.godot/imported/stack-container.png-8373c81924424a5de5af9032e2096491.ctex"]
+source_file="res://New Piskel-1.png(24).png"
+dest_files=["res://.godot/imported/New Piskel-1.png(24).png-bc5ca37ac69d5b1ab485982965210b17.ctex"]
 
 [params]
 

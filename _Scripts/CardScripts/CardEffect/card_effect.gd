@@ -10,7 +10,6 @@ var card_hover_player
 
 func _ready():
 	material = material.duplicate()
-	card_hover_player = $"../CardHoverPlayer"
 
 func _input(event):
 	if !static_sprite:
@@ -19,8 +18,6 @@ func _input(event):
 			var in_bounds = get_rect().has_point(local_mouse_pos)
 
 			if in_bounds and not is_hovered:
-				if not card_hover_player.playing: 
-					card_hover_player.play()
 				is_hovered = true
 			
 			if in_bounds and is_hovered:

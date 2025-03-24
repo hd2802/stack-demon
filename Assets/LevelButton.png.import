@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdhgjg1w1qb73"
-path="res://.godot/imported/stack_container_yello.png-509d38ec767dd7e989fcee854930d837.ctex"
+uid="uid://8mmw1y4nbqkd"
+path="res://.godot/imported/LevelButton.png-864d47611b4a1f6d7a71f912425f65c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Custom/stack_container_yello.png"
-dest_files=["res://.godot/imported/stack_container_yello.png-509d38ec767dd7e989fcee854930d837.ctex"]
+source_file="res://Assets/LevelButton.png"
+dest_files=["res://.godot/imported/LevelButton.png-864d47611b4a1f6d7a71f912425f65c0.ctex"]
 
 [params]
 

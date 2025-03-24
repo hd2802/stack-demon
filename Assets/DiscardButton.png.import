@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xvnv472ldtci"
-path="res://.godot/imported/handhighlight.png-c44e41f75c736a1711d12ce8b500b936.ctex"
+uid="uid://dmeyxhca61rca"
+path="res://.godot/imported/DiscardButton.png-7580a483bcede635e807b53bb8b671f7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Highlights/handhighlight.png"
-dest_files=["res://.godot/imported/handhighlight.png-c44e41f75c736a1711d12ce8b500b936.ctex"]
+source_file="res://Assets/DiscardButton.png"
+dest_files=["res://.godot/imported/DiscardButton.png-7580a483bcede635e807b53bb8b671f7.ctex"]
 
 [params]
 

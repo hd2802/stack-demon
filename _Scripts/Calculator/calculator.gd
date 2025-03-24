@@ -5,25 +5,26 @@ var stack : Array[String]
 
 func _ready() -> void:
 	pass
-
+	
 # function called by the hand class -> the only connecting method
 # any other methods must be triggered through this
-func _on_hand_played(cards_played : Array[Card]) -> void:
+func _on_hand_played(cards_played : Array[Card]) -> int:
 	
 	# initialise the stack of operands and operations 
 	for card in cards_played:
 		stack.push_back(card.card_data.text)
 	
-	evaluate()
+	var sc = evaluate()
+	return sc
 
 func evaluate() -> int:
 	if !is_valid_expression():
 		# then we want to use the highest value card that has been used
-		var temp_int_stack = []
-		for str in stack:
-			temp_int_stack.push_back(int(str))
-		print(temp_int_stack.max())
-		return temp_int_stack.max() # works even for operations as they get converted to 0
+		var max = 0
+		for card in stack:
+			if int(card) > max:
+				max = int(card)
+		return max
 	else:
 		if len(stack) == 3:
 			var operation = stack.pop_back()
@@ -33,7 +34,11 @@ func evaluate() -> int:
 			return calculate(operation, int(operand1), int(operand2))
 		# TODO deal with more complex hands played here
 		else:
-			return 0
+			var max = 0
+			for card in stack:
+				if int(card) > max:
+					max = int(card)
+			return max
 		
 
 # helper functions for calculate() ------------------------------------------------------

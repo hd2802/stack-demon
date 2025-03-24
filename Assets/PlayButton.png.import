@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btbvabwt5xyfm"
-path="res://.godot/imported/UI_Hologram_Slot_Available_02a.png-a96086f39aca23216ef4f852e92348b1.ctex"
+uid="uid://bquqdw1sgn7xg"
+path="res://.godot/imported/PlayButton.png-7007b3c8145db8dfd981d11e63cd30dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/UI_Hologram_Slot_Available_02a.png"
-dest_files=["res://.godot/imported/UI_Hologram_Slot_Available_02a.png-a96086f39aca23216ef4f852e92348b1.ctex"]
+source_file="res://Assets/PlayButton.png"
+dest_files=["res://.godot/imported/PlayButton.png-7007b3c8145db8dfd981d11e63cd30dd.ctex"]
 
 [params]
 
