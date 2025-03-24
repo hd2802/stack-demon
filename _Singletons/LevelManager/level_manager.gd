@@ -28,6 +28,7 @@ func _load_first_level():
 	level = load("res://_Scenes/Level/level.tscn").instantiate()
 	var lvl_data = load("res://Resources/Levels/start.tres")
 	level.load_level(lvl_data)
+	level.set_move_counter(MAX_MOVES)
 
 	# Add the level to the current scene
 	get_tree().current_scene.add_child(level)
