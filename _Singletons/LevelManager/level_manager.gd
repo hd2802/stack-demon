@@ -37,9 +37,6 @@ func _load_first_level():
 func _on_level_complete() -> void:
 	_load_next_level()
 
-func _on_moves_decremented() -> void:
-	moves -= 1
-
 func _create_next_level() -> LevelDataResource:
 	var lvl_data = LevelDataResource.new()
 	
@@ -80,5 +77,8 @@ func _load_next_level() -> void:
 	_DeckManager.reset_draw_pile()
 	
 func _clear_level() -> void:
+	for child in get_tree().current_scene.get_children():
+		if child is Hand:
+			child.queue_free()  
 	if level:
 		level.queue_free()

@@ -17,6 +17,8 @@ signal hand_played()
 signal hand_discarded()
 signal scored(sc : int)
 
+var cards_added : int = 0
+
 
 func _ready():
 	for i in range(0, HAND_SIZE):
@@ -26,6 +28,7 @@ func _ready():
 # -----------------------------------------------------------------------------
 
 func add_card():
+	
 	var card_id = _DeckManager.draw_card()
 	current_hand.push_back(card_id)
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
@@ -33,17 +36,17 @@ func add_card():
 	new_card.clicked.connect(_on_card_clicked)
 	self.add_child(new_card)
 	arrange_cards()
-
+	cards_added += 1
 # -----------------------------------------------------------------------------
 
 func arrange_cards():
 	if get_child_count() == 0:
 		return
 
-	for i in range(get_child_count()):
-		var card = get_child(i)
+	for i in range(self.get_child_count()):
+		var card = self.get_child(i)
 
-		var hand_ratio = float(i) / float(get_child_count() - 1) if get_child_count() > 1 else 0.5
+		var hand_ratio = float(i) / float(self.get_child_count() - 1) if get_child_count() > 1 else 0.5
 
 		var spread_offset = spread_curve.sample(hand_ratio) * 625
 
@@ -66,7 +69,7 @@ func _on_card_clicked(card: Card):
 		selected_cards.push_back(card)
 		card.position.y -= 20
 
-
+# THIS IS LIKELY WHERE THE GHOST CARD ISSUE IS
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		pass
@@ -76,13 +79,21 @@ func _on_play_card_button_pressed() -> void:
 
 		# remove them physically from the hand 
 		for card in selected_cards:
+			# remove the card sprite from the hand
+			self.remove_child(card)
 			card.queue_free()
+			
+			# remove the card data from the array
 			current_hand.erase(card.card_data.text)
+			
+			# add a new card to replace the old one
 			add_card()
 		hand_played.emit()
+		
 		# remove the selected cards from the logic of the hand 
 		selected_cards = []
 
+# OR HERE (GHOST CARD ISSUE)
 # need to make it so multiple cards can be discarded at one time 
 func _on_discard_button_pressed() -> void:
 	if len(selected_cards) != 0:
@@ -90,7 +101,7 @@ func _on_discard_button_pressed() -> void:
 		for card in selected_cards:
 			card.queue_free()
 			current_hand.erase(card.card_data.text)
-			add_card()
+			#add_card()
 		selected_cards = []
 		hand_discarded.emit()
 		
