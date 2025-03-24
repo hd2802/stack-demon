@@ -30,11 +30,11 @@ func _ready() -> void:
 func load_level(level_data) -> void:
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
-	title_node.text = "LEVEL " + str(level_data.level_number)
+	title_node.text = "Level " + str(level_data.level_number)
 	
 	# Tier title initialisation
 	tier_title_node = self.get_node("LevelTierLabel")
-	tier_title_node.text = "TIER " + str(level_data.tier) + " HACK" 
+	tier_title_node.text = "Tier " + str(level_data.tier)
 	
 	# Hand initialisation
 	hand_node = self.get_node("Hand")
@@ -43,28 +43,7 @@ func load_level(level_data) -> void:
 	target_node = self.get_node("Target")
 	target_node.initialise_target(level_data.target_value)
 	
-	# Setting up the target label
-	var target_label = self.get_node("TargetLabelRich")
-	target_label.text = "[center]SCORE [color=red]AT LEAST[/color][/center]"
-		
-	# Setting up the Move Counter
-	move_node = self.get_node("Moves")
-	move_node.set_move_counter(level_data.moves)
-	
 	target = level_data.target_value
-	
-	next_button = self.get_node("NextButton")
-	next_button.visible = false
-
-func set_move_counter(moves : int) -> void:
-	move_node.set_move_counter(moves)
-
-func _on_hand_move() -> void:
-	move_node.decrement_move_counter()
-	moves_decremented.emit()
-
-func _on_moves_game_over() -> void:
-	game_over.emit()
 
 func _on_next_button_pressed() -> void:
 	level_complete.emit()
