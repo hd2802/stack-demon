@@ -19,13 +19,14 @@ signal scored(sc : int)
 
 
 func _ready():
-	fill_hand(HAND_SIZE - HAND_SIZE)
-	
+	for i in range(0, HAND_SIZE):
+		add_card()
 	calculator = Calculator.new()
 	
 # -----------------------------------------------------------------------------
 
-func add_card(card_id : String):
+func add_card():
+	var card_id = _DeckManager.draw_card()
 	current_hand.push_back(card_id)
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
 	new_card.createCard(card_id)
@@ -47,24 +48,9 @@ func arrange_cards():
 		var spread_offset = spread_curve.sample(hand_ratio) * 625
 
 		var height_offset = height_curve.sample(hand_ratio) * -8
-	
 
 		card.position = Vector2(spread_offset, height_offset)
-
-
-# -----------------------------------------------------------------------------
-
-func add_random_card():
-	await get_tree().create_timer(0.5).timeout
-	var new_card_id = _DeckManager.draw_card()
-	add_card(new_card_id)
-
-
-func fill_hand(num_cards : int) -> void:
-	while num_cards < HAND_SIZE:
-		add_random_card()
-		num_cards += 1
-
+	
 # -----------------------------------------------------------------------------
 
 func _on_card_clicked(card: Card):
@@ -91,21 +77,22 @@ func _on_play_card_button_pressed() -> void:
 		# remove them physically from the hand 
 		for card in selected_cards:
 			card.queue_free()
-			
+			current_hand.erase(card.card_data.text)
+			add_card()
 		hand_played.emit()
-		
 		# remove the selected cards from the logic of the hand 
 		selected_cards = []
-		add_random_card()
 
 # need to make it so multiple cards can be discarded at one time 
 func _on_discard_button_pressed() -> void:
-	
-	if selected_card:
-		selected_card.queue_free()
-		selected_card = null
+	if len(selected_cards) != 0:
+		
+		for card in selected_cards:
+			card.queue_free()
+			current_hand.erase(card.card_data.text)
+			add_card()
+		selected_cards = []
 		hand_discarded.emit()
-		add_random_card()
 		
 	else:
 		pass
