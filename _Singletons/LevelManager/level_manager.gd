@@ -33,7 +33,6 @@ func _load_first_level():
 	get_tree().current_scene.add_child(level)
 	
 	level.level_complete.connect(_on_level_complete)
-	level.moves_decremented.connect(_on_moves_decremented)
 
 func _on_level_complete() -> void:
 	_load_next_level()

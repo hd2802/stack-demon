@@ -1,31 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=3 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Script" uid="uid://dm4mse77nk574" path="res://_Scripts/CardScripts/Card/card.gd" id="1_hcfnd"]
-[ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="1_pfrss"]
-[ext_resource type="Shader" uid="uid://qm02wy00tpr0" path="res://Resources/Shaders/card_effect.gdshader" id="3_wd3g7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gal8a"]
-shader = ExtResource("3_wd3g7")
-shader_parameter/fov = 90.0
-shader_parameter/cull_back = true
-shader_parameter/y_rot = 0.0
-shader_parameter/x_rot = 0.0
-shader_parameter/inset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
 [node name="Card" type="Control"]
-custom_minimum_size = Vector2(100, 150)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 100.0
-offset_bottom = 150.0
-mouse_filter = 2
-theme = ExtResource("1_pfrss")
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = 75.0
+mouse_filter = 1
 script = ExtResource("1_hcfnd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_gal8a")
 position = Vector2(50, 75)
 scale = Vector2(0.25, 0.25)
 
@@ -40,5 +29,3 @@ scale = Vector2(5.02035, 7.5)
 shape = SubResource("RectangleShape2D_jedek")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

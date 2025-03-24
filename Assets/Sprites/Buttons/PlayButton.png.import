@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8mmw1y4nbqkd"
-path="res://.godot/imported/LevelButton.png-864d47611b4a1f6d7a71f912425f65c0.ctex"
+uid="uid://bquqdw1sgn7xg"
+path="res://.godot/imported/PlayButton.png-8b57aa5a6c0b3eecb9ecbd8b0b9d6962.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/LevelButton.png"
-dest_files=["res://.godot/imported/LevelButton.png-864d47611b4a1f6d7a71f912425f65c0.ctex"]
+source_file="res://Assets/Sprites/Buttons/PlayButton.png"
+dest_files=["res://.godot/imported/PlayButton.png-8b57aa5a6c0b3eecb9ecbd8b0b9d6962.ctex"]
 
 [params]
 

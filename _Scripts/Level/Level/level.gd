@@ -9,8 +9,8 @@ const MAX_DISCARDS : int = 5
 var current_hands : int = MAX_HANDS
 var current_discards : int = MAX_DISCARDS
 
-var title_node : Label
-var tier_title_node : Label
+var title_node : RichTextLabel
+var tier_title_node : RichTextLabel
 var hand_node : Hand
 var target_node : Target
 var move_node : Moves
@@ -26,7 +26,6 @@ var tier_complete = false
 
 signal level_complete()
 signal game_over()
-signal moves_decremented()
 
 func _ready() -> void:
 	# Placeholder for testing and debugging
@@ -38,11 +37,11 @@ func _ready() -> void:
 func load_level(level_data) -> void:
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
-	title_node.text = "Level " + str(level_data.level_number)
+	title_node.text = "[wave amp=25 freq=1]Level " + str(level_data.level_number) + "[/wave]" 
 	
 	# Tier title initialisation
 	tier_title_node = self.get_node("LevelTierLabel")
-	tier_title_node.text = "Tier " + str(level_data.tier)
+	tier_title_node.text = "[wave amp=25 freq=1]Tier " + str(level_data.tier) + "[/wave]" 
 	
 	# Hand initialisation
 	hand_node = self.get_node("Hand")

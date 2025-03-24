@@ -68,5 +68,3 @@ func calculate(operation: String, operand1 : int, operand2 : int) -> int:
 			return operand1 * operand2
 		_:
 			return 0
-	return 0
-	
