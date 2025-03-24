@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=5 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Script" uid="uid://dm4mse77nk574" path="res://_Scripts/CardScripts/Card/card.gd" id="1_hcfnd"]
+[ext_resource type="Texture2D" uid="uid://n3syninrkx8a" path="res://Assets/Sprites/BlankCard.png" id="2_agjfr"]
+[ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="3_7xymu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
@@ -16,7 +18,7 @@ script = ExtResource("1_hcfnd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(50, 75)
-scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_agjfr")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -27,5 +29,41 @@ priority = 1
 position = Vector2(50, 75)
 scale = Vector2(5.02035, 7.5)
 shape = SubResource("RectangleShape2D_jedek")
+
+[node name="TopLeft" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 29.0
+offset_bottom = 29.0
+theme = ExtResource("3_7xymu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Center" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 45.0
+offset_right = 76.0
+offset_bottom = 109.0
+theme = ExtResource("3_7xymu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomRight" type="Label" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 117.0
+offset_right = 95.0
+offset_bottom = 145.0
+theme = ExtResource("3_7xymu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

@@ -10,9 +10,16 @@ func _ready() -> void:
 
 func createCard(card : String):
 	self.card_data = load("res://Resources/CardData/" + card + ".tres")
-	var sprite = self.get_node("Sprite2D")
-	sprite.texture = load("res://Assets/Sprites/CardSprites/" + card + ".png")
+	self.setLabels()
 
+func setLabels():
+	var top_left = self.get_node("TopLeft")
+	var bottom_right = self.get_node("BottomRight")
+	var center = self.get_node("Center")
+	top_left.text = self.card_data.text
+	bottom_right.text = self.card_data.text
+	center.text = self.card_data.text
+	
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
