@@ -8,7 +8,7 @@ var selected_cards : Array[Card] = []
 
 var calculator : Calculator
 
-const HAND_SIZE = 5
+const HAND_SIZE = 7
 
 signal move()
 
