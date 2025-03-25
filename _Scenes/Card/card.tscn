@@ -1,34 +1,76 @@
-[gd_scene load_steps=7 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=8 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Script" uid="uid://dm4mse77nk574" path="res://_Scripts/CardScripts/Card/card.gd" id="1_hcfnd"]
 [ext_resource type="Texture2D" uid="uid://n3syninrkx8a" path="res://Assets/Sprites/BlankCard.png" id="2_agjfr"]
 [ext_resource type="Shader" uid="uid://cw0sk68bgeixc" path="res://Resources/Shaders/card_effect.gdshader" id="2_mol3j"]
 [ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="3_7xymu"]
+[ext_resource type="Script" uid="uid://dpy628yfdds8k" path="res://_Scripts/CardScripts/CardEffect/card_effect.gd" id="4_rd02w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rd02w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mol3j"]
 shader = ExtResource("2_mol3j")
+shader_parameter/debug = false
+shader_parameter/border_scale = 2.0
+shader_parameter/shadow_offset = Vector2(0, -10)
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/blur_amount = 0.0
+shader_parameter/shadow_scale = 1.5
+shader_parameter/disable_rotating = false
 shader_parameter/fov = 90.0
 shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 0.0
 shader_parameter/inset = 0.0
+shader_parameter/hovering = 0.0
+shader_parameter/rand_trans_power = 1.0
+shader_parameter/rand_seed = 0.0
+shader_parameter/vortex_amt = 0.0
+shader_parameter/rotation = 0.0
+shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
-[node name="Card" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -50.0
-offset_top = -75.0
-offset_right = 50.0
-offset_bottom = 75.0
-mouse_filter = 1
+[node name="Card" type="Node2D"]
+position = Vector2(-50, -75)
 script = ExtResource("1_hcfnd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_rd02w")
+material = SubResource("ShaderMaterial_mol3j")
 position = Vector2(50, 75)
 texture = ExtResource("2_agjfr")
+script = ExtResource("4_rd02w")
+
+[node name="TopLeft" type="Label" parent="Sprite2D"]
+offset_left = -44.0
+offset_top = -69.0
+offset_right = -21.0
+offset_bottom = -41.0
+theme = ExtResource("3_7xymu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Center" type="Label" parent="Sprite2D"]
+offset_left = -26.0
+offset_top = -30.0
+offset_right = 26.0
+offset_bottom = 34.0
+theme = ExtResource("3_7xymu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BottomRight" type="Label" parent="Sprite2D"]
+offset_left = 22.0
+offset_top = 42.0
+offset_right = 45.0
+offset_bottom = 70.0
+theme = ExtResource("3_7xymu")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
@@ -39,42 +81,6 @@ priority = 1
 position = Vector2(50, 75)
 scale = Vector2(5.02035, 7.5)
 shape = SubResource("RectangleShape2D_jedek")
-
-[node name="TopLeft" type="Label" parent="."]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 29.0
-offset_bottom = 29.0
-theme = ExtResource("3_7xymu")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Center" type="Label" parent="."]
-layout_mode = 0
-offset_left = 24.0
-offset_top = 45.0
-offset_right = 76.0
-offset_bottom = 109.0
-theme = ExtResource("3_7xymu")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 0
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BottomRight" type="Label" parent="."]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 117.0
-offset_right = 95.0
-offset_bottom = 145.0
-theme = ExtResource("3_7xymu")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
