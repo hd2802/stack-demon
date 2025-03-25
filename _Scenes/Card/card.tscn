@@ -11,7 +11,7 @@ shader = ExtResource("2_mol3j")
 shader_parameter/debug = false
 shader_parameter/border_scale = 2.0
 shader_parameter/shadow_offset = Vector2(0, -10)
-shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/color = Color(0, 0, 0, 0.341176)
 shader_parameter/blur_amount = 0.0
 shader_parameter/shadow_scale = 1.5
 shader_parameter/disable_rotating = false
@@ -30,7 +30,6 @@ shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
 [node name="Card" type="Node2D"]
-position = Vector2(-50, -75)
 script = ExtResource("1_hcfnd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
