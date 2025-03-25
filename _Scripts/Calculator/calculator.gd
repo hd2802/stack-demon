@@ -24,6 +24,7 @@ func evaluate() -> int:
 		for card in stack:
 			if int(card) > max:
 				max = int(card)
+		stack = []
 		return max
 	else:
 		if len(stack) == 3:
@@ -38,6 +39,7 @@ func evaluate() -> int:
 			for card in stack:
 				if int(card) > max:
 					max = int(card)
+			stack = []
 			return max
 		
 
