@@ -28,7 +28,6 @@ func _ready():
 # -----------------------------------------------------------------------------
 
 func add_card():
-	
 	var card_id = _DeckManager.draw_card()
 	current_hand.push_back(card_id)
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
@@ -37,6 +36,7 @@ func add_card():
 	self.add_child(new_card)
 	arrange_cards()
 	cards_added += 1
+	
 # -----------------------------------------------------------------------------
 
 func arrange_cards():
@@ -69,7 +69,6 @@ func _on_card_clicked(card: Card):
 		selected_cards.push_back(card)
 		card.position.y -= 20
 
-# THIS IS LIKELY WHERE THE GHOST CARD ISSUE IS
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		pass
@@ -93,7 +92,6 @@ func _on_play_card_button_pressed() -> void:
 		# remove the selected cards from the logic of the hand 
 		selected_cards = []
 
-# OR HERE (GHOST CARD ISSUE)
 # need to make it so multiple cards can be discarded at one time 
 func _on_discard_button_pressed() -> void:
 	if len(selected_cards) != 0:

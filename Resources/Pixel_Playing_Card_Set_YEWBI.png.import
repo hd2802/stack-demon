@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvrnfjkcmpr8s"
-path="res://.godot/imported/green.png-e3a17091688e10a7013279b38edc7f8a.ctex"
+uid="uid://cn4momo05ltd8"
+path="res://.godot/imported/Pixel_Playing_Card_Set_YEWBI.png-cf345afc800283ea3f93f9a187ba5440.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/gut/images/green.png"
-dest_files=["res://.godot/imported/green.png-e3a17091688e10a7013279b38edc7f8a.ctex"]
+source_file="res://Resources/Pixel_Playing_Card_Set_YEWBI.png"
+dest_files=["res://.godot/imported/Pixel_Playing_Card_Set_YEWBI.png-cf345afc800283ea3f93f9a187ba5440.ctex"]
 
 [params]
 
