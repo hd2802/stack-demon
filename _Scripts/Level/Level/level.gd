@@ -3,8 +3,8 @@ class_name Level
 
 var level_data : LevelDataResource
 
-const MAX_HANDS : int = 5
-const MAX_DISCARDS : int = 5
+const MAX_HANDS : int = 4
+const MAX_DISCARDS : int = 3
 
 var current_hands : int = MAX_HANDS
 var current_discards : int = MAX_DISCARDS

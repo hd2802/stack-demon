@@ -3,6 +3,10 @@ class_name Card
 
 var card_data : CardDataResource
 
+var is_hovered : bool = false
+
+var tween_hover : Tween
+
 signal clicked(card: Node)
 
 func _ready() -> void:  
@@ -28,3 +32,9 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			get_parent()._on_card_clicked(self)
 	else:
 		pass
+
+func _on_area_2d_mouse_entered() -> void:
+	is_hovered = true
+
+func _on_area_2d_mouse_exited() -> void:
+	is_hovered = false

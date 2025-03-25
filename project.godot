@@ -13,7 +13,6 @@ config_version=5
 config/name="game"
 run/main_scene="uid://ciga2fd0nakw1"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="uid://f7je5osdp5ve"
 
 [autoload]
 
