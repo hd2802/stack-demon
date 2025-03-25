@@ -45,7 +45,7 @@ func evaluate() -> int:
 
 # helper functions for calculate() ------------------------------------------------------
 func is_operation(value: String) -> bool:
-	return value in ["+", "/", "*", "^", "-"]
+	return value in ["+", "/", "X", "^", "-"]
 
 func is_valid_expression() -> bool:
 	var operand_count = 0
@@ -66,7 +66,7 @@ func calculate(operation: String, operand1 : int, operand2 : int) -> int:
 	match operation:
 		"+":
 			return operand1 + operand2
-		"*":
+		"X":
 			return operand1 * operand2
 		_:
 			return 0

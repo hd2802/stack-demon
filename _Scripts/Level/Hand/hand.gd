@@ -99,7 +99,7 @@ func _on_discard_button_pressed() -> void:
 		for card in selected_cards:
 			card.queue_free()
 			current_hand.erase(card.card_data.text)
-			#add_card()
+			add_card()
 		selected_cards = []
 		hand_discarded.emit()
 		
