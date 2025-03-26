@@ -5,11 +5,10 @@ var card_data : CardDataResource
 
 var is_hovered : bool = false
 var is_dragged : bool = false
-var is_selected : bool = false
 var drag_offset : Vector2
 var original_position : Vector2 
 
-var drag_threshold : float = 20.0 
+var drag_threshold : float = 150.0
 
 var tween_hover : Tween
 var sprite : Sprite2D
@@ -42,14 +41,14 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				
-				if (event.position - original_position).length() <= drag_threshold:
+				print((event.position - global_position).length())
+				if (event.position - global_position).length() <= drag_threshold:
 					clicked.emit(self)
-					is_selected = !is_selected
+					print("card: clicked emitted")
 				else:
 					drag_offset = event.position - position
 					is_dragged = true
-			else:
+			else: #i.e. if the button has been released
 				if is_dragged:
 					emit_signal("dragged", self, position)
 				is_dragged = false

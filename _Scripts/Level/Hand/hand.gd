@@ -62,6 +62,7 @@ func arrange_cards():
 # -----------------------------------------------------------------------------
 
 func _on_card_clicked(card: Card):
+	print("hand: card has been clicked")
 	# if the EXACT card is already in the list of selected cards
 	if selected_cards.has(card):
 		card.position.y += 20
