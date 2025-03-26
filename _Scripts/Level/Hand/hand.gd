@@ -25,6 +25,8 @@ func _ready():
 		add_card()
 	calculator = Calculator.new()
 	
+	for card in get_children():
+		card.connect("dragged", Callable(self, "_on_card_dragged"))
 # -----------------------------------------------------------------------------
 
 func add_card():
@@ -105,3 +107,8 @@ func _on_discard_button_pressed() -> void:
 		
 	else:
 		pass
+
+func _on_card_dragged(card : Card, new_position : Vector2):
+	card.position = new_position
+	
+	arrange_cards()
