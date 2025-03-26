@@ -53,23 +53,22 @@ func arrange_cards():
 		var spread_offset = spread_curve.sample(hand_ratio) * 625
 
 		var height_offset = height_curve.sample(hand_ratio) * -8
-
+		
+		if selected_cards.has(card) and !card.is_dragged:
+			height_offset -= 20
+			
 		card.position = Vector2(spread_offset, height_offset)
 	
 # -----------------------------------------------------------------------------
 
 func _on_card_clicked(card: Card):
 	# if the EXACT card is already in the list of selected cards
-		# begs the question of - how do we measure if the exact card is in the list or not
-	# if we store as cards and use the .has function then it should work?
 	if selected_cards.has(card):
-		# here we assume that the card is already risen and marked as selected
-		# so we want to deselect it
 		card.position.y += 20
 		selected_cards.erase(card)
 	else:
-		selected_cards.push_back(card)
 		card.position.y -= 20
+		selected_cards.push_back(card)
 
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:

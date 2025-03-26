@@ -5,8 +5,11 @@ var card_data : CardDataResource
 
 var is_hovered : bool = false
 var is_dragged : bool = false
+var is_selected : bool = false
 var drag_offset : Vector2
 var original_position : Vector2 
+
+var drag_threshold : float = 20.0 
 
 var tween_hover : Tween
 var sprite : Sprite2D
@@ -38,14 +41,20 @@ func set_labels():
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			clicked.emit(self)
 			if event.pressed:
-				is_dragged = true
-				drag_offset = event.position - position
-				emit_signal("clicked", self)
+				
+				if (event.position - original_position).length() <= drag_threshold:
+					clicked.emit(self)
+					is_selected = !is_selected
+				else:
+					drag_offset = event.position - position
+					is_dragged = true
 			else:
+				if is_dragged:
+					emit_signal("dragged", self, position)
 				is_dragged = false
-				emit_signal("dragged", self, position)
+			
+
 		elif event.button_index == MOUSE_BUTTON_RIGHT and get_parent().selected_card == self:
 			get_parent()._on_card_clicked(self)
 

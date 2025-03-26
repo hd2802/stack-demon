@@ -30,7 +30,6 @@ shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
 [node name="Card" type="Node2D"]
-position = Vector2(-50, -75)
 script = ExtResource("1_hcfnd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -84,3 +83,4 @@ shape = SubResource("RectangleShape2D_jedek")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
