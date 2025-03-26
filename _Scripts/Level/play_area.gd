@@ -96,6 +96,7 @@ func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		pass
 	else:
+		
 		var score = calculator._on_hand_played(selected_cards)
 		scored.emit(score)
 
@@ -104,6 +105,13 @@ func _on_play_card_button_pressed() -> void:
 			# remove the card sprite from the hand
 			e_zone.remove_child(card)
 			card.queue_free()
+			
+			var ghost_card = ghost_cards.get(card, null)
+	
+			if ghost_card:
+				hand.remove_child(ghost_card)
+				ghost_card.queue_free()
+				ghost_cards.erase(card)
 			
 			# remove the card data from the array
 			current_hand.erase(card)
