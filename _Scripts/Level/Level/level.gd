@@ -70,6 +70,9 @@ func _on_play_area_scored(sc: int) -> void:
 	
 	if current_score >= target:
 		tier_complete = true
+		# delay in loading the new level
+		await get_tree().create_timer(1).timeout
+		level_complete.emit()
 
 # -----------------------------------------------------------------------------------
 func _on_hint_button_pressed() -> void:
