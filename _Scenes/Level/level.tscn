@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=14 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_vw5s3"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="4_5phq7"]
-[ext_resource type="Script" uid="uid://c3levrdq0e5nj" path="res://_Scripts/Level/Hand/hand.gd" id="5_fjvq6"]
+[ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/play_area.gd" id="6_rl1kb"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="7_ldegq"]
 [ext_resource type="Texture2D" uid="uid://bquqdw1sgn7xg" path="res://Assets/Sprites/Buttons/PlayButton.png" id="8_e0ewc"]
 [ext_resource type="Texture2D" uid="uid://dmeyxhca61rca" path="res://Assets/Sprites/Buttons/DiscardButton.png" id="9_rl1kb"]
@@ -25,15 +25,6 @@ shader_parameter/direction_y = 1.0
 shader = ExtResource("3_vw5s3")
 shader_parameter/lod = 5.0
 shader_parameter/mix_percentage = 0.3
-
-[sub_resource type="Curve" id="Curve_e0ewc"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_rl1kb"]
-_limits = [-1.0, 0.00266743, 0.0, 1.0]
-_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.00266743), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_er2o0")
@@ -79,11 +70,28 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Hand" type="Node2D" parent="."]
-position = Vector2(423, 434)
-script = ExtResource("5_fjvq6")
-spread_curve = SubResource("Curve_e0ewc")
-height_curve = SubResource("Curve_rl1kb")
+[node name="PlayArea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 325.0
+offset_top = 187.0
+offset_right = 1239.0
+offset_bottom = 599.0
+script = ExtResource("6_rl1kb")
+
+[node name="Hand" type="HBoxContainer" parent="PlayArea"]
+layout_direction = 2
+offset_left = 75.0
+offset_top = 243.0
+offset_right = 875.0
+offset_bottom = 393.0
+size_flags_horizontal = 0
+
+[node name="EvaluationZone" type="HBoxContainer" parent="PlayArea"]
+offset_left = 229.0
+offset_top = 49.0
+offset_right = 729.0
+offset_bottom = 199.0
 
 [node name="PlayCardButton" type="TextureButton" parent="."]
 offset_left = 841.0
@@ -240,10 +248,8 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="hand_discarded" from="Hand" to="." method="_on_hand_hand_discarded"]
-[connection signal="hand_played" from="Hand" to="." method="_on_hand_hand_played"]
-[connection signal="scored" from="Hand" to="." method="_on_hand_scored"]
-[connection signal="pressed" from="PlayCardButton" to="Hand" method="_on_play_card_button_pressed"]
-[connection signal="pressed" from="DiscardButton" to="Hand" method="_on_discard_button_pressed"]
+[connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
+[connection signal="pressed" from="PlayCardButton" to="PlayArea" method="_on_play_card_button_pressed"]
+[connection signal="pressed" from="DiscardButton" to="PlayArea/Hand" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="HintButton" to="." method="_on_hint_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

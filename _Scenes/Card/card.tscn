@@ -29,8 +29,14 @@ shader_parameter/mouse_screen_pos_test = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
-[node name="Card" type="Node2D"]
+[node name="Card" type="Button"]
+custom_minimum_size = Vector2(100, 150)
+anchors_preset = -1
+anchor_right = 0.078125
+anchor_bottom = 0.208333
+flat = true
 script = ExtResource("1_hcfnd")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_mol3j")
@@ -81,6 +87,7 @@ position = Vector2(50, 75)
 scale = Vector2(5.02035, 7.5)
 shape = SubResource("RectangleShape2D_jedek")
 
+[connection signal="clicked" from="." to="." method="_on_clicked"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

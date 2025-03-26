@@ -11,9 +11,10 @@ var current_discards : int = MAX_DISCARDS
 
 var title_node : RichTextLabel
 var tier_title_node : RichTextLabel
-var hand_node : Hand
+var hand_node
 var target_node : Target
 var move_node : Moves
+var play_area
 
 var hands : Label
 var discards : Label
@@ -43,8 +44,7 @@ func load_level(level_data) -> void:
 	tier_title_node = self.get_node("LevelTierLabel")
 	tier_title_node.text = "[wave amp=25 freq=1]Tier " + str(level_data.tier) + "[/wave]" 
 	
-	# Hand initialisation
-	hand_node = self.get_node("Hand")
+	play_area = self.get_node("PlayArea")
 	
 	# Target initialisation
 	target_node = self.get_node("Target")
@@ -74,7 +74,7 @@ func _on_hand_hand_discarded() -> void:
 	current_discards -= 1
 	discards.text = str(current_discards)
 
-func _on_hand_scored(sc: int) -> void:
+func _on_play_area_scored(sc: int) -> void:
 	current_score += sc
 	print(sc)
 	score.text = str(current_score)
