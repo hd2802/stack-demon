@@ -81,6 +81,7 @@ script = ExtResource("6_rl1kb")
 
 [node name="Hand" type="HBoxContainer" parent="PlayArea"]
 layout_direction = 2
+layout_mode = 1
 offset_left = 75.0
 offset_top = 243.0
 offset_right = 875.0
@@ -88,10 +89,13 @@ offset_bottom = 393.0
 size_flags_horizontal = 0
 
 [node name="EvaluationZone" type="HBoxContainer" parent="PlayArea"]
+layout_mode = 0
 offset_left = 229.0
 offset_top = 49.0
 offset_right = 729.0
 offset_bottom = 199.0
+theme_override_constants/separation = 32
+alignment = 1
 
 [node name="PlayCardButton" type="TextureButton" parent="."]
 offset_left = 841.0

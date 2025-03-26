@@ -5,6 +5,7 @@ var hand : HBoxContainer
 var e_zone : HBoxContainer
 
 var card_positions : Dictionary = {}
+var ghost_cards : Dictionary = {}
 
 var current_hand : Array[Card]
 var selected_card : Card
@@ -54,7 +55,19 @@ func _on_card_clicked(card: Card):
 			move_card_back_to_hand(card)
 
 func move_card_to_e_zone(card : Card) -> void:
-	card_positions[card] = card.position
+	var original_index = hand.get_children().find(card)
+	card_positions[card] = original_index
+	
+	var ghost_card = card.duplicate()
+	ghost_card.modulate = Color(1, 1, 1, 0.5)
+	ghost_card.position = card.position
+	hand.add_child(ghost_card)
+	
+	if original_index != -1:
+		hand.move_child(ghost_card, original_index)
+	
+	ghost_cards[card] = ghost_card
+		
 	hand.remove_child(card)
 	card.scale = Vector2(1.2, 1.2)
 	e_zone.add_child(card)
@@ -63,8 +76,16 @@ func move_card_back_to_hand(card: Card):
 	card.visible = false
 	e_zone.remove_child(card)
 	card.scale = Vector2(1.0, 1.0)
+	
+	var ghost_card = ghost_cards.get(card, null)
+	
+	if ghost_card:
+		hand.remove_child(ghost_card)
+		ghost_card.queue_free()
+		ghost_cards.erase(card)
+	
 	hand.add_child(card)
-	card.position = card_positions[card]
+	hand.move_child(card, card_positions[card])
 	card.visible = true
 	
 func get_next_card_position() -> Vector2:

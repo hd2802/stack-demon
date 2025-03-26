@@ -28,13 +28,6 @@ var tier_complete = false
 signal level_complete()
 signal game_over()
 
-func _ready() -> void:
-	# Placeholder for testing and debugging
-	#level_data = load("res://Resources/Levels/zero.tres")
-	#load_level(level_data)
-	pass
-	
-
 func load_level(level_data) -> void:
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
@@ -59,10 +52,6 @@ func load_level(level_data) -> void:
 	
 	score = self.get_node("Score")
 	score.text = str(current_score)
-	
-
-func _on_next_button_pressed() -> void:
-	level_complete.emit()
 
 # TODO: add what happens when the hands < 0 (i.e. game over if target not reached)
 func _on_hand_hand_played() -> void:
