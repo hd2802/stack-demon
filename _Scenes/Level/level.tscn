@@ -254,6 +254,6 @@ vertical_alignment = 1
 
 [connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
 [connection signal="pressed" from="PlayCardButton" to="PlayArea" method="_on_play_card_button_pressed"]
-[connection signal="pressed" from="DiscardButton" to="PlayArea/Hand" method="_on_discard_button_pressed"]
+[connection signal="pressed" from="DiscardButton" to="PlayArea" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="HintButton" to="." method="_on_hint_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]

@@ -98,6 +98,7 @@ func _on_play_card_button_pressed() -> void:
 	else:
 		
 		var score = calculator._on_hand_played(selected_cards)
+		
 		scored.emit(score)
 
 		# remove them physically from the hand 
@@ -128,8 +129,13 @@ func _on_discard_button_pressed() -> void:
 	if len(selected_cards) != 0:
 		
 		for card in selected_cards:
+			e_zone.remove_child(card)
+			
+			var ghost_card = ghost_cards.get(card, null)
+			hand.remove_child(ghost_card)
+			
 			card.queue_free()
-			current_hand.erase(card.card_data.text)
+			current_hand.erase(card)
 			add_card()
 		selected_cards = []
 		hand_discarded.emit()
