@@ -12,7 +12,9 @@ func _on_hand_played(cards_played : Array[Card]) -> int:
 	
 	# initialise the stack of operands and operations 
 	for card in cards_played:
+		
 		stack.push_back(card.card_data.text)
+	
 	
 	var sc = evaluate()
 	return sc

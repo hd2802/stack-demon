@@ -44,7 +44,8 @@ func remove_card_from_deck(card_id: String):
 
 func draw_card() -> String:
 	if draw_pile.is_empty():
-		return ""
+		reset_draw_pile()
+		return draw_card()
 	else:
 		return draw_pile.pop_front()
 
