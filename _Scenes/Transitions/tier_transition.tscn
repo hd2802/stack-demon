@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://3qwq88giosu0"]
+
+[ext_resource type="Script" uid="uid://bq8pqsivuswmi" path="res://_Scripts/Transitions/Tier/tier_transition.gd" id="1_5jvyv"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="1_qoa37"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="2_l5pqb"]
+
+[node name="TierTransition" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5jvyv")
+
+[node name="PlaceholderBG" type="ColorRect" parent="."]
+offset_left = 480.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 460.0
+scale = Vector2(1.5, 1.5)
+color = Color(0.244776, 0.244776, 0.244776, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 137.0
+offset_right = 948.0
+offset_bottom = 205.0
+theme = ExtResource("1_qoa37")
+bbcode_enabled = true
+text = "[wave amp=25 freq=1.5] Tier Complete[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectionPrompt" type="Label" parent="."]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 254.0
+offset_right = 939.0
+offset_bottom = 295.0
+theme = ExtResource("2_l5pqb")
+text = "Choose a Card to Add to your Deck"
+
+[node name="CardContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 327.0
+offset_right = 938.0
+offset_bottom = 477.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 610.0
+offset_top = 535.0
+offset_right = 842.0
+offset_bottom = 599.0
+theme = ExtResource("2_l5pqb")
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

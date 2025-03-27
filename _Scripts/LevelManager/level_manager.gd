@@ -35,7 +35,16 @@ func _load_first_level():
 	level.level_complete.connect(_on_level_complete)
 
 func _on_level_complete() -> void:
-	_load_next_level()
+	#get_tree().paused = true
+	
+	# here we want to load in the level transition 
+	
+	# only after the level transition is over do we want to load in the next level 
+	get_tree().paused = true
+	var transition_scene = load("res://_Scenes/Transitions/tier_transition.tscn").instantiate()
+	self.add_child(transition_scene)
+	transition_scene.next.connect(_load_next_level)
+	#_load_next_level()
 
 func _create_next_level() -> LevelDataResource:
 	var lvl_data = LevelDataResource.new()
@@ -64,7 +73,12 @@ func _create_next_level() -> LevelDataResource:
 func _load_next_level() -> void:
 	if level:
 		level.queue_free()
-
+	
+	if len(self.get_children()) != 0:
+		for child in self.get_children():
+			child.queue_free()
+			
+	get_tree().paused = false
 	level = load("res://_Scenes/Level/level.tscn").instantiate()
 	var level_data = _create_next_level()
 	level.load_level(level_data)

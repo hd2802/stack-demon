@@ -17,7 +17,6 @@ config/icon="uid://bnbdvmpdjbg8w"
 
 [autoload]
 
-_LevelManager="*res://_Singletons/LevelManager/level_manager.gd"
 _GameManager="*res://_Singletons/GameManager/game_manager.gd"
 _DeckManager="*res://_Singletons/DeckManager/deck_manager.gd"
 

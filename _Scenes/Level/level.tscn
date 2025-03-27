@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_vw5s3"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="4_5phq7"]
-[ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/play_area.gd" id="6_rl1kb"]
+[ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/GameLogic/play_area.gd" id="6_rl1kb"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="7_ldegq"]
 [ext_resource type="Texture2D" uid="uid://bquqdw1sgn7xg" path="res://Assets/Sprites/Buttons/PlayButton.png" id="8_e0ewc"]
 [ext_resource type="Texture2D" uid="uid://dmeyxhca61rca" path="res://Assets/Sprites/Buttons/DiscardButton.png" id="9_rl1kb"]

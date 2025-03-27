@@ -20,9 +20,7 @@ const START_DECK : Array[String] = [
 	"eight", "eight",
 	"nine", "nine",
 	"add", "add",
-	"add", "add",
-	"multiply", "multiply",
-	"multiply", "multiply"
+	"add", "add"
 ]
 
 func _ready() -> void:
