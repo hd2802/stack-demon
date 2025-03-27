@@ -34,11 +34,26 @@ func _ready():
 func add_card():
 	var card_id = _DeckManager.draw_card()
 	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
+	
 	new_card.createCard(card_id)
 	new_card.clicked.connect(_on_card_clicked)
+	
 	hand.add_child(new_card)
 	current_hand.push_back(new_card)
+	
+	var delay_time = cards_added * 0.1
 	cards_added += 1
+	
+	var start_position = Vector2(500, 75) 
+	var final_position = Vector2(50, 75) 
+
+	var tween = get_tree().create_tween()
+	var sprite = new_card.get_node("Sprite2D")
+
+	sprite.position = start_position
+	
+	tween.set_trans(Tween.TRANS_QUART)
+	tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
 	
 # -----------------------------------------------------------------------------
 

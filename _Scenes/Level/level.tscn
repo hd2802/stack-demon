@@ -252,6 +252,8 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="hand_discarded" from="PlayArea" to="." method="_on_play_area_hand_discarded"]
+[connection signal="hand_played" from="PlayArea" to="." method="_on_play_area_hand_played"]
 [connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
 [connection signal="pressed" from="PlayCardButton" to="PlayArea" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="PlayArea" method="_on_discard_button_pressed"]

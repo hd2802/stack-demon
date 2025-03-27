@@ -52,16 +52,11 @@ func load_level(data) -> void:
 	
 	score = self.get_node("Score")
 	score.text = str(current_score)
-
-# TODO: add what happens when the hands < 0 (i.e. game over if target not reached)
-func _on_hand_hand_played() -> void:
+	
+func _on_play_area_hand_played() -> void:
 	current_hands -= 1
 	hands.text = str(current_hands)
 
-# TODO: add what happens when the discards < 0 (i.e. disabling discard button)
-func _on_hand_hand_discarded() -> void:
-	current_discards -= 1
-	discards.text = str(current_discards)
 
 func _on_play_area_scored(sc: int) -> void:
 	current_score += sc
@@ -73,6 +68,10 @@ func _on_play_area_scored(sc: int) -> void:
 		# delay in loading the new level
 		await get_tree().create_timer(1).timeout
 		level_complete.emit()
+
+func _on_play_area_hand_discarded() -> void:
+	current_discards -= 1
+	discards.text = str(current_discards)
 
 # -----------------------------------------------------------------------------------
 func _on_hint_button_pressed() -> void:
