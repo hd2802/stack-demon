@@ -169,7 +169,3 @@ func _on_discard_button_pressed() -> void:
 		
 	else:
 		pass
-	
-func disable_cards():
-	for card in current_hand:
-		card.disabled = true

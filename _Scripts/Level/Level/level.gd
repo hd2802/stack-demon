@@ -65,8 +65,8 @@ func _on_play_area_scored(sc: int) -> void:
 	
 	if current_score >= target:
 		tier_complete = true
+		get_tree().paused = true
 		# delay in loading the new level
-		play_area.disable_cards()
 		await get_tree().create_timer(1).timeout
 		level_complete.emit()
 
