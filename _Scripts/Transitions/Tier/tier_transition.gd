@@ -58,6 +58,8 @@ func _on_card_clicked(card : StaticCard) -> void:
 			var highlight_shader = load("res://Resources/Shaders/highlight.gdshader")
 			shader_rect.material = ShaderMaterial.new()
 			shader_rect.material.shader = highlight_shader
+			
+			static_card.add_child(shader_rect)
 	
 	_DeckManager.add_card_to_deck(gen_cards[idx])
 	continue_button.visible = true
