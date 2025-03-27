@@ -7,7 +7,7 @@ var CARDS : Array[String] = [
 	"multiply", "multiply", "multiply"
 ]
 
-var card_list : Array[Card] 
+var card_list : Array[StaticCard]
 var gen_cards : Array[String]
 
 var selected_card : StaticCard 
@@ -29,16 +29,16 @@ func _ready() -> void:
 
 func generate_cards() -> void:
 	CARDS.shuffle()
-	gen_cards.push_back(CARDS[0])
-	gen_cards.push_back(CARDS[1])
-	gen_cards.push_back(CARDS[2])
+	gen_cards.append(CARDS[0])
+	gen_cards.append(CARDS[1])
+	gen_cards.append(CARDS[2])
 
 	for card in gen_cards:
 		var new_card = load("res://_Scenes/Card/StaticCard/static_card.tscn").instantiate()
 		new_card.createCard(card)
 		new_card.clicked.connect(_on_card_clicked)
 		card_container.add_child(new_card)
-		card_list.push_back(new_card)
+		card_list.append(new_card)
 
 func _on_card_clicked(card : StaticCard) -> void:
 	selected_card = card
