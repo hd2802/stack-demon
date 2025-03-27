@@ -38,11 +38,19 @@ func _on_level_complete() -> void:
 	level.get_node("PlayArea").clear_hand()
 	await get_tree().create_timer(1.25).timeout
 	# only after the level transition is over do we want to load in the next level 
-	#get_tree().paused = true
-	var transition_scene = load("res://_Scenes/Transitions/tier_transition.tscn").instantiate()
+	get_tree().paused = true
+	var transition_scene
+	if current_tier == 2:
+		transition_scene = load("res://_Scenes/Transitions/Level/level_transition.tscn").instantiate()
+		transition_scene.level_next.connect(_load_transition)
+	else:
+		transition_scene = load("res://_Scenes/Transitions/Tier/tier_transition.tscn").instantiate()
+		transition_scene.next.connect(_load_next_level)
 	self.add_child(transition_scene)
-	transition_scene.next.connect(_load_next_level)
 	#_load_next_level()
+
+func _load_transition() -> void:
+	pass
 
 func _create_next_level() -> LevelDataResource:
 	var lvl_data = LevelDataResource.new()
@@ -80,12 +88,11 @@ func _load_next_level() -> void:
 	level = load("res://_Scenes/Level/level.tscn").instantiate()
 	var level_data = _create_next_level()
 	level.load_level(level_data)
-
-	# Add to the current scene tree
+	
 	get_tree().current_scene.add_child(level)
 
 	level.level_complete.connect(_on_level_complete)
-	
+		
 	_DeckManager.reset_draw_pile()
 	
 func _clear_level() -> void:

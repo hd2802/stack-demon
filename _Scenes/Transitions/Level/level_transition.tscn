@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://3qwq88giosu0"]
+
+[ext_resource type="Script" uid="uid://p2ggcbvpeidd" path="res://_Scripts/Transitions/Level/level_transition.gd" id="1_e4erk"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="1_qoa37"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="2_l5pqb"]
+
+[node name="LevelTransition" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e4erk")
+
+[node name="PlaceholderBG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 460.0
+scale = Vector2(1.5, 1.5)
+color = Color(0.244776, 0.244776, 0.244776, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 137.0
+offset_right = 948.0
+offset_bottom = 205.0
+theme = ExtResource("1_qoa37")
+bbcode_enabled = true
+text = "[wave amp=25 freq=1.5] Level Complete[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 603.0
+offset_top = 343.0
+offset_right = 835.0
+offset_bottom = 407.0
+theme = ExtResource("2_l5pqb")
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
