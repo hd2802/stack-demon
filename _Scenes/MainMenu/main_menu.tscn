@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=3 uid="uid://dy5qf2y0n4ics"]
+
+[ext_resource type="Script" uid="uid://s002koymbgok" path="res://_Scripts/MainMenu/main_menu.gd" id="1_aybms"]
+[ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_bnxwc"]
+[ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_7wlea"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="4_qt7nv"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="5_pvxrt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6b8pv"]
+shader = ExtResource("2_bnxwc")
+shader_parameter/size = 71.719
+shader_parameter/color1 = Color(0.136826, 0.136826, 0.136826, 1)
+shader_parameter/color2 = Color(0.863553, 0.897315, 0.937281, 0.694118)
+shader_parameter/speed = 0.15
+shader_parameter/direction_x = 1.0
+shader_parameter/direction_y = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3duly"]
+shader = ExtResource("3_7wlea")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.3
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aybms")
+
+[node name="MainBackground" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_6b8pv")
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+
+[node name="PlaceholderBG" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3duly")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.103125
+anchor_top = 0.0777778
+anchor_right = 0.887109
+anchor_bottom = 0.909028
+offset_right = -334.5
+offset_bottom = -199.5
+scale = Vector2(1.5, 1.5)
+color = Color(0.244776, 0.244776, 0.244776, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 116.0
+offset_right = 1036.0
+offset_bottom = 354.0
+theme = ExtResource("4_qt7nv")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[wave amp=25 freq=1.5] game title[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 334.0
+offset_right = 862.0
+offset_bottom = 448.0
+theme = ExtResource("4_qt7nv")
+text = "PLAY"
+
+[node name="TutorialButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 486.0
+offset_right = 596.0
+offset_bottom = 548.0
+theme = ExtResource("5_pvxrt")
+theme_override_font_sizes/font_size = 72
+text = "Tutorial"
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = 703.0
+offset_top = 487.0
+offset_right = 1049.0
+offset_bottom = 552.0
+theme = ExtResource("5_pvxrt")
+theme_override_font_sizes/font_size = 72
+text = "Credits"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
