@@ -22,12 +22,12 @@ func _on_hand_played(cards_played : Array[Card]) -> int:
 func evaluate() -> int:
 	if !is_valid_expression():
 		# then we want to use the highest value card that has been used
-		var max = 0
+		var m = 0
 		for card in stack:
-			if int(card) > max:
-				max = int(card)
+			if int(card) > m:
+				m = int(card)
 		stack = []
-		return max
+		return m
 	else:
 		if len(stack) == 3:
 			var operation = stack.pop_back()
@@ -37,12 +37,12 @@ func evaluate() -> int:
 			return calculate(operation, int(operand1), int(operand2))
 		# TODO deal with more complex hands played here
 		else:
-			var max = 0
+			var m = 0
 			for card in stack:
-				if int(card) > max:
-					max = int(card)
+				if int(card) > m:
+					m = int(card)
 			stack = []
-			return max
+			return m
 		
 
 # helper functions for calculate() ------------------------------------------------------

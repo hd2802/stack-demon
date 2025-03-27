@@ -51,6 +51,13 @@ func _on_card_clicked(card : StaticCard) -> void:
 			static_card.queue_free()
 		else:
 			static_card.disabled = true
+			
+			var shader_rect = ColorRect.new()
+			shader_rect.set_size(Vector2(100, 150))
+			
+			var highlight_shader = load("res://Resources/Shaders/highlight.gdshader")
+			shader_rect.material = ShaderMaterial.new()
+			shader_rect.material.shader = highlight_shader
 	
 	_DeckManager.add_card_to_deck(gen_cards[idx])
 	continue_button.visible = true

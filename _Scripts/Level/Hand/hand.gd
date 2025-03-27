@@ -64,10 +64,6 @@ func move_card_back_to_hand(card: Card):
 
 	play_area.remove_child(card) 
 	self.add_child(card)
-
-func get_next_card_position() -> Vector2:
-	var position = Vector2(cards_added * 100, 0)
-	return position
 	
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:

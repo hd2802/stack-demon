@@ -26,24 +26,24 @@ var target : int
 var tier_complete = false
 
 signal level_complete()
-signal game_over()
+#signal game_over()
 
-func load_level(level_data) -> void:
+func load_level(data) -> void:
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
-	title_node.text = "[wave amp=25 freq=1]Level " + str(level_data.level_number) + "[/wave]" 
+	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "[/wave]" 
 	
 	# Tier title initialisation
 	tier_title_node = self.get_node("LevelTierLabel")
-	tier_title_node.text = "[wave amp=25 freq=1]Tier " + str(level_data.tier) + "[/wave]" 
+	tier_title_node.text = "[wave amp=25 freq=1]Tier " + str(data.tier) + "[/wave]" 
 	
 	play_area = self.get_node("PlayArea")
 	
 	# Target initialisation
 	target_node = self.get_node("Target")
-	target_node.initialise_target(level_data.target_value)
+	target_node.initialise_target(data.target_value)
 	
-	target = level_data.target_value
+	target = data.target_value
 	
 	hands = self.get_node("Hands")
 	discards = self.get_node("Discards")
