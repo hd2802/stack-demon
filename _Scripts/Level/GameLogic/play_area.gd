@@ -104,7 +104,7 @@ func move_card_back_to_hand(card: Card):
 	card.visible = true
 
 func clear_hand() -> void:
-	for card in current_hand:	
+	for card in current_hand:
 		var delay_time = cards_added * 0.1
 		cards_added += 1
 		
@@ -169,3 +169,7 @@ func _on_discard_button_pressed() -> void:
 		
 	else:
 		pass
+	
+func disable_cards():
+	for card in current_hand:
+		card.disabled = true
