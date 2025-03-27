@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp18krjs0vsgn"]
+
+[ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="1_pwk08"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dvkab"]
+shader = ExtResource("1_pwk08")
+shader_parameter/size = 41.129
+shader_parameter/color1 = Color(0.18359, 0.18359, 0.18359, 1)
+shader_parameter/color2 = Color(0.379702, 0.306535, 0.537472, 1)
+shader_parameter/speed = 1.0
+shader_parameter/direction_x = 1.0
+shader_parameter/direction_y = 1.0
+
+[node name="LevelTransition" type="Node2D"]
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_dvkab")
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PlaceholderPanel" type="ColorRect" parent="."]
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 592.0

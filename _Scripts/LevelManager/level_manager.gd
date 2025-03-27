@@ -35,12 +35,10 @@ func _load_first_level():
 	level.level_complete.connect(_on_level_complete)
 
 func _on_level_complete() -> void:
-	#get_tree().paused = true
-	
-	# here we want to load in the level transition 
-	
+	level.get_node("PlayArea").clear_hand()
+	await get_tree().create_timer(1.25).timeout
 	# only after the level transition is over do we want to load in the next level 
-	get_tree().paused = true
+	#get_tree().paused = true
 	var transition_scene = load("res://_Scenes/Transitions/tier_transition.tscn").instantiate()
 	self.add_child(transition_scene)
 	transition_scene.next.connect(_load_next_level)

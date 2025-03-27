@@ -102,6 +102,22 @@ func move_card_back_to_hand(card: Card):
 	hand.add_child(card)
 	hand.move_child(card, card_positions[card])
 	card.visible = true
+
+func clear_hand() -> void:
+	for card in current_hand:	
+		var delay_time = cards_added * 0.1
+		cards_added += 1
+		
+		var final_position = Vector2(1000, 75) 
+		var start_position = Vector2(50, 75) 
+
+		var tween = get_tree().create_tween()
+		var sprite = card.get_node("Sprite2D")
+
+		sprite.position = start_position
+		
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
 	
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
