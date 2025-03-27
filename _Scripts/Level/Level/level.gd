@@ -68,6 +68,7 @@ func _on_play_area_scored(sc: int) -> void:
 	if current_hands <= 0 and current_score < target:
 		game_over.emit()
 	elif current_score >= target:
+		await get_tree().create_timer(1.25).timeout
 		level_complete.emit()
 	else:
 		pass
