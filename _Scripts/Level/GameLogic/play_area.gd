@@ -128,10 +128,10 @@ func _on_play_card_button_pressed() -> void:
 			# remove the card data from the array
 			current_hand.erase(card)
 			
-			# add a new card to replace the old one
 			add_card()
+			
 		hand_played.emit()
-		
+			
 		# remove the selected cards from the logic of the hand 
 		selected_cards = []
 

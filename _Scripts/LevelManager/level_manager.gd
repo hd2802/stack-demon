@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 
 const MIN_RAND_RANGE: int = 5
 const MAX_RAND_RANGE: int = 12
-const TIER_INCREASE: int = 5
+const TIER_INCREASE: int = 15
 
 func _ready() -> void:
 	# Ensure that LevelManager is only initialized once
