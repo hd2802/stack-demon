@@ -50,7 +50,7 @@ func _on_card_clicked(card : StaticCard) -> void:
 			card_container.remove_child(static_card)
 			static_card.queue_free()
 		else:
-			pass
+			static_card.disabled = true
 	
 	_DeckManager.add_card_to_deck(gen_cards[idx])
 	continue_button.visible = true

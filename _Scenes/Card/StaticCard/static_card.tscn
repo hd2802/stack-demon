@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://behwwoe8rhdh7"]
+[gd_scene load_steps=5 format=3 uid="uid://behwwoe8rhdh7"]
 
 [ext_resource type="Script" uid="uid://4rsx66jg6q1f" path="res://_Scripts/CardScripts/StaticCard/static_card.gd" id="1_g2e1n"]
 [ext_resource type="Texture2D" uid="uid://n3syninrkx8a" path="res://Assets/Sprites/BlankCard.png" id="3_4odam"]
 [ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="5_thfre"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mlgkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jedek"]
 
@@ -18,7 +16,6 @@ script = ExtResource("1_g2e1n")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_mlgkg")
 position = Vector2(50, 75)
 texture = ExtResource("3_4odam")
 
