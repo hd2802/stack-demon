@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq85swbj7uyim"]
+
+[ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="1_dehce"]
+[ext_resource type="Script" uid="uid://dsdvaq2rowt4p" path="res://_Scripts/Shop/shop.gd" id="1_lr4xu"]
+[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="2_nd2u3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nd2u3"]
+shader = ExtResource("1_dehce")
+shader_parameter/size = 25.0
+shader_parameter/color1 = Color(0.331019, 0.331019, 0.331019, 1)
+shader_parameter/color2 = Color(0.55279, 0.728072, 0.832564, 1)
+shader_parameter/speed = 1.0
+shader_parameter/direction_x = 1.0
+shader_parameter/direction_y = 1.0
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lr4xu")
+
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_nd2u3")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="PlaceholderPanel" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 66.0
+offset_right = 1176.0
+offset_bottom = 632.0
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 496.0
+offset_top = 284.0
+offset_right = 776.0
+offset_bottom = 402.0
+theme = ExtResource("2_nd2u3")
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

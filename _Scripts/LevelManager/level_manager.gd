@@ -50,7 +50,12 @@ func _on_level_complete() -> void:
 	#_load_next_level()
 
 func _load_transition() -> void:
-	pass
+	get_tree().paused = false
+	if level:
+		_clear_level()
+	var shop = load("res://_Scenes/Shop/shop.tscn").instantiate()
+	shop.shop_finished.connect(_load_next_level)
+	self.add_child(shop)
 
 func _create_next_level() -> LevelDataResource:
 	var lvl_data = LevelDataResource.new()
