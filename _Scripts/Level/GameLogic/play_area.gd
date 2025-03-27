@@ -123,7 +123,7 @@ func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		pass
 	else:
-		
+		hand_played.emit()
 		var score = calculator._on_hand_played(selected_cards)
 		
 		scored.emit(score)
@@ -145,8 +145,6 @@ func _on_play_card_button_pressed() -> void:
 			current_hand.erase(card)
 			
 			add_card()
-			
-		hand_played.emit()
 			
 		# remove the selected cards from the logic of the hand 
 		selected_cards = []

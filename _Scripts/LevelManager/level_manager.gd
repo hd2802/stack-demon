@@ -33,6 +33,7 @@ func _load_first_level():
 	get_tree().current_scene.add_child(level)
 	
 	level.level_complete.connect(_on_level_complete)
+	level.game_over.connect(_on_game_over)
 
 func _on_level_complete() -> void:
 	level.get_node("PlayArea").clear_hand()
@@ -97,6 +98,7 @@ func _load_next_level() -> void:
 	get_tree().current_scene.add_child(level)
 
 	level.level_complete.connect(_on_level_complete)
+	level.game_over.connect(_on_game_over)
 		
 	_DeckManager.reset_draw_pile()
 	
@@ -106,3 +108,9 @@ func _clear_level() -> void:
 			child.queue_free()  
 	if level:
 		level.queue_free()
+
+func _on_game_over() -> void:
+	await get_tree().create_timer(1.25).timeout
+	get_tree().paused = true
+	var game_over = load("res://_Scenes/Transitions/GameOver/game_over.tscn").instantiate()
+	self.add_child(game_over)

@@ -25,8 +25,10 @@ var target : int
 
 var tier_complete = false
 
+var discard_button
+
 signal level_complete()
-#signal game_over()
+signal game_over()
 
 func load_level(data) -> void:
 	# Title initialisation
@@ -53,26 +55,29 @@ func load_level(data) -> void:
 	score = self.get_node("Score")
 	score.text = str(current_score)
 	
+	discard_button = self.get_node("DiscardButton")
+	
 func _on_play_area_hand_played() -> void:
 	current_hands -= 1
 	hands.text = str(current_hands)
 
-
 func _on_play_area_scored(sc: int) -> void:
 	current_score += sc
-	print(sc)
 	score.text = str(current_score)
 	
-	if current_score >= target:
-		tier_complete = true
-		get_tree().paused = true
-		# delay in loading the new level
-		await get_tree().create_timer(1).timeout
+	if current_hands <= 0 and current_score < target:
+		game_over.emit()
+	elif current_score >= target:
 		level_complete.emit()
-
+	else:
+		pass
+		
 func _on_play_area_hand_discarded() -> void:
 	current_discards -= 1
 	discards.text = str(current_discards)
+	
+	if current_discards <= 0:
+		discard_button.disabled = true
 
 # -----------------------------------------------------------------------------------
 func _on_hint_button_pressed() -> void:
