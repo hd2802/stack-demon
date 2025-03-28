@@ -19,14 +19,23 @@ const HAND_SIZE = 7
 signal hand_discarded()
 signal scored(sc : int)
 
+var card_draw_audio 
+
 var cards_added : int = 0
 
 func _ready():
+	card_draw_audio = $"../AudioContainer/DrawCard"
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
+	await draw_initial_cards()
+	
+	calculator = Calculator.new()
+
+func draw_initial_cards():
 	for i in range(0, HAND_SIZE):
 		add_card()
-	calculator = Calculator.new()
+		card_draw_audio.play()
+		await get_tree().create_timer(0.1).timeout
 	
 # -----------------------------------------------------------------------------
 
@@ -40,7 +49,7 @@ func add_card():
 	hand.add_child(new_card)
 	current_hand.push_back(new_card)
 	
-	var delay_time = cards_added * 0.1
+	var delay_time = cards_added * 0.075
 	cards_added += 1
 	
 	var start_position = Vector2(500, 75) 
@@ -53,6 +62,7 @@ func add_card():
 	
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
+	card_draw_audio.play()
 	
 # -----------------------------------------------------------------------------
 
