@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dir53w1skkvgr"]
+[gd_scene load_steps=15 format=3 uid="uid://dir53w1skkvgr"]
 
 [ext_resource type="Script" uid="uid://bvrwvr6litu3p" path="res://_Scripts/Tutorial/tutorial.gd" id="1_gcs81"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_fyhrf"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bquqdw1sgn7xg" path="res://Assets/Sprites/Buttons/PlayButton.png" id="8_sqey3"]
 [ext_resource type="Texture2D" uid="uid://dmeyxhca61rca" path="res://Assets/Sprites/Buttons/DiscardButton.png" id="9_wnfr2"]
 [ext_resource type="Script" uid="uid://cdau8d7xqmav2" path="res://_Scripts/Level/Target/target.gd" id="10_ba650"]
+[ext_resource type="Texture2D" uid="uid://bgoqkb2t2nkpe" path="res://Assets/Sprites/MiscButton.png" id="11_gcs81"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fxwj"]
 shader = ExtResource("2_fyhrf")
@@ -21,6 +22,11 @@ shader_parameter/direction_x = 1.0
 shader_parameter/direction_y = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ewc"]
+shader = ExtResource("3_qnq0o")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gsqq"]
 shader = ExtResource("3_qnq0o")
 shader_parameter/lod = 5.0
 shader_parameter/mix_percentage = 0.3
@@ -216,6 +222,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TutorialPanel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4gsqq")
 offset_left = 425.0
 offset_top = 192.0
 offset_right = 1047.0
@@ -236,16 +243,43 @@ vertical_alignment = 1
 [node name="NextButton" type="Button" parent="."]
 offset_left = 1075.0
 offset_top = 228.0
-offset_right = 1241.0
-offset_bottom = 307.0
+offset_right = 1235.0
+offset_bottom = 308.0
+theme = ExtResource("7_jtic3")
 text = "Next"
+
+[node name="Sprite2D" type="Sprite2D" parent="NextButton"]
+position = Vector2(80, 40)
+texture = ExtResource("11_gcs81")
+
+[node name="Back" type="Label" parent="NextButton"]
+offset_right = 159.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Next"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 offset_left = 1078.0
 offset_top = 330.0
-offset_right = 1247.0
-offset_bottom = 406.0
+offset_right = 1238.0
+offset_bottom = 410.0
+theme = ExtResource("7_jtic3")
 text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="BackButton"]
+position = Vector2(80, 40)
+texture = ExtResource("11_gcs81")
+
+[node name="Back" type="Label" parent="BackButton"]
+layout_mode = 0
+offset_right = 159.0
+offset_bottom = 77.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Back"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MainMenuButton" type="Button" parent="."]
 visible = false
@@ -255,12 +289,26 @@ theme = ExtResource("7_jtic3")
 flat = true
 
 [node name="Button" type="Button" parent="."]
-offset_left = 18.0
-offset_top = 8.0
-offset_right = 147.0
-offset_bottom = 60.0
+offset_left = 122.5
+offset_top = 15.0
+offset_right = 202.5
+offset_bottom = 55.0
 theme = ExtResource("7_jtic3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+position = Vector2(40, 20)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_gcs81")
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_right = 79.0
+offset_bottom = 41.0
+theme = ExtResource("7_jtic3")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="hand_discarded" from="PlayArea" to="." method="_on_play_area_hand_discarded"]
 [connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
