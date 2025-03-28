@@ -29,13 +29,10 @@ var discard_button
 
 var deck_view
 
-var button_press_audio
-
 signal level_complete()
 signal game_over()
 
 func load_level(data) -> void:
-	button_press_audio = $AudioContainer/ButtonPress
 	# Title initialisation
 	title_node = self.get_node("LevelTitleLabel")
 	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "[/wave]" 
@@ -108,9 +105,7 @@ func _on_deck_pressed() -> void:
 	deck_view = load("res://_Scenes/DeckView/deck_view.tscn").instantiate()
 	deck_view.back.connect(_back_to_level)
 	self.add_child(deck_view)
-	button_press_audio.play()
 
 func _back_to_level() -> void:
 	self.remove_child(deck_view)
 	deck_view.queue_free()
-	button_press_audio.play()

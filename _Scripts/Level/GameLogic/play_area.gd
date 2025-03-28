@@ -19,16 +19,9 @@ const HAND_SIZE = 7
 signal hand_discarded()
 signal scored(sc : int)
 
-var card_draw_audio 
-var card_play_audio
-var button_press_audio
-
 var cards_added : int = 0
 
 func _ready():
-	card_draw_audio = $"../AudioContainer/DrawCard"
-	card_play_audio = $"../AudioContainer/PlayCard"
-	button_press_audio = $"../AudioContainer/ButtonPress"
 	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
@@ -39,7 +32,6 @@ func _ready():
 func draw_initial_cards():
 	for i in range(0, HAND_SIZE):
 		add_card()
-		card_draw_audio.play()
 		await get_tree().create_timer(0.1).timeout
 	
 # -----------------------------------------------------------------------------
@@ -67,13 +59,11 @@ func add_card():
 	
 	tween.set_trans(Tween.TRANS_QUART)
 	tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
-	card_draw_audio.play()
 	
 # -----------------------------------------------------------------------------
 
 
 func _on_card_clicked(card: Card):
-	card_play_audio.play()
 	# if the EXACT card is already in the list of selected cards
 	if selected_cards.has(card):
 		selected_cards.erase(card)
@@ -135,7 +125,6 @@ func clear_hand() -> void:
 		tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
 	
 func _on_play_card_button_pressed() -> void:
-	button_press_audio.play()
 	if !selected_cards:
 		pass
 	else:
@@ -166,7 +155,6 @@ func _on_play_card_button_pressed() -> void:
 
 # need to make it so multiple cards can be discarded at one time 
 func _on_discard_button_pressed() -> void:
-	button_press_audio.play()
 	if len(selected_cards) != 0:
 		
 		for card in selected_cards:
