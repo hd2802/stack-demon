@@ -38,14 +38,13 @@ offset_bottom = 720.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 240.0
 offset_top = 54.0
-offset_right = 1040.0
+offset_right = 1280.0
 offset_bottom = 304.0
 theme = ExtResource("4_qt7nv")
 theme_override_font_sizes/normal_font_size = 175
 bbcode_enabled = true
-text = "[wave amp=25 freq=1.5] game title[/wave]"
+text = "[wave amp=25 freq=1.5] Stack Demon[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
