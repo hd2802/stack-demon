@@ -41,12 +41,14 @@ func _on_level_complete() -> void:
 	# only after the level transition is over do we want to load in the next level 
 	get_tree().paused = true
 	var transition_scene
+	
 	if current_tier == 2:
 		transition_scene = load("res://_Scenes/Transitions/Level/level_transition.tscn").instantiate()
 		transition_scene.level_next.connect(_load_transition)
 	else:
 		transition_scene = load("res://_Scenes/Transitions/Tier/tier_transition.tscn").instantiate()
 		transition_scene.next.connect(_load_next_level)
+	
 	self.add_child(transition_scene)
 	#_load_next_level()
 

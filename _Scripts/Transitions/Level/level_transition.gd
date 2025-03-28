@@ -1,5 +1,7 @@
 extends Control
-class_name GameOver
+class_name LevelTransition
+
+signal level_next()
 
 func _on_continue_button_pressed() -> void:
-	pass
+	level_next.emit()

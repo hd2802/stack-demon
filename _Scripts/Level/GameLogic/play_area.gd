@@ -16,7 +16,6 @@ var calculator : Calculator
 
 const HAND_SIZE = 7
 
-signal hand_played()
 signal hand_discarded()
 signal scored(sc : int)
 
@@ -123,7 +122,6 @@ func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		pass
 	else:
-		hand_played.emit()
 		var score = calculator._on_hand_played(selected_cards)
 		
 		scored.emit(score)

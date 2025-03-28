@@ -56,22 +56,34 @@ func load_level(data) -> void:
 	score.text = str(current_score)
 	
 	discard_button = self.get_node("DiscardButton")
-	
-func _on_play_area_hand_played() -> void:
-	current_hands -= 1
-	hands.text = str(current_hands)
 
 func _on_play_area_scored(sc: int) -> void:
 	current_score += sc
 	score.text = str(current_score)
 	
-	if current_hands <= 0 and current_score < target:
-		game_over.emit()
-	elif current_score >= target:
-		await get_tree().create_timer(1.25).timeout
-		level_complete.emit()
+	current_hands -= 1
+	hands.text = str(current_hands)
+
+	if current_hands == 0:
+		if current_score >= target:
+			await get_tree().create_timer(1.25).timeout
+			print("complete")
+			level_complete.emit()
+		else:
+			await get_tree().create_timer(1.25).timeout
+			print("game over")
+			game_over.emit()
+	elif current_hands > 0:
+		if current_score >= target:
+			await get_tree().create_timer(1.25).timeout
+			level_complete.emit()
+			print("complete")
+		else:
+			pass
 	else:
-		pass
+		await get_tree().create_timer(1.25).timeout
+		game_over.emit()
+		print("game over")
 		
 func _on_play_area_hand_discarded() -> void:
 	current_discards -= 1
