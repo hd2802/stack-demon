@@ -20,11 +20,13 @@ signal hand_discarded()
 signal scored(sc : int)
 
 var card_draw_audio 
+var card_play_audio
 
 var cards_added : int = 0
 
 func _ready():
 	card_draw_audio = $"../AudioContainer/DrawCard"
+	card_play_audio = $"../AudioContainer/PlayCard"
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
 	await draw_initial_cards()
@@ -68,6 +70,7 @@ func add_card():
 
 
 func _on_card_clicked(card: Card):
+	card_play_audio.play()
 	# if the EXACT card is already in the list of selected cards
 	if selected_cards.has(card):
 		selected_cards.erase(card)

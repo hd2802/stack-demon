@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=17 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://cgvk05f2qyd31" path="res://Assets/SoundFX/96127__bmaczero__contact1.wav" id="2_gfncb"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_vw5s3"]
+[ext_resource type="AudioStream" uid="uid://bn0nc24oc21i0" path="res://Assets/SoundFX/201806__fartheststar__poker_chips2.wav" id="3_xqiwq"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="4_5phq7"]
 [ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/GameLogic/play_area.gd" id="6_rl1kb"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="7_ldegq"]
@@ -35,6 +36,9 @@ script = ExtResource("1_er2o0")
 
 [node name="DrawCard" type="AudioStreamPlayer2D" parent="AudioContainer"]
 stream = ExtResource("2_gfncb")
+
+[node name="PlayCard" type="AudioStreamPlayer2D" parent="AudioContainer"]
+stream = ExtResource("3_xqiwq")
 
 [node name="MainBackground" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6fxwj")
