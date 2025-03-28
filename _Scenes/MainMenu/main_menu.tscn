@@ -1,14 +1,25 @@
 [gd_scene load_steps=6 format=3 uid="uid://dy5qf2y0n4ics"]
 
 [ext_resource type="Script" uid="uid://s002koymbgok" path="res://_Scripts/MainMenu/main_menu.gd" id="1_aybms"]
-[ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_7wlea"]
+[ext_resource type="Shader" uid="uid://btvii1n8uj1ap" path="res://Resources/Shaders/swirl.gdshader" id="2_xif4u"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="4_qt7nv"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="5_pvxrt"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3duly"]
-shader = ExtResource("3_7wlea")
-shader_parameter/lod = 5.0
-shader_parameter/mix_percentage = 0.3
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aybms"]
+shader = ExtResource("2_xif4u")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.387861, 0.484595, 0.605789, 1)
+shader_parameter/colour_2 = Color(0.137255, 0.137255, 0.137255, 1)
+shader_parameter/colour_3 = Color(0.192157, 0.254902, 0.333333, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -19,28 +30,20 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_aybms")
 
-[node name="PlaceholderBG" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_3duly")
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.103125
-anchor_top = 0.0777778
-anchor_right = 0.887109
-anchor_bottom = 0.909028
-offset_right = -334.5
-offset_bottom = -199.5
-scale = Vector2(1.5, 1.5)
-color = Color(0.244776, 0.244776, 0.244776, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Background" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_aybms")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 228.0
-offset_top = 116.0
-offset_right = 1036.0
-offset_bottom = 354.0
+offset_left = 240.0
+offset_top = 54.0
+offset_right = 1040.0
+offset_bottom = 304.0
 theme = ExtResource("4_qt7nv")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/normal_font_size = 175
 bbcode_enabled = true
 text = "[wave amp=25 freq=1.5] game title[/wave]"
 horizontal_alignment = 1
@@ -48,29 +51,29 @@ vertical_alignment = 1
 
 [node name="PlayButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 408.0
-offset_top = 334.0
-offset_right = 862.0
-offset_bottom = 448.0
+offset_left = 415.0
+offset_top = 330.0
+offset_right = 865.0
+offset_bottom = 450.0
 theme = ExtResource("4_qt7nv")
 text = "PLAY"
 
 [node name="TutorialButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 249.0
-offset_top = 506.0
-offset_right = 595.0
-offset_bottom = 571.0
+offset_left = 232.5
+offset_top = 500.0
+offset_right = 582.5
+offset_bottom = 580.0
 theme = ExtResource("5_pvxrt")
 theme_override_font_sizes/font_size = 72
 text = "Tutorial"
 
 [node name="CreditsButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 703.0
-offset_top = 487.0
-offset_right = 1049.0
-offset_bottom = 552.0
+offset_left = 755.0
+offset_top = 500.0
+offset_right = 1105.0
+offset_bottom = 580.0
 theme = ExtResource("5_pvxrt")
 theme_override_font_sizes/font_size = 72
 text = "Credits"
