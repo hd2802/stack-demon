@@ -21,12 +21,15 @@ signal scored(sc : int)
 
 var card_draw_audio 
 var card_play_audio
+var button_press_audio
 
 var cards_added : int = 0
 
 func _ready():
 	card_draw_audio = $"../AudioContainer/DrawCard"
 	card_play_audio = $"../AudioContainer/PlayCard"
+	button_press_audio = $"../AudioContainer/ButtonPress"
+	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
 	await draw_initial_cards()
@@ -132,6 +135,7 @@ func clear_hand() -> void:
 		tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
 	
 func _on_play_card_button_pressed() -> void:
+	button_press_audio.play()
 	if !selected_cards:
 		pass
 	else:
@@ -162,6 +166,7 @@ func _on_play_card_button_pressed() -> void:
 
 # need to make it so multiple cards can be discarded at one time 
 func _on_discard_button_pressed() -> void:
+	button_press_audio.play()
 	if len(selected_cards) != 0:
 		
 		for card in selected_cards:
