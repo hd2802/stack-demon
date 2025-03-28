@@ -27,6 +27,8 @@ var tier_complete = false
 
 var discard_button
 
+var deck_view
+
 signal level_complete()
 signal game_over()
 
@@ -98,3 +100,12 @@ func _on_hint_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	pass # Replace with function body.
+
+func _on_deck_pressed() -> void:
+	deck_view = load("res://_Scenes/DeckView/deck_view.tscn").instantiate()
+	deck_view.back.connect(_back_to_level)
+	self.add_child(deck_view)
+
+func _back_to_level() -> void:
+	self.remove_child(deck_view)
+	deck_view.queue_free()

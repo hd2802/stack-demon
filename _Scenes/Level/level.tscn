@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=15 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dmeyxhca61rca" path="res://Assets/Sprites/Buttons/DiscardButton.png" id="9_rl1kb"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="10_ydtrd"]
 [ext_resource type="Texture2D" uid="uid://8mmw1y4nbqkd" path="res://Assets/Sprites/Buttons/LevelButton.png" id="11_gfncb"]
+[ext_resource type="Texture2D" uid="uid://f7je5osdp5ve" path="res://Assets/Sprites/CardBack.png" id="12_rl1kb"]
 [ext_resource type="Script" uid="uid://cdau8d7xqmav2" path="res://_Scripts/Level/Target/target.gd" id="13_svkq8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fxwj"]
@@ -82,10 +83,10 @@ script = ExtResource("6_rl1kb")
 [node name="Hand" type="HBoxContainer" parent="PlayArea"]
 layout_direction = 2
 layout_mode = 1
-offset_left = 75.0
-offset_top = 243.0
-offset_right = 875.0
-offset_bottom = 393.0
+offset_left = 68.0
+offset_top = 262.0
+offset_right = 768.0
+offset_bottom = 412.0
 size_flags_horizontal = 0
 
 [node name="EvaluationZone" type="HBoxContainer" parent="PlayArea"]
@@ -98,10 +99,10 @@ theme_override_constants/separation = 32
 alignment = 1
 
 [node name="PlayCardButton" type="TextureButton" parent="."]
-offset_left = 841.0
-offset_top = 615.0
-offset_right = 1041.0
-offset_bottom = 679.0
+offset_left = 836.0
+offset_top = 618.0
+offset_right = 1036.0
+offset_bottom = 682.0
 theme = ExtResource("7_ldegq")
 texture_normal = ExtResource("8_e0ewc")
 
@@ -115,9 +116,9 @@ text = "PLAY
 "
 
 [node name="DiscardButton" type="TextureButton" parent="."]
-offset_left = 583.0
+offset_left = 597.0
 offset_top = 616.0
-offset_right = 783.0
+offset_right = 797.0
 offset_bottom = 680.0
 theme = ExtResource("7_ldegq")
 texture_normal = ExtResource("9_rl1kb")
@@ -252,8 +253,32 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Deck" type="Button" parent="."]
+offset_left = 1143.0
+offset_top = 444.0
+offset_right = 1251.0
+offset_bottom = 602.0
+icon = ExtResource("12_rl1kb")
+flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+show_behind_parent = true
+position = Vector2(61, 80)
+texture = ExtResource("12_rl1kb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Deck"]
+show_behind_parent = true
+position = Vector2(61.5, 80)
+texture = ExtResource("12_rl1kb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Deck"]
+show_behind_parent = true
+position = Vector2(62.5, 80)
+texture = ExtResource("12_rl1kb")
+
 [connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
 [connection signal="pressed" from="PlayCardButton" to="PlayArea" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="PlayArea" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="HintButton" to="." method="_on_hint_button_pressed"]
 [connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="Deck" to="." method="_on_deck_pressed"]

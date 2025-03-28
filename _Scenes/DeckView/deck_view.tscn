@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyf7rxpdlhkww"]
+
+[ext_resource type="Script" uid="uid://d7bmv6s735xl" path="res://_Scripts/DeckView/deck_view.gd" id="1_lhcwi"]
+
+[node name="DeckView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lhcwi")
+
+[node name="PlaceholderPanel" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 60.0
+offset_right = 1090.0
+offset_bottom = 660.0
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 82.0
+offset_right = 346.0
+offset_bottom = 144.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 175.0
+offset_right = 1040.0
+offset_bottom = 625.0
+horizontal_scroll_mode = 0
+
+[node name="HBoxContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 32
+columns = 6
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
