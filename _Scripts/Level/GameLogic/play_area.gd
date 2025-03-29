@@ -26,7 +26,6 @@ func _ready():
 	e_zone = self.get_node("EvaluationZone")
 	await draw_initial_cards()
 	
-	# Initialize the calculator
 	calculator = Calculator.new()
 	calculator.expression_validity.connect(_on_expression_validity)  # Connect signal
 
@@ -126,7 +125,7 @@ func clear_hand() -> void:
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		return
-
+	
 	var score = calculator._on_hand_played(selected_cards)
 
 	scored.emit(score, calculator._multiplier, calculator._is_complex)

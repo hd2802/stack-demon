@@ -19,7 +19,6 @@ func _on_hand_played(cards_played: Array[Card]) -> int:
 	var is_valid = is_valid_expression()
 	var operator_count = count_operators()
 
-	# Multiplier logic
 	if !is_valid or len(stack) == 1:
 		_multiplier = 1
 	elif operator_count == 1:
@@ -45,17 +44,14 @@ func evaluate() -> int:
 		stack.clear()
 		return max_card_value
 	else:
-		# Evaluate valid expressions
 		while len(stack) >= 3:
 			var operation = stack.pop_back()
 			var operand1 = int(stack.pop_back())
 			var operand2 = int(stack.pop_back())
 			stack.push_back(str(calculate(operation, operand1, operand2)))
 
-		# Return the final result
 		return int(stack[0])
 
-# Helper function to count operators in the stack
 func count_operators() -> int:
 	var count = 0
 	for token in stack:
