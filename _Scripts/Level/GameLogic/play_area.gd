@@ -1,44 +1,45 @@
 extends Control
 class_name PlayArea
 
-var hand : HBoxContainer
-var e_zone : HBoxContainer
+var hand: HBoxContainer
+var e_zone: HBoxContainer
 
-var card_positions : Dictionary = {}
-var ghost_cards : Dictionary = {}
+var card_positions: Dictionary = {}
+var ghost_cards: Dictionary = {}
 
-var current_hand : Array[Card]
-var selected_card : Card
+var current_hand: Array[Card]
+var selected_card: Card
 
-var selected_cards : Array[Card] = []
+var selected_cards: Array[Card] = []
 
-var calculator : Calculator
+var calculator: Calculator
 
 const HAND_SIZE = 6
 
 signal hand_discarded()
-signal scored(sc : int)
+signal scored(sc: int, multiplier: int, is_complex: bool)
 
-var cards_added : int = 0
+var cards_added: int = 0
 
 func _ready():
-	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
 	await draw_initial_cards()
 	
+	# Initialize the calculator
 	calculator = Calculator.new()
+	calculator.expression_validity.connect(_on_expression_validity)  # Connect signal
 
 func draw_initial_cards():
 	for i in range(0, HAND_SIZE):
 		add_card()
 		await get_tree().create_timer(0.1).timeout
-	
+
 # -----------------------------------------------------------------------------
 
 func add_card():
 	var card_id = _DeckManager.draw_card()
-	var new_card : Card = load("res://_Scenes/Card/card.tscn").instantiate()
+	var new_card: Card = load("res://_Scenes/Card/card.tscn").instantiate()
 	
 	new_card.createCard(card_id)
 	new_card.clicked.connect(_on_card_clicked)
@@ -62,9 +63,7 @@ func add_card():
 	
 # -----------------------------------------------------------------------------
 
-
 func _on_card_clicked(card: Card):
-	# if the EXACT card is already in the list of selected cards
 	if selected_cards.has(card):
 		selected_cards.erase(card)
 	else:
@@ -74,7 +73,7 @@ func _on_card_clicked(card: Card):
 		else:
 			move_card_back_to_hand(card)
 
-func move_card_to_e_zone(card : Card) -> void:
+func move_card_to_e_zone(card: Card) -> void:
 	var original_index = hand.get_children().find(card)
 	card_positions[card] = original_index
 	
@@ -123,51 +122,48 @@ func clear_hand() -> void:
 		
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
-	
+
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
-		pass
-	else:
-		var score = calculator._on_hand_played(selected_cards)
-		
-		scored.emit(score)
+		return
 
-		# remove them physically from the hand 
+	var score = calculator._on_hand_played(selected_cards)
+
+	scored.emit(score, calculator._multiplier, calculator._is_complex)
+
+	# Remove played cards
+	for card in selected_cards:
+		e_zone.remove_child(card)
+		card.queue_free()
+
+		var ghost_card = ghost_cards.get(card, null)
+		if ghost_card:
+			hand.remove_child(ghost_card)
+			ghost_card.queue_free()
+			ghost_cards.erase(card)
+
+		current_hand.erase(card)
+		add_card()
+
+	selected_cards = []
+
+func _on_expression_validity(multiplier: int, is_complex: bool) -> void:
+	calculator._multiplier = multiplier
+	calculator._is_complex = is_complex
+
+func _on_discard_button_pressed() -> void:
+	if len(selected_cards) != 0:
 		for card in selected_cards:
-			# remove the card sprite from the hand
 			e_zone.remove_child(card)
-			card.queue_free()
-			
+
 			var ghost_card = ghost_cards.get(card, null)
-	
 			if ghost_card:
 				hand.remove_child(ghost_card)
 				ghost_card.queue_free()
-				ghost_cards.erase(card)
-			
-			# remove the card data from the array
-			current_hand.erase(card)
-			
-			add_card()
-			
-		# remove the selected cards from the logic of the hand 
-		selected_cards = []
 
-# need to make it so multiple cards can be discarded at one time 
-func _on_discard_button_pressed() -> void:
-	if len(selected_cards) != 0:
-		
-		for card in selected_cards:
-			e_zone.remove_child(card)
-			
-			var ghost_card = ghost_cards.get(card, null)
-			hand.remove_child(ghost_card)
-			
 			card.queue_free()
 			current_hand.erase(card)
 			add_card()
+
 		selected_cards = []
 		hand_discarded.emit()
-		
-	else:
-		pass

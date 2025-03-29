@@ -1,81 +1,67 @@
 extends Node
 class_name Calculator
 
-signal expression_validity(multiplier: int, is_complex: bool)
-
 var stack: Array[String]
+
+var _multiplier: int = 1
+var _is_complex: bool = false
+
+signal expression_validity(multiplier: int, is_complex: bool)
 
 func _ready() -> void:
 	pass
-
+	
 func _on_hand_played(cards_played: Array[Card]) -> int:
 	stack.clear()
-
 	for card in cards_played:
 		stack.push_back(card.card_data.text)
 
-	var sc = evaluate()
-	return sc
+	var is_valid = is_valid_expression()
+	var operator_count = count_operators()
+
+	# Multiplier logic
+	if !is_valid or len(stack) == 1:
+		_multiplier = 1
+	elif operator_count == 1:
+		_multiplier = 2
+	elif operator_count > 1:
+		_multiplier = 3
+	else:
+		_multiplier = 1
+
+	_is_complex = operator_count > 1
+
+
+	expression_validity.emit(_multiplier, _is_complex)
+
+	return evaluate()
 
 func evaluate() -> int:
-	var is_complex = is_complex_expression()
-	
-	if !is_valid_expression():
-		expression_validity.emit(1, is_complex)
-		var max_value = 0
+	if !is_valid_expression() or len(stack) == 1:
+		var max_card_value = 0
 		for card in stack:
-			var value = int(card)
-			if value > max_value:
-				max_value = value
+			if int(card) > max_card_value:
+				max_card_value = int(card)
 		stack.clear()
-		return max_value
+		return max_card_value
 	else:
-		expression_validity.emit(2 if !is_complex else 3, is_complex)  
+		# Evaluate valid expressions
+		while len(stack) >= 3:
+			var operation = stack.pop_back()
+			var operand1 = int(stack.pop_back())
+			var operand2 = int(stack.pop_back())
+			stack.push_back(str(calculate(operation, operand1, operand2)))
 
-		if len(stack) >= 3:
-			while len(stack) >= 3:
-				var operation = stack.pop_back()
-				var operand1 = stack.pop_back()
-				var operand2 = stack.pop_back()
-				var result = calculate(operation, int(operand1), int(operand2))
-				stack.push_back(str(result))
+		# Return the final result
+		return int(stack[0])
 
-			return int(stack.pop_back())
-		else:
-			var max_value = 0
-			for card in stack:
-				var value = int(card)
-				if value > max_value:
-					max_value = value
-			stack.clear()
-			return max_value
-
-# Helper functions ------------------------------------------------------
-func is_operation(value: String) -> bool:
-	return value in ["+", "/", "X", "^", "-"]
-
-func is_valid_expression() -> bool:
-	var operand_count = 0
-	
+# Helper function to count operators in the stack
+func count_operators() -> int:
+	var count = 0
 	for token in stack:
 		if is_operation(token):
-			if operand_count < 2:
-				return false
-			operand_count -= 1
-		else:
-			operand_count += 1
-
-	return operand_count == 1
-
-func is_complex_expression() -> bool:
-	# Count how many operations are in the stack
-	var operator_count = 0
-
-	for token in stack:
-		if is_operation(token):
-			operator_count += 1
-
-	return operator_count >= 2
+			count += 1
+	return count
 
 func calculate(operation: String, operand1: int, operand2: int) -> int:
 	match operation:
@@ -91,3 +77,17 @@ func calculate(operation: String, operand1: int, operand2: int) -> int:
 			return int(pow(operand1, operand2))
 		_:
 			return 0
+
+func is_operation(value: String) -> bool:
+	return value in ["+", "-", "X", "/", "^"]
+
+func is_valid_expression() -> bool:
+	var operand_count = 0
+	for token in stack:
+		if !is_operation(token):
+			operand_count += 1
+		elif operand_count >= 2:
+			operand_count -= 1
+		else:
+			return false
+	return operand_count == 1
