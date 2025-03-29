@@ -14,7 +14,7 @@ var selected_cards : Array[Card] = []
 
 var calculator : Calculator
 
-const HAND_SIZE = 7
+const HAND_SIZE = 6
 
 signal hand_discarded()
 signal scored(sc : int)

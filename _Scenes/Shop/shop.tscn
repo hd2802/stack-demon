@@ -1,17 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq85swbj7uyim"]
+[gd_scene load_steps=8 format=3 uid="uid://cq85swbj7uyim"]
 
-[ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="1_dehce"]
 [ext_resource type="Script" uid="uid://dsdvaq2rowt4p" path="res://_Scripts/Shop/shop.gd" id="1_lr4xu"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="2_nd2u3"]
+[ext_resource type="Shader" uid="uid://btvii1n8uj1ap" path="res://Resources/Shaders/swirl.gdshader" id="2_yg0q2"]
+[ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_o5jc3"]
+[ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="5_o5jc3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nd2u3"]
-shader = ExtResource("1_dehce")
-shader_parameter/size = 25.0
-shader_parameter/color1 = Color(0.331019, 0.331019, 0.331019, 1)
-shader_parameter/color2 = Color(0.55279, 0.728072, 0.832564, 1)
-shader_parameter/speed = 1.0
-shader_parameter/direction_x = 1.0
-shader_parameter/direction_y = 1.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgat4"]
+shader = ExtResource("2_yg0q2")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 1.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.289925, 0.424146, 0.508344, 1)
+shader_parameter/colour_2 = Color(0.205117, 0.205117, 0.205117, 1)
+shader_parameter/colour_3 = Color(0.175168, 0.242768, 0.407085, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.36
+shader_parameter/pixel_filter = 700.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki6lq"]
+shader = ExtResource("3_o5jc3")
+shader_parameter/lod = 4.43
+shader_parameter/mix_percentage = 0.427
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -23,12 +37,12 @@ grow_vertical = 2
 script = ExtResource("1_lr4xu")
 
 [node name="Background" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_nd2u3")
-layout_mode = 0
+material = SubResource("ShaderMaterial_pgat4")
 offset_right = 1280.0
 offset_bottom = 720.0
 
 [node name="PlaceholderPanel" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ki6lq")
 layout_mode = 0
 offset_left = 100.0
 offset_top = 66.0
@@ -37,11 +51,40 @@ offset_bottom = 632.0
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 496.0
-offset_top = 284.0
-offset_right = 776.0
-offset_bottom = 402.0
+offset_left = 515.0
+offset_top = 492.0
+offset_right = 765.0
+offset_bottom = 592.0
 theme = ExtResource("2_nd2u3")
 text = "Continue"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 4.0
+offset_top = 70.0
+offset_right = 1282.0
+offset_bottom = 214.0
+theme = ExtResource("5_o5jc3")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "[wave amp=25 freq=1.5] Level Complete[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 171.0
+offset_right = 856.0
+offset_bottom = 212.0
+theme = ExtResource("2_nd2u3")
+text = "Pick a Modifier or a Special Card:"
+
+[node name="CardContainer" type="HBoxContainer" parent="."]
+offset_left = 180.0
+offset_top = 282.0
+offset_right = 610.0
+offset_bottom = 432.0
+theme_override_constants/separation = 16
+alignment = 1
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

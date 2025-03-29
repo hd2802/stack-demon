@@ -107,18 +107,18 @@ script = ExtResource("6_rl1kb")
 [node name="Hand" type="HBoxContainer" parent="PlayArea"]
 layout_direction = 2
 layout_mode = 1
-offset_left = 60.0
+offset_left = 110.0
 offset_top = 250.0
-offset_right = 760.0
+offset_right = 710.0
 offset_bottom = 400.0
 size_flags_horizontal = 0
 
 [node name="EvaluationZone" type="HBoxContainer" parent="PlayArea"]
 layout_mode = 0
-offset_left = 229.0
-offset_top = 49.0
-offset_right = 729.0
-offset_bottom = 199.0
+offset_left = 215.0
+offset_top = 65.0
+offset_right = 715.0
+offset_bottom = 215.0
 theme_override_constants/separation = 32
 alignment = 1
 
@@ -277,6 +277,13 @@ texture = ExtResource("12_rl1kb")
 show_behind_parent = true
 position = Vector2(64, 79)
 texture = ExtResource("12_rl1kb")
+
+[node name="ModifierContainer" type="VBoxContainer" parent="."]
+offset_left = 326.0
+offset_top = 195.0
+offset_right = 406.0
+offset_bottom = 515.0
+theme_override_constants/separation = 16
 
 [connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
 [connection signal="pressed" from="PlayCardButton" to="PlayArea" method="_on_play_card_button_pressed"]
