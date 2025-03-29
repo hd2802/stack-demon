@@ -4,7 +4,17 @@ class_name TierTransition
 # TODO: edit this so that the cards are weighted properly
 # and so that it contains some interesting cards that can be added
 var CARDS : Array[String] = [
-	"multiply", "multiply", "multiply"
+	"multiply", "multiply", "multiply",
+	"ten", "ten", "ten",
+	"twenty", "twenty", "twenty",
+	"one", "one", "one",
+	"three", "three", "three",
+	"four", "two", "five", "nine",
+	"six", "seven", "nine", "nine", "two",
+	"two", "three", "one", "two", "three",
+	"four", "six", "six", "six", "seven",
+	"nine", "ten", "add", "add", "add",
+	"add", "ten", "add"
 ]
 
 var card_list : Array[StaticCard]
@@ -19,13 +29,16 @@ var card_three : StaticCard
 
 var continue_button : Button
 
+var selection_prompt : Label
+
 signal next 
 
 func _ready() -> void:
 	card_container = $CardContainer
 	continue_button = $ContinueButton
-	continue_button.visible = false
+	selection_prompt = $SelectionPrompt
 	generate_cards()
+	
 
 func generate_cards() -> void:
 	CARDS.shuffle()
@@ -41,6 +54,7 @@ func generate_cards() -> void:
 		card_list.append(new_card)
 
 func _on_card_clicked(card : StaticCard) -> void:
+	continue_button.text = "Continue"
 	selected_card = card
 	var idx = card_list.find(card)
 	
@@ -62,8 +76,7 @@ func _on_card_clicked(card : StaticCard) -> void:
 			static_card.add_child(shader_rect)
 	
 	_DeckManager.add_card_to_deck(gen_cards[idx])
-	continue_button.visible = true
-
-
+	selection_prompt.visible = false
+	
 func _on_continue_button_pressed() -> void:
 	next.emit()

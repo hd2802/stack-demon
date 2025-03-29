@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ty04b")
 level_number = 1
-target_value = 2
+target_value = 10
 tier = 0
-moves = 5
+moves = 4
 metadata/_custom_type_script = "uid://rwjcrwytakj6"

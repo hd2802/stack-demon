@@ -57,6 +57,6 @@ offset_top = 535.0
 offset_right = 842.0
 offset_bottom = 599.0
 theme = ExtResource("2_l5pqb")
-text = "Continue"
+text = "Skip"
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
