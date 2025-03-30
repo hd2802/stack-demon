@@ -72,3 +72,15 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 		level_complete.emit()
 	elif current_hands == 0:
 		game_over.emit()
+
+
+func _on_hint_button_pressed() -> void:
+	var hint_scene = load("res://_Scenes/Hint/hint.tscn").instantiate()
+	self.add_child(hint_scene)
+	hint_scene.hint_closed.connect(_close_hint)
+
+func _close_hint() -> void:
+	for child in get_children():
+		if child is Hint:
+			self.remove_child(child)
+			child.queue_free()

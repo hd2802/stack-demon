@@ -247,7 +247,7 @@ offset_top = 548.0
 offset_right = 305.0
 offset_bottom = 589.0
 theme = ExtResource("7_ldegq")
-text = "Hint"
+text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
 
