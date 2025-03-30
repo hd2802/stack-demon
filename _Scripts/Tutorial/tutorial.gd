@@ -156,10 +156,10 @@ func process_tutorial() -> void:
 		14:
 			self.get_node("LevelTierLabel").visible = true
 			tutorial_label.text = "Reaching the target completes
-			the TIER"
+			the ROUND"
 		15:
 			self.get_node("LevelTitleLabel").visible = true
-			tutorial_label.text = "There are three tiers in each level. 
+			tutorial_label.text = "There are three rounds in each level. 
 			Completing a level rewards you with 
 			modifiersthat can help you reach your 
 			target in further levels."
@@ -206,7 +206,7 @@ func load_level(data) -> void:
 	
 	# Tier title initialisation
 	tier_title_node = self.get_node("LevelTierLabel")
-	tier_title_node.text = "[wave amp=25 freq=1]Tier " + str(data.tier) + "[/wave]" 
+	tier_title_node.text = "[wave amp=25 freq=1]Round " + str(data.tier) + "[/wave]" 
 	
 	play_area = self.get_node("PlayArea")
 	

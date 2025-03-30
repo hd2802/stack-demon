@@ -38,7 +38,7 @@ func load_level(data) -> void:
 	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "[/wave]" 
 
 	tier_title_node = self.get_node("LevelTierLabel")
-	tier_title_node.text = "[wave amp=25 freq=1]Tier " + str(data.tier) + "[/wave]" 
+	tier_title_node.text = "[wave amp=25 freq=1]Round " + str(data.tier) + "[/wave]" 
 
 	play_area = self.get_node("PlayArea")
 

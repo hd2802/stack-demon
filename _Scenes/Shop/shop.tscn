@@ -62,9 +62,9 @@ text = "Continue"
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 70.0
+offset_top = 62.0
 offset_right = 1282.0
-offset_bottom = 214.0
+offset_bottom = 206.0
 theme = ExtResource("5_o5jc3")
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
@@ -89,5 +89,12 @@ offset_right = 610.0
 offset_bottom = 432.0
 theme_override_constants/separation = 16
 alignment = 1
+
+[node name="ModifierContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 241.0
+offset_right = 1117.0
+offset_bottom = 472.0
 
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
