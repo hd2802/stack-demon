@@ -59,7 +59,10 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 	var final_score = sc * multiplier
 	current_score += final_score
 	score.text = str(current_score)
-
+	
+	var mult_label = $Multiplier
+	
+	mult_label.text = "[wave amp=25 freq=1]Mult:\n"+ str(multiplier) + "[/wave]"
 	current_hands -= 1
 	hands.text = str(current_hands)
 	
