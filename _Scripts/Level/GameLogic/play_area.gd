@@ -16,10 +16,14 @@ var calculator: Calculator
 
 const HAND_SIZE = 6
 
+var level_complete : bool = false
+
 signal hand_discarded()
 signal scored(sc: int, multiplier: int, is_complex: bool)
 
 var cards_added: int = 0
+
+var current_score : int
 
 func _ready():
 	hand = self.get_node("Hand")
@@ -121,6 +125,7 @@ func clear_hand() -> void:
 		
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
+	
 
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
@@ -132,7 +137,14 @@ func _on_play_card_button_pressed() -> void:
 	
 	scored.emit(score, calculator._multiplier, calculator._is_complex)
 	
+	var final_score = score * calculator._multiplier
+	current_score += final_score
+	
+	if current_score >= self.get_parent().target:
+		level_complete = true
+		
 	await get_tree().create_timer(1.0).timeout
+	
 	clear_cards()
 
 func animate_cards():
@@ -148,8 +160,21 @@ func animate_cards():
 	await get_tree().create_timer(delay_time * 5).timeout
 
 func clear_cards():
-	# Remove played cards
-	for card in selected_cards:
+	var delay_time = 0.15 
+	
+	for i in range(selected_cards.size()):
+		var card = selected_cards[i]
+
+		var final_position = Vector2(1000, 75)  
+		var tween = get_tree().create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+
+		tween.parallel().tween_property(card, "position", final_position, 0.3 + (i * delay_time))
+		tween.parallel().tween_property(card, "scale", Vector2(0, 0), 0.3 + (i * delay_time))
+		tween.parallel().tween_property(card, "modulate:a", 0.0, 0.3 + (i * delay_time))  # Fade out
+		
+		await get_tree().create_timer(delay_time).timeout
+		
 		e_zone.remove_child(card)
 		card.queue_free()
 
@@ -160,7 +185,10 @@ func clear_cards():
 			ghost_cards.erase(card)
 
 		current_hand.erase(card)
-		add_card()
+	
+		if not level_complete:
+			add_card()
+
 	selected_cards = []
 
 func _on_expression_validity(multiplier: int, is_complex: bool) -> void:

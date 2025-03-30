@@ -64,6 +64,7 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 	hands.text = str(current_hands)
 	
 	await get_tree().create_timer(1.0).timeout
+	
 	if current_score >= target:
 		level_complete.emit()
 	elif current_hands == 0:
