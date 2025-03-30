@@ -125,11 +125,29 @@ func clear_hand() -> void:
 func _on_play_card_button_pressed() -> void:
 	if !selected_cards:
 		return
+		
+	await animate_cards()
 	
 	var score = calculator._on_hand_played(selected_cards)
-
+	
 	scored.emit(score, calculator._multiplier, calculator._is_complex)
+	
+	await get_tree().create_timer(1.0).timeout
+	clear_cards()
 
+func animate_cards():
+	var delay_time = 0.2
+	for i in range(selected_cards.size()):
+		var card = selected_cards[i]
+
+		var tween = get_tree().create_tween()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.tween_property(card, "position", card.position + Vector2(0, -20), 0.25)
+
+		await get_tree().create_timer(delay_time).timeout
+	await get_tree().create_timer(delay_time * 5).timeout
+
+func clear_cards():
 	# Remove played cards
 	for card in selected_cards:
 		e_zone.remove_child(card)
@@ -143,7 +161,6 @@ func _on_play_card_button_pressed() -> void:
 
 		current_hand.erase(card)
 		add_card()
-
 	selected_cards = []
 
 func _on_expression_validity(multiplier: int, is_complex: bool) -> void:
