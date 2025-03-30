@@ -84,3 +84,15 @@ func _close_hint() -> void:
 		if child is Hint:
 			self.remove_child(child)
 			child.queue_free()
+
+
+func _on_options_button_pressed() -> void:
+	var options_scene = load("res://_Scenes/Options/options.tscn").instantiate()
+	self.add_child(options_scene)
+	options_scene.resume.connect(_close_options)
+
+func _close_options() -> void:
+	for child in get_children():
+		if child is Options:
+			self.remove_child(child)
+			child.queue_free()

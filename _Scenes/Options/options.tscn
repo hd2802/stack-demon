@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://3sl4bjc47fj6"]
+
+[ext_resource type="Script" uid="uid://cukuryythofha" path="res://_Scripts/Options/options.gd" id="1_8513e"]
+
+[node name="Options" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8513e")
+
+[node name="PlaceholderBackground" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 440.0
+offset_top = 60.0
+offset_right = 840.0
+offset_bottom = 660.0
+color = Color(0, 0, 0, 1)
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 209.0
+offset_right = 805.0
+offset_bottom = 303.0
+text = "Resume"
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 327.0
+offset_right = 807.0
+offset_bottom = 421.0
+text = "Restart
+"
+
+[node name="MainMenu" type="Button" parent="."]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 458.0
+offset_right = 804.0
+offset_bottom = 552.0
+text = "Back to Main Menu
+"
+
+[node name="CrossButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 76.0
+offset_right = 512.0
+offset_bottom = 125.0
+text = "x"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CrossButton" to="." method="_on_cross_button_pressed"]
