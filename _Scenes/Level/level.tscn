@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=15 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
@@ -23,11 +23,6 @@ shader_parameter/direction_x = 1.0
 shader_parameter/direction_y = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ewc"]
-shader = ExtResource("3_vw5s3")
-shader_parameter/lod = 5.0
-shader_parameter/mix_percentage = 0.3
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rl1kb"]
 shader = ExtResource("3_vw5s3")
 shader_parameter/lod = 5.0
 shader_parameter/mix_percentage = 0.3
@@ -291,22 +286,13 @@ offset_right = 406.0
 offset_bottom = 515.0
 theme_override_constants/separation = 16
 
-[node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_rl1kb")
-offset_left = 1150.0
-offset_top = 216.0
-offset_right = 1246.0
-offset_bottom = 310.0
-
 [node name="Multiplier" type="RichTextLabel" parent="."]
-offset_left = 1145.0
+offset_left = 1091.0
 offset_top = 207.0
 offset_right = 1250.0
-offset_bottom = 309.0
-theme = ExtResource("7_ldegq")
+offset_bottom = 380.0
+theme = ExtResource("10_ydtrd")
 bbcode_enabled = true
-text = "[wave amp=25 freq=1]Mult:
- 1 [/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

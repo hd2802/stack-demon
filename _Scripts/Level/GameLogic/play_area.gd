@@ -132,9 +132,8 @@ func _on_play_card_button_pressed() -> void:
 		return
 		
 	await animate_cards()
-	
 	var score = calculator._on_hand_played(selected_cards)
-	
+	self.get_parent().multiplier_label.text = "[wave amp=25 freq=1]x "+ str(calculator._multiplier) + "[/wave]"
 	scored.emit(score, calculator._multiplier, calculator._is_complex)
 	
 	var final_score = score * calculator._multiplier
@@ -142,9 +141,10 @@ func _on_play_card_button_pressed() -> void:
 	
 	if current_score >= self.get_parent().target:
 		level_complete = true
-		
+	
 	await get_tree().create_timer(1.0).timeout
 	
+	self.get_parent().multiplier_label.text = ""
 	clear_cards()
 
 func animate_cards():

@@ -28,6 +28,8 @@ var tier_complete = false
 var discard_button
 var deck_view
 
+var multiplier_label : RichTextLabel
+
 signal level_complete()
 signal game_over()
 
@@ -52,6 +54,8 @@ func load_level(data) -> void:
 
 	score = self.get_node("Score")
 	score.text = str(current_score)
+	
+	multiplier_label = $Multiplier
 
 	discard_button = self.get_node("DiscardButton")
 
@@ -60,9 +64,6 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 	current_score += final_score
 	score.text = str(current_score)
 	
-	var mult_label = $Multiplier
-	
-	mult_label.text = "[wave amp=25 freq=1]Mult:\n"+ str(multiplier) + "[/wave]"
 	current_hands -= 1
 	hands.text = str(current_hands)
 	
@@ -72,7 +73,6 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 		level_complete.emit()
 	elif current_hands == 0:
 		game_over.emit()
-
 
 func _on_hint_button_pressed() -> void:
 	var hint_scene = load("res://_Scenes/Hint/hint.tscn").instantiate()
