@@ -12,7 +12,7 @@ var card_two : StaticCard
 var card_three : StaticCard
 
 var CARDS = [
-	"one", "one", "one"
+	"multiply", "multiply", "multiply"
 ]
 
 signal shop_finished()
