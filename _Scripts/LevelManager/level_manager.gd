@@ -15,8 +15,8 @@ var moves: int = 5
 
 var rng = RandomNumberGenerator.new()
 
-const MIN_RAND_RANGE: int = 10
-const MAX_RAND_RANGE: int = 20
+const MIN_RAND_RANGE: int = 5
+const MAX_RAND_RANGE: int = 15
 const TIER_INCREASE: int = 20
 
 func _ready() -> void:
