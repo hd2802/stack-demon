@@ -28,7 +28,7 @@ offset_right = 948.0
 offset_bottom = 205.0
 theme = ExtResource("1_qoa37")
 bbcode_enabled = true
-text = "[wave amp=25 freq=1.5] Tier Complete[/wave]"
+text = "[wave amp=25 freq=1.5] Round Complete[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

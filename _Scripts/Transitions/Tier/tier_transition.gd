@@ -38,6 +38,14 @@ func _ready() -> void:
 	card_container = $CardContainer
 	continue_button = $ContinueButton
 	selection_prompt = $SelectionPrompt
+	
+	var round_number = self.get_parent().current_tier
+	if round_number == 0:
+		round_number += 1
+	
+	var title = $Title
+	title.text = "[wave amp=25 freq=1.5] Round "  + str(round_number) + " Complete[/wave]"
+	
 	generate_cards()
 	
 

@@ -42,15 +42,19 @@ func _on_level_complete() -> void:
 	get_tree().paused = true
 	var transition_scene
 	
-	if current_tier == 3:
-		transition_scene = load("res://_Scenes/Transitions/Level/level_transition.tscn").instantiate()
-		transition_scene.level_next.connect(_load_transition)
+	if current_level == 5:
+		# here the game is over - the player can continue if they would like
+		# in 'endless mode' but other than that, they have completed the game
+		pass
 	else:
-		transition_scene = load("res://_Scenes/Transitions/Tier/tier_transition.tscn").instantiate()
-		transition_scene.next.connect(_load_next_level)
-	
-	self.add_child(transition_scene)
-	#_load_next_level()
+		if current_tier == 3:
+			transition_scene = load("res://_Scenes/Transitions/Level/level_transition.tscn").instantiate()
+			transition_scene.level_next.connect(_load_transition)
+		else:
+			transition_scene = load("res://_Scenes/Transitions/Tier/tier_transition.tscn").instantiate()
+			transition_scene.next.connect(_load_next_level)
+		
+		self.add_child(transition_scene)
 
 func _load_transition() -> void:
 	get_tree().paused = false
