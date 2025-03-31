@@ -19,6 +19,7 @@ const HAND_SIZE = 6
 var level_complete : bool = false
 
 var button_audio
+var evaluation_audio
 
 signal hand_discarded()
 signal scored(sc: int, multiplier: int, is_complex: bool)
@@ -29,6 +30,7 @@ var current_score : int
 
 func _ready():
 	button_audio = $"../ButtonPress"
+	evaluation_audio = $"../Evaluation"
 	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
@@ -161,8 +163,10 @@ func animate_cards():
 		var tween = get_tree().create_tween()
 		tween.set_trans(Tween.TRANS_QUART)
 		tween.tween_property(card, "position", card.position + Vector2(0, -20), 0.25)
-
+	
+		evaluation_audio.play()
 		await get_tree().create_timer(delay_time).timeout
+
 	await get_tree().create_timer(delay_time * 5).timeout
 
 func clear_cards():
