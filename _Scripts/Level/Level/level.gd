@@ -35,10 +35,17 @@ signal game_over()
 
 func load_level(data) -> void:
 	title_node = self.get_node("LevelTitleLabel")
-	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "[/wave]" 
+	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "/5[/wave]" 
 
 	tier_title_node = self.get_node("LevelTierLabel")
-	tier_title_node.text = "[wave amp=25 freq=1]Round " + str(data.tier) + "[/wave]" 
+	
+	var print_tier : int
+	if data.tier == 0:
+		print_tier = data.tier + 1
+	else:
+		print_tier = data.tier
+		
+	tier_title_node.text = "[wave amp=25 freq=1]Round " + str(print_tier) + "/3[/wave]" 
 
 	play_area = self.get_node("PlayArea")
 

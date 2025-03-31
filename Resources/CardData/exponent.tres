@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CardDataResource" load_steps=2 format=3 uid="uid://8rp26k2g1cpm"]
+
+[ext_resource type="Script" uid="uid://dx3rblym6ob45" path="res://CustomResources/card_data.gd" id="1_nmpet"]
+
+[resource]
+script = ExtResource("1_nmpet")
+text = "^"
+metadata/_custom_type_script = "uid://dx3rblym6ob45"

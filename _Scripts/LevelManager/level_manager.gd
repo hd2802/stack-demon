@@ -4,9 +4,9 @@ class_name LevelManager
 var level: Level = null
 
 # Can only be 0, 1, or 2 
-var current_tier: int = 0
+var current_tier: int = 1
 # Incremented when all 3 tiers are completed
-var current_level: int = 0
+var current_level: int = 1
 var tier_base_target: int = 2
 var tier_current_target: int = tier_base_target
 
@@ -42,7 +42,7 @@ func _on_level_complete() -> void:
 	get_tree().paused = true
 	var transition_scene
 	
-	if current_tier == 2:
+	if current_tier == 3:
 		transition_scene = load("res://_Scenes/Transitions/Level/level_transition.tscn").instantiate()
 		transition_scene.level_next.connect(_load_transition)
 	else:
@@ -66,12 +66,12 @@ func _create_next_level() -> LevelDataResource:
 	# Increment tier
 	current_tier += 1
 	
-	if current_tier == 1:
+	if current_tier == 2:
 		tier_current_target += rng.randi_range(MIN_RAND_RANGE, MAX_RAND_RANGE)
-	elif current_tier == 2:
+	elif current_tier == 3:
 		tier_current_target += rng.randi_range(MIN_RAND_RANGE, MAX_RAND_RANGE)
 	else: # current_tier == 3
-		current_tier = 0
+		current_tier = 1
 		current_level += 1
 		tier_base_target += TIER_INCREASE
 		tier_current_target = tier_base_target
