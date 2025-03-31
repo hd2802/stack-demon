@@ -28,8 +28,8 @@ texture = ExtResource("2_1nrt8")
 layout_mode = 0
 offset_left = 223.0
 offset_top = 90.0
-offset_right = 284.0
-offset_bottom = 152.0
+offset_right = 293.0
+offset_bottom = 173.0
 theme = ExtResource("3_gtya7")
 text = "X"
 
