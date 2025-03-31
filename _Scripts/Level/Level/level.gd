@@ -20,6 +20,8 @@ var hands: Label
 var discards: Label
 var score: Label
 
+var deck_view_scene 
+
 var current_score: int = 0
 var target: int
 
@@ -103,3 +105,12 @@ func _close_options() -> void:
 		if child is Options:
 			self.remove_child(child)
 			child.queue_free()
+
+func _on_deck_pressed() -> void:
+	deck_view_scene = load("res://_Scenes/DeckView/deck_view.tscn").instantiate()
+	self.add_child(deck_view_scene)
+	deck_view_scene.back.connect(_remove_deck_view)
+
+func _remove_deck_view() -> void:
+	if deck_view_scene:
+		self.remove_child(deck_view_scene)

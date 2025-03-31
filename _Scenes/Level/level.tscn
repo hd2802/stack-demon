@@ -264,21 +264,6 @@ offset_bottom = 593.0
 icon = ExtResource("12_rl1kb")
 flat = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Deck"]
-show_behind_parent = true
-position = Vector2(61, 80)
-texture = ExtResource("12_rl1kb")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Deck"]
-show_behind_parent = true
-position = Vector2(61.5, 80)
-texture = ExtResource("12_rl1kb")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Deck"]
-show_behind_parent = true
-position = Vector2(64, 79)
-texture = ExtResource("12_rl1kb")
-
 [node name="ModifierContainer" type="VBoxContainer" parent="."]
 offset_left = 326.0
 offset_top = 195.0
