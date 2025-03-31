@@ -1,17 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=20 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_vw5s3"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="4_5phq7"]
+[ext_resource type="Texture2D" uid="uid://3w76mlkv8428" path="res://Assets/Sprites/Panels/hands_panel-1.png" id="5_gfncb"]
 [ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/GameLogic/play_area.gd" id="6_rl1kb"]
+[ext_resource type="Texture2D" uid="uid://vbtqdf0ix7t6" path="res://Assets/Sprites/Panels/discards_panel.png" id="6_xqiwq"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="7_ldegq"]
+[ext_resource type="Texture2D" uid="uid://cf4cbqv2aol74" path="res://Assets/Sprites/Panels/target_panel.png" id="7_u72hf"]
+[ext_resource type="Texture2D" uid="uid://buph8yd3kk1aq" path="res://Assets/Sprites/Panels/discards_panel-1.png(1).png" id="8_7dgkj"]
 [ext_resource type="Texture2D" uid="uid://bquqdw1sgn7xg" path="res://Assets/Sprites/Buttons/PlayButton.png" id="8_e0ewc"]
 [ext_resource type="Texture2D" uid="uid://dmeyxhca61rca" path="res://Assets/Sprites/Buttons/DiscardButton.png" id="9_rl1kb"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="10_ydtrd"]
 [ext_resource type="Texture2D" uid="uid://8mmw1y4nbqkd" path="res://Assets/Sprites/Buttons/LevelButton.png" id="11_gfncb"]
 [ext_resource type="Texture2D" uid="uid://f7je5osdp5ve" path="res://Assets/Sprites/CardBack.png" id="12_rl1kb"]
 [ext_resource type="Script" uid="uid://cdau8d7xqmav2" path="res://_Scripts/Level/Target/target.gd" id="13_svkq8"]
+[ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="17_ayim6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fxwj"]
 shader = ExtResource("2_vw5s3")
@@ -48,7 +53,7 @@ material = SubResource("ShaderMaterial_e0ewc")
 offset_left = 335.0
 offset_top = 30.0
 offset_right = 1250.0
-offset_bottom = 180.0
+offset_bottom = 221.0
 
 [node name="TargetLabel" type="RichTextLabel" parent="TargetBar"]
 layout_mode = 0
@@ -73,6 +78,27 @@ bbcode_enabled = true
 text = "[wave amp=25 freq=1]Current Score:[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(167, 317)
+scale = Vector2(3, 3)
+texture = ExtResource("5_gfncb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(167, 477)
+scale = Vector2(3, 3)
+texture = ExtResource("6_xqiwq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(573, 157)
+scale = Vector2(3, 3)
+texture = ExtResource("7_u72hf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(1, 0.556863, 0.0352941, 1)
+position = Vector2(1020, 156)
+scale = Vector2(3, 3)
+texture = ExtResource("8_7dgkj")
 
 [node name="LevelTitleLabel" type="RichTextLabel" parent="."]
 offset_left = 30.0
@@ -133,9 +159,9 @@ texture_normal = ExtResource("8_e0ewc")
 
 [node name="Label" type="Label" parent="PlayCardButton"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 66.0
 offset_top = 15.0
-offset_right = 130.0
+offset_right = 140.0
 offset_bottom = 114.0
 text = "PLAY
 "
@@ -162,10 +188,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 540.0
-offset_top = 100.0
-offset_right = 604.0
-offset_bottom = 164.0
+offset_left = 555.0
+offset_top = 125.0
+offset_right = 619.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -174,10 +200,10 @@ theme = ExtResource("10_ydtrd")
 script = ExtResource("13_svkq8")
 
 [node name="Score" type="Label" parent="."]
-offset_left = 961.0
-offset_top = 102.0
-offset_right = 1035.0
-offset_bottom = 171.0
+offset_left = 984.0
+offset_top = 121.0
+offset_right = 1058.0
+offset_bottom = 190.0
 theme = ExtResource("10_ydtrd")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -276,7 +302,7 @@ offset_left = 1091.0
 offset_top = 207.0
 offset_right = 1250.0
 offset_bottom = 380.0
-theme = ExtResource("10_ydtrd")
+theme = ExtResource("17_ayim6")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
