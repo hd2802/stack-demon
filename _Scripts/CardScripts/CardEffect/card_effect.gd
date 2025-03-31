@@ -6,8 +6,6 @@ var is_hovered = false
 
 var static_sprite : bool = false
 
-var card_hover_player
-
 func _ready():
 	material = material.duplicate()
 

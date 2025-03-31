@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d7bmv6s735xl" path="res://_Scripts/DeckView/deck_view.gd" id="1_lhcwi"]
 [ext_resource type="Texture2D" uid="uid://di3bjrpdt0833" path="res://Assets/Sprites/Panels/deck_view_panel.png" id="2_1nrt8"]
-[ext_resource type="AudioStream" uid="uid://bk4e6iv1n626b" path="res://Assets/SoundFX/536108__eminyildirim__ui-click.wav" id="2_nbj3l"]
+[ext_resource type="AudioStream" uid="uid://la4prbx45klh" path="res://Assets/SoundFX/677860__el_boss__ui-button-click-snap.wav" id="2_nbj3l"]
 [ext_resource type="Theme" uid="uid://dom63suaqtrwc" path="res://Resources/Themes/stack_item.tres" id="3_gtya7"]
 
 [node name="DeckView" type="Control"]

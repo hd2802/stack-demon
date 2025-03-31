@@ -6,9 +6,12 @@ var sprite : Sprite2D
 
 var selected : bool = false
 
+var click_audio
+
 signal clicked(card: Node)
 
 func _ready() -> void:
+	click_audio = $Click
 	sprite = self.get_node("Sprite2D")
 	
 func createCard(card : String):
@@ -25,5 +28,6 @@ func set_labels():
 	center.text = self.card_data.text
 
 func _on_pressed() -> void:
+	click_audio.play()
 	clicked.emit(self)
 	selected = true

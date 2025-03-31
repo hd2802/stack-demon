@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://m1cief7boe3f"]
+[gd_scene load_steps=9 format=3 uid="uid://m1cief7boe3f"]
 
 [ext_resource type="Script" uid="uid://dm4mse77nk574" path="res://_Scripts/CardScripts/Card/card.gd" id="1_hcfnd"]
+[ext_resource type="AudioStream" uid="uid://068lqx06h1j5" path="res://Assets/SoundFX/240776__f4ngy__card-flip.wav" id="2_5dvo6"]
 [ext_resource type="Texture2D" uid="uid://n3syninrkx8a" path="res://Assets/Sprites/BlankCard.png" id="2_agjfr"]
 [ext_resource type="Shader" uid="uid://cw0sk68bgeixc" path="res://Resources/Shaders/card_effect.gdshader" id="2_mol3j"]
 [ext_resource type="Theme" uid="uid://b8rufdjyp1b2b" path="res://Resources/Themes/card_theme.tres" id="3_7xymu"]
@@ -37,6 +38,9 @@ anchor_bottom = 0.208333
 flat = true
 script = ExtResource("1_hcfnd")
 metadata/_edit_use_anchors_ = true
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5dvo6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_mol3j")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bq8pqsivuswmi" path="res://_Scripts/Transitions/Tier/tier_transition.gd" id="1_5jvyv"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="1_qoa37"]
-[ext_resource type="AudioStream" uid="uid://bk4e6iv1n626b" path="res://Assets/SoundFX/536108__eminyildirim__ui-click.wav" id="2_awrrt"]
+[ext_resource type="AudioStream" uid="uid://la4prbx45klh" path="res://Assets/SoundFX/677860__el_boss__ui-button-click-snap.wav" id="2_awrrt"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="2_l5pqb"]
 
 [node name="TierTransition" type="Control"]
