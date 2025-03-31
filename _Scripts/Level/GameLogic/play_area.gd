@@ -18,6 +18,8 @@ const HAND_SIZE = 6
 
 var level_complete : bool = false
 
+var button_audio
+
 signal hand_discarded()
 signal scored(sc: int, multiplier: int, is_complex: bool)
 
@@ -26,6 +28,8 @@ var cards_added: int = 0
 var current_score : int
 
 func _ready():
+	button_audio = $"../ButtonPress"
+	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
 	await draw_initial_cards()
@@ -128,6 +132,8 @@ func clear_hand() -> void:
 	
 
 func _on_play_card_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	if !selected_cards:
 		return
 		
@@ -196,6 +202,8 @@ func _on_expression_validity(multiplier: int, is_complex: bool) -> void:
 	calculator._is_complex = is_complex
 
 func _on_discard_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	if len(selected_cards) != 0:
 		for card in selected_cards:
 			e_zone.remove_child(card)

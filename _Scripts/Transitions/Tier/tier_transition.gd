@@ -18,6 +18,8 @@ var CARDS : Array[String] = [
 	"add", "add"
 ]
 
+var button_audio
+
 var card_list : Array[StaticCard]
 var gen_cards : Array[String]
 
@@ -35,6 +37,7 @@ var selection_prompt : Label
 signal next 
 
 func _ready() -> void:
+	button_audio = $AudioStreamPlayer2D
 	card_container = $CardContainer
 	continue_button = $ContinueButton
 	selection_prompt = $SelectionPrompt
@@ -87,4 +90,6 @@ func _on_card_clicked(card : StaticCard) -> void:
 	selection_prompt.visible = false
 	
 func _on_continue_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	next.emit()

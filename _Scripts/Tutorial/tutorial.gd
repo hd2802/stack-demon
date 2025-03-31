@@ -43,7 +43,10 @@ var main_menu_button
 
 signal exit_tutorial()
 
+var button_audio
+
 func _ready() -> void:
+	button_audio = $ButtonPress
 	level_data = load("res://resources/Levels/start.tres")
 	load_level(level_data)
 	main_menu_button = $MainMenuButton
@@ -192,10 +195,14 @@ func process_tutorial() -> void:
 			pass
 			
 func _on_next_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	tutorial_step += 1
 	process_tutorial()
 
 func _on_back_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	tutorial_step -= 1
 	process_tutorial()
 

@@ -32,10 +32,14 @@ var deck_view
 
 var multiplier_label : RichTextLabel
 
+var button_audio
+
 signal level_complete()
 signal game_over()
 
 func load_level(data) -> void:
+	button_audio = $ButtonPress
+	
 	title_node = self.get_node("LevelTitleLabel")
 	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "/5[/wave]" 
 
@@ -84,6 +88,8 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 		game_over.emit()
 
 func _on_hint_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	var hint_scene = load("res://_Scenes/Hint/hint.tscn").instantiate()
 	self.add_child(hint_scene)
 	hint_scene.hint_closed.connect(_close_hint)
@@ -96,17 +102,23 @@ func _close_hint() -> void:
 
 
 func _on_options_button_pressed() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	var options_scene = load("res://_Scenes/Options/options.tscn").instantiate()
 	self.add_child(options_scene)
 	options_scene.resume.connect(_close_options)
 
 func _close_options() -> void:
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	for child in get_children():
 		if child is Options:
 			self.remove_child(child)
 			child.queue_free()
 
-func _on_deck_pressed() -> void:
+func _on_deck_pressed() -> void:	
+	button_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	deck_view_scene = load("res://_Scenes/DeckView/deck_view.tscn").instantiate()
 	self.add_child(deck_view_scene)
 	deck_view_scene.back.connect(_remove_deck_view)

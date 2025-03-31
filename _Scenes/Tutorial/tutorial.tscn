@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dir53w1skkvgr"]
+[gd_scene load_steps=16 format=3 uid="uid://dir53w1skkvgr"]
 
 [ext_resource type="Script" uid="uid://bvrwvr6litu3p" path="res://_Scripts/Tutorial/tutorial.gd" id="1_gcs81"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_fyhrf"]
+[ext_resource type="AudioStream" uid="uid://bk4e6iv1n626b" path="res://Assets/SoundFX/536108__eminyildirim__ui-click.wav" id="2_q5afk"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_qnq0o"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="4_i17lq"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="5_1t73e"]
@@ -33,6 +34,9 @@ shader_parameter/mix_percentage = 0.3
 
 [node name="Tutorial" type="Node2D"]
 script = ExtResource("1_gcs81")
+
+[node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_q5afk")
 
 [node name="MainBackground" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6fxwj")
