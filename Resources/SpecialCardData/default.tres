@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SpecialCardData" load_steps=2 format=3 uid="uid://biuqy7rs66r80"]
+
+[ext_resource type="Script" uid="uid://i21ibv1u7dty" path="res://CustomResources/special_card.gd" id="1_oulfr"]
+
+[resource]
+script = ExtResource("1_oulfr")
+name = "def"
+description = "def"
+effect = "def"
+sprite_path = "res://Assets/Sprites/BlankCard.png"
+metadata/_custom_type_script = "uid://i21ibv1u7dty"

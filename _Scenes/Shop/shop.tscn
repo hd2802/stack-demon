@@ -84,10 +84,10 @@ vertical_alignment = 1
 
 [node name="CardContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 340.0
-offset_top = 264.0
-offset_right = 940.0
-offset_bottom = 414.0
+offset_left = 330.0
+offset_top = 283.0
+offset_right = 930.0
+offset_bottom = 433.0
 theme_override_constants/separation = 16
 alignment = 1
 

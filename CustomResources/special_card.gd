@@ -5,7 +5,6 @@ class_name SpecialCardData
 
 @export var description : String
 
-# the following are used for programmer purposes
-@export var effect : String
+@export var labels : String = ""
 
-@export var sprite_path : String
+@export var sprite_path : String = "res://Assets/Sprites/BlankCard.png"

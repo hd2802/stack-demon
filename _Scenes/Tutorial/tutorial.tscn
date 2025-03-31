@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bquqdw1sgn7xg" path="res://Assets/Sprites/Buttons/PlayButton.png" id="8_sqey3"]
 [ext_resource type="Texture2D" uid="uid://dmeyxhca61rca" path="res://Assets/Sprites/Buttons/DiscardButton.png" id="9_wnfr2"]
 [ext_resource type="Script" uid="uid://cdau8d7xqmav2" path="res://_Scripts/Level/Target/target.gd" id="10_ba650"]
-[ext_resource type="Texture2D" uid="uid://bgoqkb2t2nkpe" path="res://Assets/Sprites/MiscButton.png" id="11_gcs81"]
+[ext_resource type="Texture2D" uid="uid://bgoqkb2t2nkpe" path="res://Assets/Sprites/MiscButton(replace).png" id="11_gcs81"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6fxwj"]
 shader = ExtResource("2_fyhrf")

@@ -4,7 +4,6 @@ class_name TierTransition
 # TODO: edit this so that the cards are weighted properly
 # and so that it contains some interesting cards that can be added
 var CARDS : Array[String] = [
-	"multiply", "multiply", "multiply",
 	"ten", "ten", "ten",
 	"twenty", "twenty", "twenty",
 	"one", "one", "one",
@@ -14,7 +13,9 @@ var CARDS : Array[String] = [
 	"two", "three", "one", "two", "three",
 	"four", "six", "six", "six", "seven",
 	"nine", "ten", "add", "add", "add",
-	"add", "ten", "add"
+	"add", "ten", "add", "add",
+	"add", "add","add","add",
+	"add", "add"
 ]
 
 var card_list : Array[StaticCard]
