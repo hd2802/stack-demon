@@ -63,7 +63,17 @@ offset_bottom = 159.0
 theme = ExtResource("2_xlypx")
 text = "x"
 
+[node name="Mute" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 584.0
+offset_top = 83.0
+offset_right = 805.0
+offset_bottom = 156.0
+theme = ExtResource("2_hsjc5")
+text = "Mute Music "
+
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CrossButton" to="." method="_on_cross_button_pressed"]
+[connection signal="toggled" from="Mute" to="." method="_on_mute_toggled"]

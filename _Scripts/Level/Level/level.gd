@@ -137,3 +137,7 @@ func _remove_deck_view() -> void:
 func _on_play_area_hand_discarded() -> void:
 	current_discards -= 1
 	discards.text = str(current_discards)
+
+
+func _on_audio_stream_player_finished() -> void:
+	$AudioStreamPlayer.play()
