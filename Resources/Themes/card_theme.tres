@@ -1,8 +1,8 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://b8rufdjyp1b2b"]
 
-[ext_resource type="FontFile" uid="uid://cmj4l0bfu24do" path="res://Assets/Fonts/PixelAE-Bold.ttf" id="1_pfk36"]
+[ext_resource type="FontFile" uid="uid://kqt37iucn5pd" path="res://Assets/Fonts/Weiholmir_regular.ttf" id="1_pfk36"]
 
 [resource]
 default_font = ExtResource("1_pfk36")
-default_font_size = 72
+default_font_size = 64
 Label/colors/font_color = Color(0, 0, 0, 1)

@@ -1,8 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=26 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://la4prbx45klh" path="res://Assets/SoundFX/677860__el_boss__ui-button-click-snap.wav" id="2_6fxwj"]
-[ext_resource type="AudioStream" uid="uid://b8edvnw54wuc5" path="res://Assets/SoundFX/757339__simmys_recycle_bin__chill-modern-jazz-lounge-91-bpm.wav" id="2_eee74"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
 [ext_resource type="AudioStream" uid="uid://d3b5mlph4fn6" path="res://Assets/SoundFX/220207__gameaudio__boot-sound.wav" id="3_a87a3"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_vw5s3"]
@@ -37,14 +36,13 @@ shader_parameter/direction_y = 1.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e0ewc"]
 shader = ExtResource("3_vw5s3")
 shader_parameter/lod = 5.0
-shader_parameter/mix_percentage = 0.3
+shader_parameter/mix_percentage = 0.57
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_er2o0")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("2_eee74")
 autoplay = true
 
 [node name="ButtonPress" type="AudioStreamPlayer2D" parent="."]
@@ -92,6 +90,7 @@ offset_top = 6.0
 offset_right = 433.0
 offset_bottom = 82.0
 theme = ExtResource("10_ydtrd")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[wave amp=25 freq=1]Target Score:[/wave]"
 horizontal_alignment = 1
@@ -99,11 +98,12 @@ vertical_alignment = 1
 
 [node name="CurrentScore" type="RichTextLabel" parent="TargetBar"]
 layout_mode = 0
-offset_left = 490.0
-offset_top = 5.0
-offset_right = 869.0
-offset_bottom = 99.0
+offset_left = 505.0
+offset_top = -4.0
+offset_right = 884.0
+offset_bottom = 90.0
 theme = ExtResource("10_ydtrd")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[wave amp=25 freq=1]Current Score:[/wave]"
 horizontal_alignment = 1
@@ -146,7 +146,7 @@ offset_top = 150.0
 offset_right = 305.0
 offset_bottom = 211.0
 theme = ExtResource("10_ydtrd")
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -189,10 +189,10 @@ texture_normal = ExtResource("8_e0ewc")
 
 [node name="Label" type="Label" parent="PlayCardButton"]
 layout_mode = 0
-offset_left = 66.0
-offset_top = 15.0
-offset_right = 140.0
-offset_bottom = 114.0
+offset_left = 56.0
+offset_top = 18.0
+offset_right = 144.0
+offset_bottom = 117.0
 text = "PLAY
 "
 
@@ -206,9 +206,9 @@ texture_normal = ExtResource("9_rl1kb")
 
 [node name="Label2" type="Label" parent="DiscardButton"]
 layout_mode = 0
-offset_left = 39.0
+offset_left = 32.0
 offset_top = 16.0
-offset_right = 161.0
+offset_right = 176.0
 offset_bottom = 115.0
 text = "DISCARD
 "
@@ -218,9 +218,9 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 555.0
+offset_left = 542.0
 offset_top = 125.0
-offset_right = 619.0
+offset_right = 606.0
 offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2

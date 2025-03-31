@@ -38,10 +38,10 @@ vertical_alignment = 1
 
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 578.0
-offset_top = 536.0
-offset_right = 863.0
-offset_bottom = 600.0
+offset_left = 544.0
+offset_top = 534.0
+offset_right = 914.0
+offset_bottom = 598.0
 theme = ExtResource("3_x74st")
 text = "Back to Main Menu"
 

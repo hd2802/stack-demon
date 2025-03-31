@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://de0d88t3bbp3w"]
 
-[ext_resource type="FontFile" uid="uid://cmj4l0bfu24do" path="res://Assets/Fonts/PixelAE-Bold.ttf" id="1_rhcv2"]
+[ext_resource type="FontFile" uid="uid://kqt37iucn5pd" path="res://Assets/Fonts/Weiholmir_regular.ttf" id="1_rhcv2"]
 
 [resource]
 default_font = ExtResource("1_rhcv2")

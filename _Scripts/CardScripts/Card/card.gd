@@ -23,6 +23,7 @@ func set_labels():
 	var top_left : Label = sprite.get_node("TopLeft")
 	var bottom_right : Label = sprite.get_node("BottomRight")
 	var center : Label = sprite.get_node("Center")
+
 	top_left.text = self.card_data.text
 	bottom_right.text = self.card_data.text
 	center.text = self.card_data.text

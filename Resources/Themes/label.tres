@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://engys5p3iknv"]
 
-[ext_resource type="FontFile" uid="uid://cna0rxqurctla" path="res://Assets/Fonts/PixelAE-Regular.ttf" id="1_uyiqx"]
+[ext_resource type="FontFile" uid="uid://kqt37iucn5pd" path="res://Assets/Fonts/Weiholmir_regular.ttf" id="1_uyiqx"]
 
 [resource]
 default_font = ExtResource("1_uyiqx")
-default_font_size = 32
+default_font_size = 25

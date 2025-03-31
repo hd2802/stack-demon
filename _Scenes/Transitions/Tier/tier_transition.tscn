@@ -29,8 +29,9 @@ layout_mode = 0
 offset_left = 492.0
 offset_top = 137.0
 offset_right = 948.0
-offset_bottom = 205.0
+offset_bottom = 204.0
 theme = ExtResource("1_qoa37")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[wave amp=25 freq=1.5] Round Complete[/wave]"
 horizontal_alignment = 1
@@ -38,10 +39,10 @@ vertical_alignment = 1
 
 [node name="SelectionPrompt" type="Label" parent="."]
 layout_mode = 0
-offset_left = 591.0
-offset_top = 207.0
-offset_right = 1034.0
-offset_bottom = 310.0
+offset_left = 566.0
+offset_top = 206.0
+offset_right = 1009.0
+offset_bottom = 309.0
 theme = ExtResource("2_l5pqb")
 text = "Choose a Card to 
 Add to your Deck"
