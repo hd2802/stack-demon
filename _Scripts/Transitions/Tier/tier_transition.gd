@@ -45,7 +45,6 @@ func _ready() -> void:
 	
 	var title = $Title
 	title.text = "[wave amp=25 freq=1.5] Round "  + str(round_number) + " Complete[/wave]"
-	
 	generate_cards()
 	
 
