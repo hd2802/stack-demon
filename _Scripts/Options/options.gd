@@ -36,4 +36,4 @@ func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://_Scenes/MainMenu/main_menu.tscn")
 
 func _on_mute_toggled(toggled_on: bool) -> void:
-	self.get_parent().get_node("AudioStreamPlayer").playing = false
+	self.get_parent().get_node("AudioStreamPlayer").playing = ! self.get_parent().get_node("AudioStreamPlayer").playing 

@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="game"
-run/main_scene="uid://ciga2fd0nakw1"
+config/name="stack_demon"
+run/main_scene="uid://dy5qf2y0n4ics"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://bnbdvmpdjbg8w"
 
