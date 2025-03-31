@@ -20,6 +20,7 @@ var level_complete : bool = false
 
 var button_audio
 var evaluation_audio
+var draw_audio
 
 signal hand_discarded()
 signal scored(sc: int, multiplier: int, is_complex: bool)
@@ -31,6 +32,7 @@ var current_score : int
 func _ready():
 	button_audio = $"../ButtonPress"
 	evaluation_audio = $"../Evaluation"
+	draw_audio = $"../Draw"
 	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
@@ -68,6 +70,8 @@ func add_card():
 	sprite.position = start_position
 	
 	tween.set_trans(Tween.TRANS_QUART)
+	draw_audio.play()
+	#await get_tree().create_timer(0.25).timeout
 	tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
 	
 # -----------------------------------------------------------------------------
