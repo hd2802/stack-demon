@@ -107,8 +107,7 @@ func _close_hint() -> void:
 		if child is Hint:
 			self.remove_child(child)
 			child.queue_free()
-
-
+	
 func _on_options_button_pressed() -> void:
 	button_audio.play()
 	await get_tree().create_timer(0.25).timeout
@@ -134,3 +133,7 @@ func _on_deck_pressed() -> void:
 func _remove_deck_view() -> void:
 	if deck_view_scene:
 		self.remove_child(deck_view_scene)
+
+func _on_play_area_hand_discarded() -> void:
+	current_discards -= 1
+	discards.text = str(current_discards)

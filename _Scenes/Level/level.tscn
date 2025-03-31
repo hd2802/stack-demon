@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=26 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://la4prbx45klh" path="res://Assets/SoundFX/677860__el_boss__ui-button-click-snap.wav" id="2_6fxwj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/GameLogic/play_area.gd" id="6_rl1kb"]
 [ext_resource type="Texture2D" uid="uid://vbtqdf0ix7t6" path="res://Assets/Sprites/Panels/discards_panel.png" id="6_xqiwq"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="7_ldegq"]
+[ext_resource type="AudioStream" uid="uid://dqmt8rmer1tw5" path="res://Assets/SoundFX/201806__fartheststar__poker_chips2.wav" id="7_r51hj"]
 [ext_resource type="Texture2D" uid="uid://cf4cbqv2aol74" path="res://Assets/Sprites/Panels/target_panel.png" id="7_u72hf"]
 [ext_resource type="Texture2D" uid="uid://buph8yd3kk1aq" path="res://Assets/Sprites/Panels/discards_panel-1.png(1).png" id="8_7dgkj"]
 [ext_resource type="Texture2D" uid="uid://bquqdw1sgn7xg" path="res://Assets/Sprites/Buttons/PlayButton.png" id="8_e0ewc"]
@@ -54,6 +55,9 @@ stream = ExtResource("5_y2be1")
 
 [node name="Draw" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_r0lc6")
+
+[node name="Change" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_r51hj")
 
 [node name="MainBackground" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6fxwj")
@@ -327,6 +331,7 @@ bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="hand_discarded" from="PlayArea" to="." method="_on_play_area_hand_discarded"]
 [connection signal="scored" from="PlayArea" to="." method="_on_play_area_scored"]
 [connection signal="pressed" from="PlayCardButton" to="PlayArea" method="_on_play_card_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="PlayArea" method="_on_discard_button_pressed"]

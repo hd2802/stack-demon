@@ -21,6 +21,7 @@ var level_complete : bool = false
 var button_audio
 var evaluation_audio
 var draw_audio
+var change_audio
 
 signal hand_discarded()
 signal scored(sc: int, multiplier: int, is_complex: bool)
@@ -33,6 +34,7 @@ func _ready():
 	button_audio = $"../ButtonPress"
 	evaluation_audio = $"../Evaluation"
 	draw_audio = $"../Draw"
+	change_audio = $"../Change"
 	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
@@ -140,6 +142,8 @@ func clear_hand() -> void:
 func _on_play_card_button_pressed() -> void:
 	button_audio.play()
 	await get_tree().create_timer(0.25).timeout
+	change_audio.play()
+	await get_tree().create_timer(0.25).timeout
 	if !selected_cards:
 		return
 		
@@ -212,18 +216,21 @@ func _on_expression_validity(multiplier: int, is_complex: bool) -> void:
 func _on_discard_button_pressed() -> void:
 	button_audio.play()
 	await get_tree().create_timer(0.25).timeout
-	if len(selected_cards) != 0:
-		for card in selected_cards:
-			e_zone.remove_child(card)
+	if self.get_parent().current_discards <= 0:
+		pass
+	else:
+		if len(selected_cards) != 0:
+			for card in selected_cards:
+				e_zone.remove_child(card)
 
-			var ghost_card = ghost_cards.get(card, null)
-			if ghost_card:
-				hand.remove_child(ghost_card)
-				ghost_card.queue_free()
+				var ghost_card = ghost_cards.get(card, null)
+				if ghost_card:
+					hand.remove_child(ghost_card)
+					ghost_card.queue_free()
 
-			card.queue_free()
-			current_hand.erase(card)
-			add_card()
+				card.queue_free()
+				current_hand.erase(card)
+				add_card()
 
-		selected_cards = []
-		hand_discarded.emit()
+			selected_cards = []
+			hand_discarded.emit()
