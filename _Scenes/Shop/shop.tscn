@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq85swbj7uyim"]
+[gd_scene load_steps=5 format=3 uid="uid://cq85swbj7uyim"]
 
 [ext_resource type="Script" uid="uid://dsdvaq2rowt4p" path="res://_Scripts/Shop/shop.gd" id="1_lr4xu"]
+[ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="2_lr4xu"]
 [ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="2_nd2u3"]
+[ext_resource type="Texture2D" uid="uid://f7je5osdp5ve" path="res://Assets/Sprites/CardBack.png" id="4_yg0q2"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -12,13 +14,82 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lr4xu")
 
+[node name="PlaceholderBG" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.235732, 0.235732, 0.235732, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 150.0
+theme = ExtResource("2_lr4xu")
+bbcode_enabled = true
+text = "[wave amp=25 freq=1]RUN MODIFIER[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ContinueButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 515.0
-offset_top = 492.0
-offset_right = 765.0
-offset_bottom = 592.0
+offset_left = 519.0
+offset_top = 602.0
+offset_right = 769.0
+offset_bottom = 702.0
 theme = ExtResource("2_nd2u3")
 text = "Continue"
 
+[node name="Pick" type="Label" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 102.0
+offset_right = 1285.0
+offset_bottom = 173.0
+theme = ExtResource("2_nd2u3")
+text = "Pick a Modifier Card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModifierCards" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 230.0
+offset_right = 1220.0
+offset_bottom = 530.0
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Button" type="Button" parent="ModifierCards"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ModifierCards/Button"]
+position = Vector2(-2, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_yg0q2")
+offset = Vector2(50, 75)
+
+[node name="Button2" type="Button" parent="ModifierCards"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ModifierCards/Button2"]
+position = Vector2(-2, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_yg0q2")
+offset = Vector2(50, 75)
+
+[node name="Button3" type="Button" parent="ModifierCards"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ModifierCards/Button3"]
+position = Vector2(-2, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_yg0q2")
+offset = Vector2(50, 75)
+
 [connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="ModifierCards/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ModifierCards/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="ModifierCards/Button3" to="." method="_on_button_3_pressed"]

@@ -34,12 +34,13 @@ vertical_alignment = 1
 
 [node name="SelectionPrompt" type="Label" parent="."]
 layout_mode = 0
-offset_left = 503.0
-offset_top = 254.0
-offset_right = 939.0
-offset_bottom = 295.0
+offset_left = 591.0
+offset_top = 207.0
+offset_right = 1034.0
+offset_bottom = 310.0
 theme = ExtResource("2_l5pqb")
-text = "Choose a Card to Add to your Deck"
+text = "Choose a Card to 
+Add to your Deck"
 
 [node name="CardContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
