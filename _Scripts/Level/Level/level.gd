@@ -34,6 +34,7 @@ var multiplier_label : RichTextLabel
 
 var button_audio
 var audio
+var failure
 
 signal level_complete()
 signal game_over()
@@ -41,6 +42,7 @@ signal game_over()
 func load_level(data) -> void:
 	button_audio = $ButtonPress
 	audio = $Success
+	failure = $Failure
 	
 	title_node = self.get_node("LevelTitleLabel")
 	title_node.text = "[wave amp=25 freq=1]Level " + str(data.level_number) + "/5[/wave]" 
@@ -89,7 +91,8 @@ func _on_play_area_scored(sc: int, multiplier: int, is_complex: bool) -> void:
 		await get_tree().create_timer(0.25).timeout
 		level_complete.emit()
 	elif current_hands == 0:
-		
+		failure.play()
+		await get_tree().create_timer(0.25).timeout
 		game_over.emit()
 
 func _on_hint_button_pressed() -> void:

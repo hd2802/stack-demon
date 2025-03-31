@@ -1,10 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://dipmb0ce8ps10"]
+[gd_scene load_steps=23 format=3 uid="uid://dipmb0ce8ps10"]
 
 [ext_resource type="Script" uid="uid://dpj2pujktnhu3" path="res://_Scripts/Level/Level/level.gd" id="1_er2o0"]
 [ext_resource type="AudioStream" uid="uid://la4prbx45klh" path="res://Assets/SoundFX/677860__el_boss__ui-button-click-snap.wav" id="2_6fxwj"]
 [ext_resource type="Shader" uid="uid://dsrjx5fwwsmio" path="res://Resources/Shaders/goopy.gdshader" id="2_vw5s3"]
 [ext_resource type="AudioStream" uid="uid://d3b5mlph4fn6" path="res://Assets/SoundFX/220207__gameaudio__boot-sound.wav" id="3_a87a3"]
 [ext_resource type="Shader" uid="uid://dh00vr0itc8wv" path="res://Resources/Shaders/blur.gdshader" id="3_vw5s3"]
+[ext_resource type="AudioStream" uid="uid://cf0ldrsvkx34m" path="res://Assets/SoundFX/220203__gameaudio__casual-death-loose.wav" id="4_4ci52"]
 [ext_resource type="Theme" uid="uid://dltx8n0ryx35r" path="res://Resources/Themes/level_title.tres" id="4_5phq7"]
 [ext_resource type="Texture2D" uid="uid://3w76mlkv8428" path="res://Assets/Sprites/Panels/hands_panel-1.png" id="5_gfncb"]
 [ext_resource type="Script" uid="uid://bvurmdpa1li7c" path="res://_Scripts/Level/GameLogic/play_area.gd" id="6_rl1kb"]
@@ -42,6 +43,9 @@ stream = ExtResource("2_6fxwj")
 
 [node name="Success" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_a87a3")
+
+[node name="Failure" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4ci52")
 
 [node name="MainBackground" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_6fxwj")
