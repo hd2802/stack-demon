@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://la4prbx45klh" path="res://Assets/SoundFX/677860__el_boss__ui-button-click-snap.wav" id="2_aybms"]
 [ext_resource type="Shader" uid="uid://btvii1n8uj1ap" path="res://Resources/Shaders/swirl.gdshader" id="2_xif4u"]
 [ext_resource type="Theme" uid="uid://de0d88t3bbp3w" path="res://Resources/Themes/stack.tres" id="4_qt7nv"]
-[ext_resource type="Theme" uid="uid://engys5p3iknv" path="res://Resources/Themes/label.tres" id="5_pvxrt"]
+[ext_resource type="Theme" uid="uid://dom63suaqtrwc" path="res://Resources/Themes/stack_item.tres" id="5_aybms"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_aybms"]
 shader = ExtResource("2_xif4u")
@@ -63,24 +63,12 @@ text = "PLAY"
 
 [node name="TutorialButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 232.5
-offset_top = 500.0
-offset_right = 582.5
-offset_bottom = 580.0
-theme = ExtResource("5_pvxrt")
-theme_override_font_sizes/font_size = 72
+offset_left = 463.0
+offset_top = 512.0
+offset_right = 813.0
+offset_bottom = 628.0
+theme = ExtResource("5_aybms")
 text = "Tutorial"
-
-[node name="CreditsButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 755.0
-offset_top = 500.0
-offset_right = 1105.0
-offset_bottom = 580.0
-theme = ExtResource("5_pvxrt")
-theme_override_font_sizes/font_size = 72
-text = "Credits"
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
