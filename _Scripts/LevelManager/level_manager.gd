@@ -45,7 +45,9 @@ func _on_level_complete() -> void:
 	if current_level == 5:
 		# here the game is over - the player can continue if they would like
 		# in 'endless mode' but other than that, they have completed the game
-		pass
+		if current_tier == 3:
+			transition_scene = load("res://_Scenes/Transitions/Win/win.tscn").instantiate()
+			transition_scene.endless.connect(_load_next_level)
 	else:
 		if current_tier == 3:
 			transition_scene = load("res://_Scenes/Transitions/Level/level_transition.tscn").instantiate()
