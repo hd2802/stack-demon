@@ -1,5 +1,4 @@
 extends Node
-
 # Only edited when adding or removing a card from the deck
 var deck : Array[String] = []
 

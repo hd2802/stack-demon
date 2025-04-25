@@ -18,6 +18,7 @@ func _on_tutorial_button_pressed() -> void:
 	await get_tree().create_timer(0.25).timeout
 	get_tree().change_scene_to_file("res://_Scenes/Tutorial/tutorial.tscn")
 
+# Defunct 
 func _on_credits_button_pressed() -> void:
 	button_audio.play()
 	await get_tree().create_timer(0.25).timeout

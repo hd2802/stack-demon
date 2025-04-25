@@ -72,7 +72,7 @@ func add_card():
 	sprite.position = start_position
 	
 	tween.set_trans(Tween.TRANS_QUART)
-	draw_audio.play()
+	#draw_audio.play()
 	#await get_tree().create_timer(0.25).timeout
 	tween.tween_property(sprite, "position", final_position, 0.25 + delay_time)
 	
