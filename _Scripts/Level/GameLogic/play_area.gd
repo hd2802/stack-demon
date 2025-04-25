@@ -31,10 +31,10 @@ var cards_added: int = 0
 var current_score : int
 
 func _ready():
-	button_audio = $"../ButtonPress"
-	evaluation_audio = $"../Evaluation"
-	draw_audio = $"../Draw"
-	change_audio = $"../Change"
+	#button_audio = $"../ButtonPress"
+	#evaluation_audio = $"../Evaluation"
+	#draw_audio = $"../Draw"
+	#change_audio = $"../Change"
 	
 	hand = self.get_node("Hand")
 	e_zone = self.get_node("EvaluationZone")
